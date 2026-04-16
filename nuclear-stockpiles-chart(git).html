@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Nuclear Warhead Stockpiles (1945–2025)</title>
+<meta name="description" content="Interactive chart tracking nuclear warhead stockpiles from 1945 to 2025 with arms control treaty milestones. Data from FAS Nuclear Notebook / SIPRI Yearbook.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8fafc;color:#1e293b;min-height:100vh;padding:24px 16px}
+.mx{max-width:1000px;margin:0 auto}
+.hdr-row{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.hdr-tag{font-size:11px;font-weight:700;letter-spacing:2px;color:#d97706;text-transform:uppercase}
+.hdr-line{height:1px;flex:1;background:linear-gradient(90deg,#d9770633,transparent)}
+h1{font-size:clamp(20px,4vw,28px);font-weight:800;line-height:1.3;letter-spacing:-.5px;color:#0f172a;margin:4px 0}
+.sub{font-size:13px;color:#94a3b8;margin-bottom:18px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 18px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.period-hdr{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+.period-lbl{font-size:12px;font-weight:600;color:#475569}
+.period-val{font-size:20px;font-weight:800;color:#0f172a;letter-spacing:-.5px}
+.period-span{font-size:12px;font-weight:500;color:#94a3b8;margin-left:6px}
+.trk{position:relative;height:6px;background:#e2e8f0;border-radius:3px;margin:8px 0}
+.trk-fill{position:absolute;height:100%;border-radius:3px;background:linear-gradient(90deg,#2563eb,#7c3aed);pointer-events:none}
+.trk input[type=range]{position:absolute;top:0;width:100%;height:6px;-webkit-appearance:none;appearance:none;background:transparent;pointer-events:none;margin:0;padding:0;outline:none}
+.trk input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;height:22px;width:22px;border-radius:50%;background:#fff;border:2.5px solid #2563eb;box-shadow:0 2px 6px rgba(37,99,235,.25);pointer-events:auto;cursor:grab;margin-top:-8px}
+.trk input[type=range]::-moz-range-thumb{height:22px;width:22px;border-radius:50%;border:2.5px solid #2563eb;background:#fff;box-shadow:0 2px 6px rgba(37,99,235,.25);pointer-events:auto;cursor:grab}
+.trk-labels{display:flex;justify-content:space-between;font-size:11px;color:#94a3b8;margin-top:2px}
+.qbtns{display:flex;gap:4px;margin-top:8px;flex-wrap:wrap}
+.qbtn{padding:3px 10px;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid #e2e8f0;background:#f8fafc;color:#64748b;font-family:inherit;transition:all .15s}
+.qbtn:hover,.qbtn.on{border-color:#2563eb;color:#2563eb;background:#eff6ff}
+.tsection{margin-top:14px}
+.tsection-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px}
+.tsection-title{font-size:12px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.5px}
+.tsection-actions{display:flex;gap:4px}
+.tsection-btn{padding:3px 9px;border-radius:4px;font-size:10.5px;font-weight:600;cursor:pointer;border:1px solid #e2e8f0;background:#fff;color:#64748b;font-family:inherit;transition:all .15s}
+.tsection-btn:hover{border-color:#475569;color:#1e293b}
+.treaties{display:flex;gap:5px;flex-wrap:wrap}
+.tbtn-t{padding:5px 11px;border-radius:16px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;display:flex;align-items:center;gap:6px;border:1px solid}
+.tbtn-t .tdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:18px 0 14px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tbtn{padding:7px 14px;border-radius:6px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid #e2e8f0;background:#fff;color:#64748b;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:all .2s;font-family:inherit}
+.tbtn.on{border-color:#d97706;background:#fffbeb;color:#b45309;box-shadow:0 1px 3px rgba(217,119,6,.15)}
+.exp-btn{padding:7px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid #e2e8f0;background:#fff;color:#475569;font-family:inherit;display:flex;align-items:center;gap:5px;transition:all .15s}
+.exp-btn:hover{border-color:#059669;color:#059669;background:#f0fdf4}
+.vdesc{font-size:12px;color:#94a3b8;margin-bottom:12px}
+.cht-box{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.cht-wrap{position:relative;width:100%;height:460px}
+.leg{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
+.lbtn{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;cursor:pointer;transition:all .2s;font-family:inherit;font-size:12px;font-weight:600;border:none}
+.ldot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.lval{font-size:11px;color:#94a3b8;font-variant-numeric:tabular-nums}
+.rh{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.rh-t{font-size:13px;font-weight:700;color:#334155;white-space:nowrap}
+.rh-l{height:1px;flex:1;background:#e2e8f0}
+.sort-btn{padding:4px 10px;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid #e2e8f0;background:#fff;color:#64748b;font-family:inherit;transition:all .15s;white-space:nowrap}
+.sort-btn.on{border-color:#7c3aed;color:#7c3aed;background:#f5f3ff}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.rc{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;box-shadow:0 1px 2px rgba(0,0,0,.03);border-left:3px solid var(--ac);transition:transform .15s,box-shadow .15s}
+.rc:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,.06)}
+.rc-l{font-size:11.5px;font-weight:700;color:#475569;margin-bottom:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rc-p{font-size:18px;font-weight:800;font-variant-numeric:tabular-nums}
+.rc-d{font-size:11px;color:#94a3b8;margin-top:4px;font-variant-numeric:tabular-nums}
+.rc-df{margin-left:4px;font-weight:600}
+.rc-bar{height:3px;border-radius:2px;margin-top:6px;transition:width .3s}
+.rglob{margin-bottom:10px}
+.footer{text-align:center;font-size:11px;color:#94a3b8;padding:12px 0;border-top:1px solid #f1f5f9;margin-top:16px;line-height:1.5}
+.cup{color:#dc2626}.cdn{color:#059669}.cfl{color:#94a3b8}
+.bup{background:#fecaca}.bdn{background:#bbf7d0}.bfl{background:#e2e8f0}
+#loadErr{display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:20px;margin:18px 0;text-align:center}
+#loadErr h2{color:#dc2626;font-size:16px;margin-bottom:8px}
+#loadErr p{color:#64748b;font-size:13px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="mx">
+  <div class="hdr-row"><span class="hdr-tag">FAS Nuclear Notebook · SIPRI Yearbook</span><span class="hdr-line"></span></div>
+  <h1>Global Nuclear Warhead Stockpiles (1945–2025)</h1>
+  <p class="sub">Military stockpile by country · 80 years of the nuclear age, including major arms control treaty milestones</p>
+
+  <div id="loadErr"><h2>⚠ Chart library failed to load</h2><p>Could not load Chart.js from CDN. Check your internet connection or try a different browser.</p></div>
+
+  <div id="appWrap">
+    <!-- Period -->
+    <div class="card" style="margin-bottom:0">
+      <div class="period-hdr">
+        <span class="period-lbl">Period</span>
+        <span class="period-val"><span id="pTxt">1945 — 2025</span><span class="period-span" id="pSpan">(80 yrs)</span></span>
+      </div>
+      <div class="trk"><div class="trk-fill" id="tF"></div>
+        <input type="range" id="sS" min="1945" max="2025" value="1945" step="1" style="z-index:3">
+        <input type="range" id="sE" min="1945" max="2025" value="2025" step="1" style="z-index:4">
+      </div>
+      <div class="trk-labels"><span>1945</span><span>2025</span></div>
+      <div class="qbtns" id="qB"></div>
+
+      <!-- Treaty toggles -->
+      <div class="tsection">
+        <div class="tsection-hdr">
+          <span class="tsection-title">Arms Control Treaties</span>
+          <div class="tsection-actions">
+            <button class="tsection-btn" id="tAll">Show All</button>
+            <button class="tsection-btn" id="tNone">Hide All</button>
+          </div>
+        </div>
+        <div class="treaties" id="treaties"></div>
+      </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="tabs" id="tabs"></div>
+      <button class="exp-btn" id="expBtn">💾 Export CSV</button>
+    </div>
+    <div class="vdesc" id="vD"></div>
+
+    <!-- Chart -->
+    <div class="cht-box"><div class="cht-wrap"><canvas id="cv"></canvas></div></div>
+
+    <!-- Legend -->
+    <div class="leg" id="leg"></div>
+
+    <!-- Rate -->
+    <div>
+      <div class="rh"><span class="rh-t" id="rT"></span><span class="rh-l"></span><button class="sort-btn" id="sB">Sort by Rate</button></div>
+      <div class="rglob" id="rG"></div>
+      <div class="rgrid" id="rR"></div>
+    </div>
+  </div>
+
+  <div class="footer">Data: FAS Nuclear Notebook / SIPRI Yearbook 2025 · Pre-1990 figures represent total active stockpile (Cold War era had minimal retired-weapon queues); post-1990 figures reflect military stockpile (deployed + stored, excluding retired warheads awaiting dismantlement). Historical estimates carry inherent uncertainty, especially for Soviet/Russian data before 1991 and for ambiguous arsenals (Israel, North Korea).</div>
+</div>
+
+<script>
+(function(){
+  var URLS=["https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js","https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js","https://unpkg.com/chart.js@4.4.4/dist/chart.umd.min.js"];
+  var ANN=["https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js","https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"];
+  var i=0;
+  function load(){if(i>=URLS.length){document.getElementById("loadErr").style.display="block";document.getElementById("appWrap").style.display="none";return;}
+    var s=document.createElement("script");s.src=URLS[i];
+    s.onload=function(){if(typeof Chart!=="undefined"){loadAnn(0);}else{i++;load();}};
+    s.onerror=function(){i++;load();};document.body.appendChild(s);}
+  function loadAnn(j){if(j>=ANN.length){startApp();return;}
+    var s=document.createElement("script");s.src=ANN[j];
+    s.onload=function(){startApp();};s.onerror=function(){loadAnn(j+1);};document.body.appendChild(s);}
+  load();
+})();
+
+function startApp(){
+
+/* ═══════════ DATA (1945-2025) ═══════════ */
+var D=[
+{y:1945,USA:6,RUS:0,UK:0,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1946,USA:11,RUS:0,UK:0,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1947,USA:32,RUS:0,UK:0,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1948,USA:110,RUS:0,UK:0,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1949,USA:235,RUS:1,UK:0,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1950,USA:369,RUS:5,UK:0,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1951,USA:640,RUS:25,UK:0,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1952,USA:1005,RUS:50,UK:1,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1953,USA:1436,RUS:120,UK:1,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1954,USA:2063,RUS:150,UK:7,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1955,USA:3057,RUS:200,UK:14,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1956,USA:4618,RUS:426,UK:21,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1957,USA:6444,RUS:660,UK:29,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1958,USA:9822,RUS:869,UK:22,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1959,USA:15468,RUS:1060,UK:25,FRA:0,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1960,USA:20434,RUS:1605,UK:30,FRA:1,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1961,USA:24111,RUS:2471,UK:50,FRA:2,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1962,USA:27519,RUS:3322,UK:205,FRA:4,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1963,USA:29459,RUS:4238,UK:280,FRA:8,CHN:0,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1964,USA:31139,RUS:5221,UK:310,FRA:18,CHN:1,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1965,USA:31139,RUS:6129,UK:310,FRA:32,CHN:5,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1966,USA:31139,RUS:7089,UK:270,FRA:36,CHN:20,IND:0,PAK:0,ISR:0,PRK:0},
+{y:1967,USA:31255,RUS:8339,UK:270,FRA:36,CHN:25,IND:0,PAK:0,ISR:13,PRK:0},
+{y:1968,USA:29561,RUS:9399,UK:280,FRA:36,CHN:35,IND:0,PAK:0,ISR:15,PRK:0},
+{y:1969,USA:27552,RUS:10538,UK:308,FRA:36,CHN:50,IND:0,PAK:0,ISR:18,PRK:0},
+{y:1970,USA:26008,RUS:11643,UK:280,FRA:36,CHN:75,IND:0,PAK:0,ISR:20,PRK:0},
+{y:1971,USA:26251,RUS:13092,UK:220,FRA:45,CHN:100,IND:0,PAK:0,ISR:23,PRK:0},
+{y:1972,USA:27296,RUS:14478,UK:220,FRA:70,CHN:130,IND:0,PAK:0,ISR:26,PRK:0},
+{y:1973,USA:28335,RUS:15915,UK:275,FRA:116,CHN:150,IND:0,PAK:0,ISR:29,PRK:0},
+{y:1974,USA:28170,RUS:17385,UK:325,FRA:145,CHN:170,IND:0,PAK:0,ISR:32,PRK:0},
+{y:1975,USA:27519,RUS:19055,UK:350,FRA:188,CHN:185,IND:0,PAK:0,ISR:35,PRK:0},
+{y:1976,USA:25914,RUS:21205,UK:350,FRA:212,CHN:190,IND:0,PAK:0,ISR:38,PRK:0},
+{y:1977,USA:25542,RUS:23044,UK:350,FRA:228,CHN:200,IND:0,PAK:0,ISR:41,PRK:0},
+{y:1978,USA:24418,RUS:25393,UK:350,FRA:235,CHN:220,IND:0,PAK:0,ISR:44,PRK:0},
+{y:1979,USA:24138,RUS:27935,UK:350,FRA:235,CHN:235,IND:0,PAK:0,ISR:47,PRK:0},
+{y:1980,USA:24104,RUS:30062,UK:350,FRA:250,CHN:205,IND:0,PAK:0,ISR:50,PRK:0},
+{y:1981,USA:23208,RUS:32049,UK:350,FRA:275,CHN:225,IND:0,PAK:0,ISR:53,PRK:0},
+{y:1982,USA:22886,RUS:33952,UK:335,FRA:275,CHN:235,IND:0,PAK:0,ISR:56,PRK:0},
+{y:1983,USA:23305,RUS:35804,UK:320,FRA:280,CHN:240,IND:0,PAK:0,ISR:58,PRK:0},
+{y:1984,USA:23459,RUS:37431,UK:270,FRA:280,CHN:249,IND:0,PAK:0,ISR:60,PRK:0},
+{y:1985,USA:23368,RUS:39197,UK:300,FRA:360,CHN:242,IND:0,PAK:0,ISR:62,PRK:0},
+{y:1986,USA:23317,RUS:45000,UK:300,FRA:355,CHN:224,IND:0,PAK:0,ISR:63,PRK:0},
+{y:1987,USA:23575,RUS:43000,UK:300,FRA:420,CHN:224,IND:0,PAK:0,ISR:65,PRK:0},
+{y:1988,USA:23205,RUS:41000,UK:300,FRA:410,CHN:224,IND:0,PAK:0,ISR:66,PRK:0},
+{y:1989,USA:22217,RUS:39000,UK:300,FRA:410,CHN:232,IND:0,PAK:0,ISR:68,PRK:0},
+{y:1990,USA:21392,RUS:37000,UK:300,FRA:505,CHN:232,IND:0,PAK:0,ISR:70,PRK:0},
+{y:1991,USA:19008,RUS:32000,UK:300,FRA:540,CHN:232,IND:0,PAK:0,ISR:72,PRK:0},
+{y:1992,USA:13708,RUS:25000,UK:300,FRA:540,CHN:232,IND:0,PAK:0,ISR:74,PRK:0},
+{y:1993,USA:11511,RUS:20000,UK:300,FRA:525,CHN:232,IND:0,PAK:0,ISR:76,PRK:0},
+{y:1994,USA:10979,RUS:16000,UK:250,FRA:505,CHN:232,IND:0,PAK:0,ISR:78,PRK:0},
+{y:1995,USA:10904,RUS:14000,UK:200,FRA:500,CHN:234,IND:0,PAK:0,ISR:80,PRK:0},
+{y:1996,USA:11011,RUS:13500,UK:200,FRA:450,CHN:234,IND:0,PAK:0,ISR:80,PRK:0},
+{y:1997,USA:10903,RUS:13000,UK:260,FRA:450,CHN:232,IND:0,PAK:0,ISR:80,PRK:0},
+{y:1998,USA:10731,RUS:12800,UK:260,FRA:450,CHN:232,IND:6,PAK:6,ISR:72,PRK:0},
+{y:1999,USA:10685,RUS:12500,UK:280,FRA:450,CHN:232,IND:9,PAK:8,ISR:72,PRK:0},
+{y:2000,USA:10577,RUS:12188,UK:280,FRA:470,CHN:232,IND:13,PAK:14,ISR:72,PRK:0},
+{y:2001,USA:10526,RUS:11152,UK:280,FRA:350,CHN:235,IND:18,PAK:20,ISR:74,PRK:0},
+{y:2002,USA:10457,RUS:10114,UK:280,FRA:350,CHN:235,IND:23,PAK:26,ISR:76,PRK:0},
+{y:2003,USA:10027,RUS:9076,UK:280,FRA:350,CHN:235,IND:28,PAK:32,ISR:78,PRK:0},
+{y:2004,USA:8570,RUS:8038,UK:280,FRA:350,CHN:235,IND:33,PAK:38,ISR:80,PRK:0},
+{y:2005,USA:8360,RUS:7000,UK:280,FRA:350,CHN:235,IND:38,PAK:44,ISR:80,PRK:0},
+{y:2006,USA:7853,RUS:6643,UK:245,FRA:350,CHN:235,IND:43,PAK:50,ISR:80,PRK:0},
+{y:2007,USA:5709,RUS:6286,UK:245,FRA:350,CHN:235,IND:50,PAK:60,ISR:80,PRK:0},
+{y:2008,USA:5273,RUS:5929,UK:245,FRA:300,CHN:235,IND:60,PAK:70,ISR:80,PRK:0},
+{y:2009,USA:5113,RUS:5527,UK:245,FRA:300,CHN:240,IND:70,PAK:80,ISR:80,PRK:0},
+{y:2010,USA:5066,RUS:5215,UK:225,FRA:300,CHN:240,IND:80,PAK:90,ISR:80,PRK:0},
+{y:2011,USA:4897,RUS:4858,UK:225,FRA:300,CHN:240,IND:90,PAK:100,ISR:80,PRK:0},
+{y:2012,USA:4881,RUS:4750,UK:225,FRA:300,CHN:240,IND:100,PAK:110,ISR:80,PRK:0},
+{y:2013,USA:4804,RUS:4650,UK:225,FRA:300,CHN:250,IND:100,PAK:115,ISR:80,PRK:0},
+{y:2014,USA:4717,RUS:4600,UK:225,FRA:300,CHN:250,IND:100,PAK:120,ISR:80,PRK:0},
+{y:2015,USA:4571,RUS:4500,UK:225,FRA:300,CHN:260,IND:110,PAK:125,ISR:80,PRK:5},
+{y:2016,USA:4018,RUS:4490,UK:225,FRA:300,CHN:260,IND:120,PAK:130,ISR:80,PRK:5},
+{y:2017,USA:3822,RUS:4300,UK:225,FRA:300,CHN:270,IND:130,PAK:140,ISR:80,PRK:5},
+{y:2018,USA:3785,RUS:4350,UK:225,FRA:300,CHN:280,IND:140,PAK:150,ISR:80,PRK:10},
+{y:2019,USA:3805,RUS:4330,UK:225,FRA:300,CHN:290,IND:140,PAK:150,ISR:80,PRK:15},
+{y:2020,USA:3750,RUS:4310,UK:225,FRA:290,CHN:350,IND:150,PAK:160,ISR:90,PRK:15},
+{y:2021,USA:3713,RUS:4495,UK:225,FRA:290,CHN:370,IND:160,PAK:165,ISR:90,PRK:20},
+{y:2022,USA:3768,RUS:4477,UK:225,FRA:290,CHN:390,IND:160,PAK:165,ISR:90,PRK:25},
+{y:2023,USA:3748,RUS:4489,UK:225,FRA:290,CHN:410,IND:164,PAK:170,ISR:90,PRK:30},
+{y:2024,USA:3708,RUS:4380,UK:225,FRA:290,CHN:500,IND:172,PAK:170,ISR:90,PRK:50},
+{y:2025,USA:3700,RUS:4309,UK:225,FRA:290,CHN:600,IND:180,PAK:170,ISR:90,PRK:50}
+];
+
+var C=[
+{k:"USA",n:"United States",c:"#2563eb",g:"M"},
+{k:"RUS",n:"Russia / USSR",c:"#dc2626",g:"M"},
+{k:"UK",n:"United Kingdom",c:"#0891b2",g:"I"},
+{k:"FRA",n:"France",c:"#7c3aed",g:"I"},
+{k:"CHN",n:"China",c:"#ea580c",g:"I"},
+{k:"IND",n:"India",c:"#059669",g:"E"},
+{k:"PAK",n:"Pakistan",c:"#65a30d",g:"E"},
+{k:"ISR",n:"Israel",c:"#ca8a04",g:"E"},
+{k:"PRK",n:"North Korea",c:"#be185d",g:"E"}
+];
+
+var VIEWS=[
+{id:"all",l:"All 9 States",d:"All nuclear-armed states including the U.S. and Russia"},
+{id:"ex",l:"Excl. U.S. & Russia",d:"Middle and emerging nuclear-armed states"},
+{id:"em",l:"Emerging (5)",d:"China, India, Pakistan, Israel, and North Korea"},
+{id:"st",l:"Stacked Area",d:"Visualizing global share changes over time"}
+];
+
+var QR=[
+{l:"Full (1945–2025)",s:1945,e:2025},
+{l:"Cold War",s:1945,e:1991},
+{l:"Peak Era (1960–90)",s:1960,e:1990},
+{l:"Post-Cold War",s:1991,e:2025},
+{l:"21st Century",s:2000,e:2025},
+{l:"Last 10 yrs",s:2015,e:2025}
+];
+
+/* Treaties: signed and ended (if applicable) */
+var TREATIES=[
+{id:"salt1",n:"SALT I",signed:1972,c:"#0891b2",desc:"Strategic Arms Limitation Talks I — signed May 26, 1972"},
+{id:"abm",n:"ABM Treaty",signed:1972,ended:2002,c:"#8b5cf6",desc:"Anti-Ballistic Missile Treaty — signed 1972; U.S. withdrew June 13, 2002"},
+{id:"salt2",n:"SALT II",signed:1979,c:"#0ea5e9",desc:"Strategic Arms Limitation Talks II — signed June 18, 1979 (never ratified)"},
+{id:"inf",n:"INF",signed:1987,ended:2019,c:"#f59e0b",desc:"Intermediate-Range Nuclear Forces Treaty — signed Dec 8, 1987; terminated Aug 2, 2019"},
+{id:"start1",n:"START I",signed:1991,ended:2009,c:"#10b981",desc:"Strategic Arms Reduction Treaty I — signed July 31, 1991; expired Dec 5, 2009"},
+{id:"start2",n:"START II",signed:1993,c:"#3b82f6",desc:"Strategic Arms Reduction Treaty II — signed Jan 3, 1993 (never entered into force)"},
+{id:"newstart",n:"New START",signed:2010,ended:2026,c:"#ef4444",desc:"New Strategic Arms Reduction Treaty — signed April 8, 2010; expired Feb 5, 2026"}
+];
+
+/* State */
+var S={v:"all",sy:1945,ey:2025,hid:{},sort:false,treaties:{}};
+var cht=null;
+var hasAnno=typeof Chart!=="undefined"&&Chart.registry.plugins.get("annotation");
+
+/* Helpers */
+function tot(r){var s=0;for(var i=0;i<C.length;i++)s+=(r[C[i].k]||0);return s;}
+function pc(a,b){if(!a&&!b)return 0;if(!a)return Infinity;return((b-a)/a)*100;}
+function fp(v){if(v===Infinity)return"N/A";return(v>0?"+":"")+v.toFixed(1)+"%";}
+function nm(v){return v.toLocaleString();}
+function h2r(h,a){return"rgba("+parseInt(h.slice(1,3),16)+","+parseInt(h.slice(3,5),16)+","+parseInt(h.slice(5,7),16)+","+a+")";}
+function row(y){for(var i=0;i<D.length;i++)if(D[i].y===y)return D[i];return null;}
+function vcs(){
+  if(S.v==="ex")return C.filter(function(c){return c.g!=="M"});
+  if(S.v==="em")return C.filter(function(c){return c.g==="E"||c.k==="CHN"});
+  return C;
+}
+function fd(){return D.filter(function(d){return d.y>=S.sy&&d.y<=S.ey});}
+
+/* ═══════════ SLIDER ═══════════ */
+function uSlider(){
+  var range=80,l=((S.sy-1945)/range)*100,r=((S.ey-1945)/range)*100;
+  document.getElementById("tF").style.left=l+"%";
+  document.getElementById("tF").style.width=(r-l)+"%";
+  var n=S.ey-S.sy;
+  document.getElementById("pTxt").textContent=S.sy+" — "+S.ey;
+  document.getElementById("pSpan").textContent="("+n+" yr"+(n!==1?"s":"")+")";
+  document.getElementById("sS").value=S.sy;
+  document.getElementById("sE").value=S.ey;
+}
+document.getElementById("sS").addEventListener("input",function(e){var v=+e.target.value;if(v<S.ey){S.sy=v;uSlider();render();}else e.target.value=S.sy;});
+document.getElementById("sE").addEventListener("input",function(e){var v=+e.target.value;if(v>S.sy){S.ey=v;uSlider();render();}else e.target.value=S.ey;});
+
+/* Quick buttons */
+var qEl=document.getElementById("qB");
+QR.forEach(function(q){
+  var b=document.createElement("button");b.className="qbtn";b.textContent=q.l;
+  b.onclick=function(){S.sy=q.s;S.ey=q.e;uSlider();render();};qEl.appendChild(b);
+});
+function uQ(){document.querySelectorAll(".qbtn").forEach(function(b,i){
+  var q=QR[i];b.classList.toggle("on",S.sy===q.s&&S.ey===q.e);});}
+
+/* ═══════════ TREATY BUTTONS ═══════════ */
+var tEl=document.getElementById("treaties");
+TREATIES.forEach(function(t){
+  var b=document.createElement("button");b.className="tbtn-t";b.title=t.desc;
+  b.dataset.tid=t.id;
+  var lbl=t.n+(t.ended?" ("+t.signed+"–"+t.ended+")":" ("+t.signed+")");
+  b.innerHTML='<span class="tdot" style="background:'+t.c+'"></span>'+lbl;
+  b.onclick=function(){
+    if(S.treaties[t.id])delete S.treaties[t.id];else S.treaties[t.id]=true;
+    uTreatyBtns();rChart();
+  };
+  tEl.appendChild(b);
+});
+function uTreatyBtns(){
+  document.querySelectorAll(".tbtn-t").forEach(function(b){
+    var t=TREATIES.filter(function(x){return x.id===b.dataset.tid})[0];
+    var on=!!S.treaties[t.id];
+    b.style.borderColor=on?t.c:"#e2e8f0";
+    b.style.background=on?h2r(t.c,.08):"#fff";
+    b.style.color=on?t.c:"#64748b";
+    b.style.fontWeight=on?"700":"600";
+  });
+}
+document.getElementById("tAll").onclick=function(){TREATIES.forEach(function(t){S.treaties[t.id]=true;});uTreatyBtns();rChart();};
+document.getElementById("tNone").onclick=function(){S.treaties={};uTreatyBtns();rChart();};
+
+/* ═══════════ TABS ═══════════ */
+function rTabs(){
+  var el=document.getElementById("tabs");el.innerHTML="";
+  VIEWS.forEach(function(v){
+    var b=document.createElement("button");b.className="tbtn"+(S.v===v.id?" on":"");b.textContent=v.l;
+    b.onclick=function(){S.v=v.id;S.hid={};render();};el.appendChild(b);});
+  var cur=VIEWS.filter(function(v){return v.id===S.v})[0];
+  document.getElementById("vD").textContent=(cur?cur.d:"")+" · Click legend items to show/hide countries · Toggle treaty buttons to mark milestones";
+}
+
+/* ═══════════ LEGEND ═══════════ */
+function rLeg(){
+  var el=document.getElementById("leg");el.innerHTML="";
+  var er=row(S.ey);
+  vcs().forEach(function(c){
+    var h=!!S.hid[c.k];
+    var b=document.createElement("button");b.className="lbtn";
+    b.style.border="1px solid "+(h?"#e2e8f0":c.c+"44");
+    b.style.background=h?"#f8fafc":h2r(c.c,.05);
+    b.style.opacity=h?.45:1;
+    b.innerHTML='<span class="ldot" style="background:'+(h?"#cbd5e1":c.c)+'"></span><span style="color:'+(h?"#94a3b8":"#334155")+'">'+c.n+'</span><span class="lval">'+nm(er?er[c.k]||0:0)+'</span>';
+    b.onclick=function(){if(S.hid[c.k])delete S.hid[c.k];else S.hid[c.k]=true;render();};
+    el.appendChild(b);
+  });
+}
+
+/* ═══════════ CHART ═══════════ */
+function rChart(){
+  if(cht){cht.destroy();cht=null;}
+  var cv=document.getElementById("cv");
+  var data=fd(),labels=data.map(function(d){return String(d.y)});
+  var cs=vcs().filter(function(c){return!S.hid[c.k]});
+  var isSt=S.v==="st";
+  var len=data.length;
+  var dotR=len<=15?3.5:len<=30?2.5:len<=50?1.5:0;
+  var ordered=isSt?cs.slice().reverse():cs;
+
+  var datasets=ordered.map(function(c){
+    var ds={label:c.n,data:data.map(function(d){return d[c.k]}),borderColor:c.c,borderWidth:isSt?1:2.3,tension:.2,
+      pointRadius:isSt?0:dotR,pointHoverRadius:5,pointBackgroundColor:c.c,pointBorderColor:"#fff",pointBorderWidth:isSt?0:1.5,fill:false};
+    if(isSt){ds.fill=true;ds.backgroundColor=function(ctx){
+      var ca=ctx.chart&&ctx.chart.chartArea;if(!ca)return h2r(c.c,.3);
+      var g=ctx.chart.ctx.createLinearGradient(0,ca.top,0,ca.bottom);
+      g.addColorStop(0,h2r(c.c,.55));g.addColorStop(1,h2r(c.c,.05));return g;};}
+    return ds;
+  });
+
+  /* Build treaty annotations */
+  var ann={};
+  if(hasAnno){
+    TREATIES.forEach(function(t){
+      if(!S.treaties[t.id])return;
+      /* Signed line */
+      if(t.signed>=S.sy&&t.signed<=S.ey&&labels.indexOf(String(t.signed))!==-1){
+        ann[t.id+"_s"]={
+          type:"line",xMin:String(t.signed),xMax:String(t.signed),
+          borderColor:t.c,borderWidth:1.5,borderDash:[],
+          label:{display:true,content:t.n+" signed",position:"start",
+            color:"#fff",backgroundColor:t.c,font:{size:10,weight:"600"},
+            padding:{top:3,bottom:3,left:6,right:6},borderRadius:3}
+        };
+      }
+      /* Ended line */
+      if(t.ended&&t.ended>=S.sy&&t.ended<=S.ey&&labels.indexOf(String(t.ended))!==-1){
+        ann[t.id+"_e"]={
+          type:"line",xMin:String(t.ended),xMax:String(t.ended),
+          borderColor:t.c,borderWidth:1.5,borderDash:[5,4],
+          label:{display:true,content:t.n+" ended",position:"end",
+            color:t.c,backgroundColor:"rgba(255,255,255,.95)",font:{size:10,weight:"600"},
+            padding:{top:3,bottom:3,left:6,right:6},borderRadius:3,borderColor:t.c,borderWidth:1}
+        };
+      }
+    });
+  }
+
+  var plugins={legend:{display:false},
+    tooltip:{backgroundColor:"#fff",titleColor:"#1e293b",bodyColor:"#475569",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:10,padding:12,boxPadding:4,usePointStyle:true,pointStyle:"circle",
+      callbacks:{title:function(its){var t=0;its.forEach(function(i){t+=i.raw});return its[0].label+"   Total: "+nm(t);},label:function(it){return" "+it.dataset.label+": "+nm(it.raw)}},
+      itemSort:function(a,b){return b.raw-a.raw}}};
+  if(hasAnno)plugins.annotation={annotations:ann};
+
+  cht=new Chart(cv,{type:"line",data:{labels:labels,datasets:datasets},options:{
+    responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+    animation:{duration:350,easing:"easeOutQuart"},
+    plugins:plugins,
+    scales:{x:{stacked:isSt,grid:{color:"#f1f5f9"},ticks:{color:"#64748b",font:{size:11},maxRotation:0,autoSkip:true,maxTicksLimit:16},border:{color:"#e2e8f0"}},
+      y:{stacked:isSt,grid:{color:"#f1f5f9"},border:{display:false},ticks:{color:"#64748b",font:{size:11},callback:function(v){return v>=1000?(v/1000).toFixed(0)+"k":v}},beginAtZero:true}}
+  }});
+
+  if(isSt){cht.data.datasets.forEach(function(ds,i){ds.fill=i===0?"origin":"-1"});cht.update("none");}
+}
+
+/* ═══════════ RATE CARDS ═══════════ */
+function mkC(label,accent,sv,ev){
+  var d=ev-sv,p=pc(sv,ev),ap=Math.min(Math.abs(p===Infinity?100:p),100);
+  var ar=d===0?"\u2192":d>0?"\u25B2":"\u25BC";
+  var cc=d===0?"cfl":d>0?"cup":"cdn";
+  var bc=d===0?"bfl":d>0?"bup":"bdn";
+  return'<div class="rc" style="--ac:'+accent+'"><div class="rc-l">'+label+'</div><div class="rc-p '+cc+'">'+ar+' '+fp(p)+'</div><div class="rc-d">'+S.sy+': '+nm(sv)+' \u2192 '+S.ey+': '+nm(ev)+'<span class="rc-df '+cc+'">('+((d>0)?"+":"")+nm(d)+')</span></div><div class="rc-bar '+bc+'" style="width:'+ap+'%"></div></div>';
+}
+function rRate(){
+  document.getElementById("rT").textContent="Change Rate: "+S.sy+" \u2192 "+S.ey;
+  var sr=row(S.sy),er=row(S.ey);if(!sr||!er)return;
+  document.getElementById("rG").innerHTML=mkC("Global Total","#0f172a",tot(sr),tot(er));
+  var items=vcs().map(function(c){return{n:c.n,c:c.c,sv:sr[c.k]||0,ev:er[c.k]||0,pct:pc(sr[c.k]||0,er[c.k]||0)}});
+  if(S.sort)items.sort(function(a,b){return Math.abs(b.pct===Infinity?9999:b.pct)-Math.abs(a.pct===Infinity?9999:a.pct)});
+  document.getElementById("rR").innerHTML=items.map(function(c){return mkC(c.n,c.c,c.sv,c.ev)}).join("");
+}
+document.getElementById("sB").onclick=function(){S.sort=!S.sort;document.getElementById("sB").classList.toggle("on",S.sort);rRate();};
+
+/* ═══════════ CSV ═══════════ */
+document.getElementById("expBtn").onclick=function(){
+  var data=fd(),cs=vcs();
+  var csv="Year,"+cs.map(function(c){return c.n}).join(",")+",Total\n";
+  data.forEach(function(r){var vs=cs.map(function(c){return r[c.k]||0});csv+=r.y+","+vs.join(",")+","+vs.reduce(function(a,b){return a+b},0)+"\n"});
+  var sr=data[0],er=data[data.length-1];
+  if(sr&&er){csv+="\nChange ("+sr.y+" to "+er.y+")\nCountry,Start,End,Diff,Change %\n";
+    [{n:"Global Total",sv:tot(sr),ev:tot(er)}].concat(cs.map(function(c){return{n:c.n,sv:sr[c.k]||0,ev:er[c.k]||0}})).forEach(function(c){
+      var d=c.ev-c.sv;csv+=c.n+","+c.sv+","+c.ev+","+((d>0)?"+":"")+d+","+fp(pc(c.sv,c.ev))+"\n"});}
+  var a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8;"}));
+  a.download="nuclear_stockpiles_"+S.sy+"_"+S.ey+".csv";a.click();
+};
+
+/* ═══════════ RENDER ═══════════ */
+function render(){rTabs();rLeg();rChart();rRate();uQ();uTreatyBtns();}
+uSlider();render();
+
+}
+</script>
+</body>
+</html>
