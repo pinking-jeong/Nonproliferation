@@ -1,0 +1,56 @@
+# V12_E06 — Cross-Cutting / End Products (State-Level Outcomes)
+cell_id: V12_E06
+volume: 12
+volume_name: "Cross-Cutting Indicators"
+element: 6
+element_name: "State-Level Outcomes"
+
+categories:
+  - name: "Operational nuclear power capacity (GWe)"
+    strength: weak
+    note: "Not by itself a proliferation signal; civilian programme attribute"
+
+  - name: "Operational research reactor count and types"
+    strength: medium
+    note: "HWR research reactors with no declared civilian power programme are concerning"
+
+  - name: "Plutonium inventory (separated, civilian-declared)"
+    strength: strong
+    cs_a_reportable: true
+
+  - name: "HEU inventory (declared, civilian-research)"
+    strength: strong
+    cs_a_reportable: true
+
+  - name: "Doctrine declarations"
+    types:
+      - "Peaceful civilian (e.g., Korea, Japan, EU member states)"
+      - "Latent / hedging (e.g., historical Sweden, Switzerland)"
+      - "Declared NWS (US, RU, UK, FR, CN)"
+      - "Undeclared NWS (IL — by long convention)"
+      - "Declared non-NWS but verified weapons (IN, PK, KP)"
+    strength: high
+    rationale: "Strongly informs Bayesian prior"
+
+  - name: "Treaty status"
+    states:
+      - "NPT party (CSA-equipped)"
+      - "NPT party (CSA + AP)"
+      - "Outside NPT"
+    strength: medium
+
+state_level_classification_for_OS_PM:
+  default_priors:
+    NPT_AP_BC: 0.001  # Broader Conclusion state — vanishingly low prior of weapons activity
+    NPT_AP_no_BC: 0.005
+    NPT_CSA_no_AP: 0.02
+    NPT_SQP: 0.05
+    Non_NPT: 0.20
+    Withdrew_NPT: 0.50
+  caveat: |
+    These default priors are FOR ACADEMIC PURPOSES ONLY. They do not
+    reflect actual IAEA evaluation procedures and should not be used in
+    operational contexts.
+
+vlm_priority: P1
+mvp_in_scope: true

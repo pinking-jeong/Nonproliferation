@@ -1,0 +1,34 @@
+# V09_E03 — R&D / Hot Cells / Nuclear Materials
+cell_id: V09_E03
+volume: 9
+volume_name: "R&D and Hot Cells"
+element: 3
+element_name: "Nuclear Materials"
+
+definitions:
+  - "Small (research-scale) quantities of fissile / fertile materials."
+
+inventory_categories:
+  - name: "Pu metal / oxide research samples (gram to kg quantities)"
+    strength: strong
+    cs_a_reportable: "above ITV thresholds"
+  - name: "HEU research samples"
+    strength: strong
+  - name: "Np-237, Am-241 separated quantities"
+    strength: medium
+    note: "Used for fuel R&D, isotope production"
+  - name: "Th, U-233 research samples"
+    strength: medium
+  - name: "Tracer-level radioisotopes"
+    strength: weak
+
+declaration_requirements:
+  - "Research samples above ITV (Item Threshold Value) declared in CSA"
+  - "Sub-ITV quantities sometimes outside declaration but tracked under SSAC"
+
+red_flags:
+  - "Pu / U-233 R&D inventory growth without declared source"
+  - "Hot cell construction without declared sample inventory"
+
+vlm_priority: P3
+mvp_in_scope: false

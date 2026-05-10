@@ -1,0 +1,62 @@
+# V12_E02 — Cross-Cutting / Dual-Use Equipment (Industrial Baseline)
+cell_id: V12_E02
+volume: 12
+volume_name: "Cross-Cutting Indicators"
+element: 2
+element_name: "Industrial Baseline (state-level dual-use capability)"
+
+definitions:
+  - "Aggregate industrial-capability indicators that determine a state's ability to support an indigenous nuclear programme."
+
+processes:
+  - id: chemistry_industry_baseline
+    description: "Heavy chemical industry capacity"
+    indicators:
+      - "Domestic HF, H2S, ammonia, nitric acid production capacity"
+      - "Specialty solvent / extraction reagent manufacturing"
+      - "Petrochemical refining base"
+    strength: medium
+    rationale: "Required for V02 conversion, V07 reprocessing, V06 heavy water"
+
+  - id: metallurgy_industry_baseline
+    description: "Specialty metals and forming"
+    indicators:
+      - "Domestic Zr / Hf separation"
+      - "Maraging steel production"
+      - "Carbon fiber / composite manufacturing"
+      - "Heavy forging capability (RPV-class)"
+    strength: medium
+    rationale: "Required for V03 (centrifuge), V04 (cladding), V05 (RPV)"
+
+  - id: precision_engineering_baseline
+    description: "High-precision machining and instrumentation"
+    indicators:
+      - "Domestic CNC (≥3-axis, ≤6 μm) production"
+      - "Precision balancing equipment manufacturing"
+      - "Specialty bearings / vacuum systems"
+    strength: medium
+
+  - id: electronics_baseline
+    description: "Semiconductor / instrumentation manufacturing"
+    indicators:
+      - "Domestic frequency converter, motor drive"
+      - "Radiation-hardened electronics"
+      - "High-purity gas handling"
+    strength: weak
+
+global_industrial_capability_databases:
+  - "UN Industrial Statistics (UNIDO)"
+  - "World Bank manufacturing value-added"
+  - "OECD STAN database"
+  - "JRC industrial capability map (Big Table approach)"
+
+trade_pattern_indicators:
+  state_level_strong:
+    - "Top-quartile in chemistry + metallurgy + precision engineering globally"
+  state_level_medium:
+    - "Strong in 1-2 categories; gaps elsewhere"
+  state_level_weak:
+    - "Limited indigenous capability; heavy import dependence"
+
+vlm_priority: P2
+mvp_in_scope: true

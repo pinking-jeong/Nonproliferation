@@ -1,0 +1,127 @@
+# V03_E01 — Enrichment / Especially Designed Equipment (EDE)
+cell_id: V03_E01
+volume: 3
+volume_name: Enrichment
+element: 1
+element_name: "Especially Designed Equipment"
+
+definitions:
+  - "Equipment specifically designed or prepared for the enrichment of uranium isotopes."
+  - "INFCIRC/254/Rev.14/Part 1 §5.1.2 — Trigger List items."
+
+processes:
+  - id: gas_centrifuge
+    description: "High-speed rotation separates UF6 isotopes via centrifugal force."
+    references:
+      - "INFCIRC/254/Rev.14/Part 1 §5.1.2.a-h"
+      - "Glaser A. (2008) Characteristics of the gas centrifuge for uranium enrichment, S&GS 16(1)"
+    visual_signatures:
+      sentinel2_observable:
+        - "Large rectangular industrial halls (typical 100-200 m × 30-50 m)"
+        - "Adjacent administrative complex"
+        - "Multi-layered security perimeter"
+      planetscope_required:
+        - "Distinctive process piping density on rooftop"
+        - "Truck loading docks near UF6 cylinder storage"
+      maxar_required:
+        - "Frequency converter cabinets (visible through hangar doors during construction)"
+        - "Centrifuge cascade hall ceiling height (>10 m clear span)"
+    auxiliary_indicators:
+      - "Dedicated electrical substation (10-100 MVA)"
+      - "Industrial-scale cooling towers (mechanical draft)"
+      - "UF6 cylinder yard (typically 30B/48Y type)"
+      - "Hardened buildings or earth berms (in deception scenarios)"
+    materials_required:
+      - hs_code: "7228.50"
+        name: "Maraging steel grade 250/300/350"
+        strength: strong
+        rationale: "Rotor tube material; very few civilian uses"
+      - hs_code: "6815.10"
+        name: "Carbon fiber composites (T700+ tensile)"
+        strength: medium
+        rationale: "Modern rotor material; dual-use (aerospace)"
+      - hs_code: "8545"
+        name: "Specialty carbon electrodes / high-frequency converters"
+        strength: medium
+    rd_keywords:
+      - "supercritical rotor dynamics"
+      - "molecular flow gas dynamics in centrifuge"
+      - "uranium hexafluoride handling"
+      - "Zippe-type centrifuge"
+      - "advanced subcritical rotors (Iran IR-2m / IR-6 / IR-9)"
+    end_products:
+      - "Enriched UF6 (LEU 3-5%)"
+      - "Tails (depleted UF6)"
+    by_products:
+      - "Trace HF effluent"
+    confidence_rules:
+      strong:
+        - "≥3 visual signatures + maraging steel trade + R&D citations"
+      medium:
+        - "≥2 visual signatures only"
+      weak:
+        - "Single signature"
+
+  - id: gaseous_diffusion
+    description: "Legacy cascade enrichment using porous barriers; ~3000 stages typical."
+    references:
+      - "INFCIRC/254/Rev.14/Part 1 §5.1.2.b-d (barriers, compressors)"
+    visual_signatures:
+      sentinel2_observable:
+        - "Very large rectangular halls (>500 m, sometimes >1 km)"
+        - "Massive on-site cooling capacity (often river abstraction)"
+      planetscope_required:
+        - "Cooling tower arrays (≥10 cells)"
+    auxiliary_indicators:
+      - "Power demand 1-3 GWe (extremely high)"
+      - "Co-located powerplant common (Paducah, Pierrelatte, Gronau)"
+    materials_required:
+      - hs_code: "8421"
+        name: "Specialty filter / barrier media (sintered nickel/aluminum)"
+        strength: strong
+    rd_keywords:
+      - "porous barrier permeability"
+      - "compressor rotor design for UF6"
+    confidence_rules:
+      strong:
+        - "Hall >500 m + cooling array + power demand >100 MW"
+
+  - id: laser_AVLIS_MLIS_SILEX
+    description: "Laser-based isotope separation; compact, low power, hard to detect."
+    references:
+      - "INFCIRC/254/Rev.14/Part 1 §5.1.2.i-l"
+      - "GE-Hitachi GLE / SILEX commercial license (NRC, 2012)"
+    visual_signatures:
+      sentinel2_observable:
+        - "Modest building footprint (often <50 m × 30 m)"
+        - "Few external signatures — DETECTION CHALLENGE"
+      planetscope_required:
+        - "Specialized HVAC for clean rooms"
+      maxar_required:
+        - "Optical table installations (interior, only if visible)"
+    auxiliary_indicators:
+      - "Liquid nitrogen / argon supply trucks"
+      - "Laser source procurement (CO2, copper vapor, dye)"
+    materials_required:
+      - hs_code: "8456"
+        name: "Tunable lasers (CO2, copper vapor, dye laser)"
+        strength: strong
+      - hs_code: "9013"
+        name: "Specialty optics (Zerodur, fused silica, fluorides)"
+        strength: medium
+    rd_keywords:
+      - "laser isotope separation"
+      - "AVLIS atomic vapor"
+      - "MLIS molecular UF6 photolysis"
+      - "SILEX condensation repression"
+
+vlm_prompts:
+  detection_hint: |
+    For gas_centrifuge, look for: rectangular hall + adjacent admin + security perimeter +
+    dedicated substation + cooling. For laser methods, footprint is small — rely on trade/R&D more.
+  exclusion_hint: |
+    Industrial chemical plants and pharmaceutical facilities have similar visual signatures.
+    Require ≥2 modalities (image + trade or R&D) before declaring 'strong'.
+
+vlm_priority: P0
+mvp_in_scope: true

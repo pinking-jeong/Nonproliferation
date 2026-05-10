@@ -1,0 +1,36 @@
+# V12_E03 — Cross-Cutting / Nuclear Materials (State-Level Inventory)
+cell_id: V12_E03
+volume: 12
+volume_name: "Cross-Cutting Indicators"
+element: 3
+element_name: "State-Level Nuclear Material Inventory"
+
+definitions:
+  - "Aggregate state-level inventory across all volumes — total picture for safeguards reconciliation."
+
+inventory_aggregation:
+  declared_under_CSA:
+    - "Total natural U inventory (tonnes)"
+    - "Total LEU inventory (tonnes)"
+    - "Total HEU inventory (kg)"
+    - "Total separated Pu inventory (kg)"
+    - "Total U-233 inventory (kg)"
+    - "Total Th inventory (tonnes)"
+  cs_a_reportable: true
+  data_sources:
+    - "INFCIRC/153 declarations + AP additional declarations (state-confidential)"
+    - "Public IAEA Annual Report aggregates (state names sometimes redacted)"
+    - "OECD-NEA Red Book (uranium resources/production)"
+    - "World Nuclear Association data"
+
+declaration_consistency_at_state_level:
+  - "Sum of all V03_E03, V04_E03, V05_E03, V07_E03, V08_E03, V10_E03 inventories"
+  - "Material flow continuity (mining → conversion → enrichment → fuel → reactor → SF → reprocess → store)"
+
+red_flags_at_state_level:
+  - "Declared inventory not reconciling with imports + domestic production"
+  - "Categories of material present that have no declared source (e.g., separated Pu without reprocessing)"
+  - "Inventory categories increasing without corresponding facility operation declared"
+
+vlm_priority: P2
+mvp_in_scope: false  # Requires declaration access

@@ -1,0 +1,39 @@
+# V09_E04 — R&D / Hot Cells / Non-Nuclear Materials
+cell_id: V09_E04
+volume: 9
+volume_name: "R&D and Hot Cells"
+element: 4
+element_name: "Non-Nuclear Materials"
+
+processes:
+  - id: hot_cell_facility
+    materials_required:
+      - hs_code: "7325"
+        name: "Heavy concrete (high-density aggregate, magnetite/baryte)"
+        strength: medium
+      - hs_code: "7806"
+        name: "Lead bricks (pure)"
+        strength: medium
+      - hs_code: "9015"
+        name: "Lead glass (high-density radiation shielding)"
+        strength: medium
+
+  - id: actinide_chemistry_lab
+    materials_required:
+      - hs_code: "2807"
+        name: "Specialty acids (ultrapure HNO3, HCl)"
+        strength: weak
+      - hs_code: "3914"
+        name: "Specialty extraction agents (HDEHP, TBP, CMPO)"
+        strength: medium
+      - hs_code: "2804"
+        name: "Inert gases (Ar high purity, He)"
+        strength: weak
+
+trade_pattern_indicators:
+  bundle_strength_medium:
+    - items: ["heavy_concrete_aggregate", "lead_glass", "master_slave_manipulators"]
+      implies: "hot cell facility construction"
+
+vlm_priority: P3
+mvp_in_scope: true

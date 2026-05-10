@@ -1,0 +1,64 @@
+# V04_E04 — Fuel Fabrication / Non-Nuclear Materials
+cell_id: V04_E04
+volume: 4
+volume_name: "Fuel Fabrication"
+element: 4
+element_name: "Non-Nuclear Materials"
+
+processes:
+  - id: lwr_fuel_fabrication
+    materials_required:
+      - hs_code: "8108"
+        name: "Zircaloy-2/4 tubing (Hf < 50 ppm)"
+        strength: strong
+        nsg_reference: "Part 1, §1.5.A"
+      - hs_code: "8108"
+        name: "Zr end plugs, springs"
+        strength: strong
+      - hs_code: "2825"
+        name: "Burnable absorber additives (Gd2O3)"
+        strength: medium
+      - hs_code: "7228"
+        name: "Stainless steel 304L for assembly hardware"
+        strength: weak
+
+  - id: hwr_fuel_fabrication
+    materials_required:
+      - hs_code: "8108"
+        name: "Zircaloy-4 tubing (CANDU geometry, 13 mm OD)"
+        strength: strong
+      - hs_code: "8108"
+        name: "Zr-2.5Nb alloy"
+        strength: medium
+
+  - id: research_reactor_fuel
+    materials_required:
+      - hs_code: "8108"
+        name: "Aluminum cladding (research reactor plates)"
+        strength: weak
+      - hs_code: "2849"
+        name: "U-Mo alloy powder (RERTR)"
+        strength: medium
+      - hs_code: "2811"
+        name: "U-ZrH (TRIGA matrix)"
+        strength: medium
+
+trade_pattern_indicators:
+  bundle_strength_strong:
+    - items: ["Zircaloy_tubing", "Zr_end_plugs", "UO2_powder"]
+      implies: "LWR fuel fabrication"
+    - items: ["PuO2_input", "alpha_tight_glovebox", "HEPA"]
+      implies: "MOX fabrication"
+
+historical_procurement_cases:
+  - country: Pakistan
+    decade: "1990s-2000s"
+    materials: ["Zr alloy", "Hf separation"]
+    facility: "PINSTECH / KRL"
+  - country: Iran
+    decade: "2000s"
+    materials: ["Zr tubing"]
+    facility: "FMP Isfahan / ZPP Bushehr"
+
+vlm_priority: P2
+mvp_in_scope: true

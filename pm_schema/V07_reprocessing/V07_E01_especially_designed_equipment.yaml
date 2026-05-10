@@ -1,0 +1,77 @@
+# V07_E01 — Reprocessing / Especially Designed Equipment
+cell_id: V07_E01
+volume: 7
+volume_name: "Reprocessing"
+element: 1
+element_name: "Especially Designed Equipment"
+
+definitions:
+  - "Equipment specifically designed for chemical processing of irradiated fuel."
+  - "INFCIRC/254/Part 1 §3."
+
+processes:
+  - id: PUREX_aqueous
+    description: "Standard aqueous solvent extraction with TBP."
+    references:
+      - "INFCIRC/254/Part 1 §3.1, §3.2"
+    visual_signatures:
+      sentinel2_observable:
+        - "Large hot-cell building (heavy concrete walls, often partially below grade)"
+        - "Off-gas treatment stack (tall, often >50 m)"
+        - "HLW interim storage vessels yard"
+        - "Spent fuel receiving / unloading bay"
+      planetscope_required:
+        - "Solvent storage tanks (organic phase)"
+        - "Redundant ventilation stack inlets"
+      maxar_required:
+        - "Fuel chopper / shearing area"
+    auxiliary_indicators:
+      - "Co-located near reactor / spent-fuel pool (logistical advantage)"
+      - "Heavy shielded transport between buildings"
+      - "Iodine filter / NOx scrubber arrays"
+    materials_required:
+      - hs_code: "8479.89"
+        name: "Spent-fuel chopping / shearing machines"
+        strength: strong
+        nsg_reference: "Part 1, §3.3"
+      - hs_code: "7325.99"
+        name: "Hot cells (heavy concrete + lead glass viewing) — equipment supply"
+        strength: strong
+        nsg_reference: "Part 1, §3.4"
+      - hs_code: "8419"
+        name: "Pulse columns / centrifugal contactors for solvent extraction"
+        strength: strong
+        nsg_reference: "Part 1, §3.5, §3.6"
+      - hs_code: "8421"
+        name: "Specialty filters for HLW / Pu solutions"
+        strength: medium
+
+  - id: pyroprocessing_electrorefining
+    description: "Molten salt electrorefining of metallic spent fuel."
+    visual_signatures:
+      sentinel2_observable:
+        - "Argon-atmosphere hot cells (similar building footprint)"
+        - "Argon supply infrastructure (tanks, cryogenics)"
+      planetscope_required:
+        - "Robotic arm / manipulator workstation outlines"
+    materials_required:
+      - hs_code: "8514"
+        name: "Electroreduction / electrorefining cells (LiCl-KCl molten salt)"
+        strength: strong
+      - hs_code: "9027.80"
+        name: "Cathode potential monitoring electronics"
+        strength: medium
+        note: "ML-monitoring published by KAERI/KAIST 2021"
+    rd_pilot_facilities:
+      - "KAERI PRIDE (Pyroprocess Integrated Demonstration Facility)"
+      - "INL Fuel Conditioning Facility (FCF)"
+
+  - id: bismuth_phosphate_BiPO4
+    description: "Historical Manhattan Project method."
+    visual_signatures:
+      historical_only: true
+      reference_facility: "Hanford T-Plant"
+    obsolete: true
+
+vlm_priority: P0
+mvp_in_scope: true

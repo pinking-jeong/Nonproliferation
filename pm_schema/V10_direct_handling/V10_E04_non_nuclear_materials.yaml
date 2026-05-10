@@ -1,0 +1,40 @@
+# V10_E04 — Direct Handling / Non-Nuclear Materials
+cell_id: V10_E04
+volume: 10
+volume_name: "Direct Handling of Plutonium / U-233 / HEU"
+element: 4
+element_name: "Non-Nuclear Materials"
+
+processes:
+  - id: civilian_pu_metal_handling
+    materials_required:
+      - hs_code: "2804"
+        name: "Inert gases (Ar, very high purity, large volumes)"
+        strength: medium
+        note: "Glovebox atmosphere maintenance"
+      - hs_code: "7325"
+        name: "Heavy concrete (high-density aggregate) for shielding"
+        strength: medium
+      - hs_code: "7806"
+        name: "Lead bricks (gamma shielding)"
+        strength: medium
+      - hs_code: "9015"
+        name: "Lead glass (viewing)"
+        strength: medium
+
+  - id: declared_HEU_storage
+    materials_required:
+      - hs_code: "7325"
+        name: "Heavy concrete vault construction"
+        strength: medium
+      - hs_code: "7308"
+        name: "Heavy structural steel for vault"
+        strength: medium
+
+trade_pattern_indicators:
+  bundle_strength_medium:
+    - items: ["heavy_shielding_aggregate", "lead_glass", "alpha_tight_glovebox", "alpha_spectrometer"]
+      implies: "Pu / actinide handling facility (could be civilian R&D, MOX, or weapons-adjacent — context-dependent)"
+
+vlm_priority: P3
+mvp_in_scope: false

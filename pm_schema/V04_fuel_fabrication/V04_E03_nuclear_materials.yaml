@@ -1,0 +1,44 @@
+# V04_E03 — Fuel Fabrication / Nuclear Materials
+cell_id: V04_E03
+volume: 4
+volume_name: "Fuel Fabrication"
+element: 3
+element_name: "Nuclear Materials"
+
+inputs:
+  - name: "UO2 powder (LEU)"
+    hs_code: "2844.20"
+    strength: strong
+    cs_a_reportable: true
+  - name: "UO2 powder (NU, for HWR)"
+    hs_code: "2844.10"
+    strength: strong
+  - name: "PuO2 powder (for MOX)"
+    hs_code: "2844.40"
+    strength: strong
+    cs_a_reportable: true
+    note: "Direct safeguards Cat-I material"
+  - name: "U-233 (thorium cycle)"
+    strength: strong
+    note: "Rare; India BARC and a few research programs"
+
+outputs:
+  - name: "LWR fuel assemblies"
+    typical_unit: "U mass per assembly: 460-540 kg LEU"
+  - name: "CANDU 37-element bundle"
+    typical_unit: "U mass per bundle: ~19 kg NU"
+  - name: "MOX fuel assemblies"
+    note: "Pu fraction typically 4-9% for LWR, higher for FR"
+  - name: "Research reactor plate / TRIGA fuel"
+
+declaration_consistency_checks:
+  - "UO2/PuO2 input × yield ≈ assembled fuel mass"
+  - "Trade flow of fuel assemblies (HS 2844.20/40) reconciles with declared output"
+
+red_flags:
+  - "Pu input without declared MOX output (where is the Pu going?)"
+  - "Fabricated fuel mass exceeding declared input × yield"
+  - "Off-spec / scrap material accumulation suggests recycling concerns"
+
+vlm_priority: P2
+mvp_in_scope: false

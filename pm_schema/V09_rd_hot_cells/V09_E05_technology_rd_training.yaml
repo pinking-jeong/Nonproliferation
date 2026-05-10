@@ -1,0 +1,94 @@
+# V09_E05 — R&D / Hot Cells / Technology, R&D, Training
+# THIS CELL IS THE R&D LANDING PAGE FOR LITERATURE MINING ACROSS ALL VOLUMES.
+cell_id: V09_E05
+volume: 9
+volume_name: "R&D and Hot Cells"
+element: 5
+element_name: "Technology / R&D / Training (cross-cutting)"
+
+definitions:
+  - "Cross-cutting R&D capability tracking — feeds back into V03_E05, V05_E05, V07_E05, etc."
+  - "Default landing cell when literature classification cannot localise to a specific volume."
+
+processes:
+  - id: actinide_chemistry_general
+    rd_keywords:
+      strong:
+        - "actinide separation chemistry"
+        - "transuranic chemistry"
+        - "plutonium oxidation states"
+        - "neptunium americium chemistry"
+        - "actinide solvent extraction"
+      medium:
+        - "lanthanide actinide separation"
+        - "f-element coordination chemistry"
+
+  - id: criticality_safety
+    rd_keywords:
+      strong:
+        - "criticality safety analysis"
+        - "Monte Carlo criticality MCNP"
+        - "TRIPOLI criticality"
+        - "subcritical assembly"
+      medium:
+        - "neutron multiplication"
+        - "delayed neutron fraction"
+
+  - id: nuclear_data
+    rd_keywords:
+      medium:
+        - "nuclear cross section measurement"
+        - "ENDF evaluated nuclear data"
+        - "neutron activation"
+        - "fission yield measurement"
+
+  - id: radiation_shielding_R&D
+    rd_keywords:
+      medium:
+        - "radiation shielding design"
+        - "neutron gamma transport"
+      weak:
+        - "MCNP shielding"
+
+human_capital_signals:
+  description: |
+    Literature mining at V09_E05 reveals:
+    1. Active R&D groups in a country (institution affiliations)
+    2. Collaboration networks (international co-authorship)
+    3. Capability evolution over time (publication velocity)
+    4. Training pipeline (PhD students → postdocs → researchers)
+
+  detection_method:
+    - "OpenAlex query: country_code + actinide/criticality keywords"
+    - "Author network analysis (co-authorship graph centrality)"
+    - "Citation pattern (who cites whom, who is cited)"
+
+indicative_journals:
+  - "Journal of Nuclear Materials"
+  - "Annals of Nuclear Energy"
+  - "Nuclear Engineering and Design"
+  - "Journal of Radioanalytical and Nuclear Chemistry"
+  - "Radiochimica Acta"
+  - "Solvent Extraction and Ion Exchange"
+  - "Inorganic Chemistry (sometimes)"
+
+indicative_institutions:
+  major_civilian_research:
+    - "ITU Karlsruhe / JRC"
+    - "Argonne National Lab"
+    - "Idaho National Lab"
+    - "JAEA Tokai / Oarai"
+    - "BARC Trombay"
+    - "KAERI Daejeon"
+    - "CEA Marcoule / Cadarache"
+
+vlm_prompts:
+  literature_classification_rubric: |
+    For papers landing in V09_E05 (when not localizable to V03/V05/V07):
+    STRONG: actinide separation R&D, criticality experiments, hot-cell-based research
+    MEDIUM: nuclear data measurement, fuel R&D
+    WEAK: generic radiation safety / shielding
+    UNRELATED: material science with only nominal nuclear keywords (e.g., 'centrifuge' in geophysics — see Natanz retrofit false-positive)
+
+vlm_priority: P0  # Most cross-cutting cell; central to literature mining
+mvp_in_scope: true

@@ -1,0 +1,49 @@
+name: Feature request
+description: Suggest a new module, cell, or capability.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before requesting, please check OS-PM's scope policy in
+        `CONTRIBUTING.md`. Volume 11 (Weaponization) and operational
+        sanctions/strike content are permanently out of scope.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - "New PM cell"
+        - "New historical case"
+        - "New module"
+        - "Imagery / VLM enhancement"
+        - "Documentation"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      placeholder: |
+        Why does this matter to OS-PM? Cite a paper or report if relevant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      placeholder: |
+        Describe what you'd like added.
+
+  - type: checkboxes
+    id: scope_check
+    attributes:
+      label: Scope check
+      options:
+        - label: "I confirm this proposal is consistent with the OS-PM scope policy."
+          required: true
+        - label: "I am willing to draft a PR (or pair with a maintainer)."

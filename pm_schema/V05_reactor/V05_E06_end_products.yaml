@@ -1,0 +1,51 @@
+# V05_E06 — Reactor / End Products
+cell_id: V05_E06
+volume: 5
+volume_name: "Reactor Operation"
+element: 6
+element_name: "End Products"
+
+definitions:
+  - "Output materials and energy of reactor operation."
+
+products:
+  - name: "Spent fuel containing plutonium"
+    strength: strong
+    rationale: "Primary proliferation-relevant output"
+    pu_isotopics_by_reactor:
+      LWR: "reactor-grade (>18% Pu-240) — undesirable but weapons-feasible"
+      HWR_low_burnup: "weapons-grade (<7% Pu-240)"
+      graphite_low_burnup: "weapons-grade (<7% Pu-240) — historical Pu programs"
+      FBR_blanket: "very weapons-grade if specifically optimized"
+
+  - name: "Electricity / process heat"
+    strength: weak
+    note: "Not by itself diagnostic, but consistency check with declared output is required"
+
+  - name: "Activation products (Co-60 etc.)"
+    strength: weak
+    note: "Some research reactors produce isotopes commercially"
+
+  - name: "Tritium (HWR / specialty)"
+    strength: medium_to_strong
+    note: "Weapons-relevant for boosted devices (out of OS-PM scope per Vol.11 policy)"
+
+product_flow_consistency_check:
+  description: |
+    Annual electrical output × thermal efficiency × specific Pu production yield ≈
+    expected Pu content in spent fuel inventory.
+  formula: "M_Pu(annual) ≈ (P_thermal × t_op × σ_capture × N_8) / (ν × Σ_a)"
+  practical_note: "Rough estimate: ~0.27 g Pu / MWd for LWR; higher for low-burnup graphite/HWR"
+
+red_flags:
+  - "Reactor frequently shut down for refueling at intervals shorter than declared cycle (low-burnup Pu campaign)"
+  - "Spent fuel storage inventory not increasing despite declared operation"
+  - "Heat plume / discharge pattern inconsistent with declared power level"
+
+vlm_prompts:
+  spent_fuel_inventory_hint: |
+    Cylindrical spent-fuel casks or pool buildings should grow in size proportional to
+    declared cumulative output. Stagnant inventory at an operating reactor is a red flag.
+
+vlm_priority: P2
+mvp_in_scope: false

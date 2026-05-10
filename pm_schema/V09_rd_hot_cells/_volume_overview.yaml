@@ -1,0 +1,48 @@
+# Physical Model — Volume 9: R&D and Hot Cells (Overview)
+cell_id: V09_OVERVIEW
+volume: 9
+volume_name: "R&D and Hot Cells"
+element: 0
+element_name: "Volume Overview"
+
+definitions:
+  - "Research, development, and small-scale handling of nuclear materials in shielded facilities."
+  - "Cross-cutting volume — informs all other volumes' R&D element via institution / publication tracking."
+
+acquisition_path_position: "cross_cutting"
+inputs:
+  - "Small quantities of nuclear materials (often imported under safeguards)"
+  - "Specialty chemicals, instrumentation"
+outputs:
+  - "Knowledge / capability development"
+  - "Trained personnel"
+  - "Pilot quantities of separated material"
+
+processes_in_scope:
+  - id: hot_cell_facility
+    description: "Heavily shielded enclosures for handling highly radioactive materials"
+    proliferation_relevance: "high (reprocessing R&D, Pu metallurgy R&D)"
+  - id: actinide_chemistry_lab
+    description: "Glovebox-based research on Pu, Np, Am, U chemistry"
+    proliferation_relevance: "medium-high"
+  - id: critical_assembly
+    description: "Sub-prompt-critical experimental assemblies"
+    proliferation_relevance: "high (criticality data, weapons-adjacent)"
+  - id: nuclear_data_R&D
+    description: "Cross-section measurement, integral experiments"
+    proliferation_relevance: "low (open scientific)"
+
+historical_significance:
+  - "Most weapons programs began with R&D-scale labs (US Manhattan Project, USSR Atomic Project, etc.)"
+  - "Hot cell capability + small reactor → minimum viable Pu separation pathway"
+  - "BARC Trombay: research labs → CIRUS reactor → PREFRE → 1974 PNE"
+
+global_facilities_civilian:
+  - "ITU Karlsruhe (EU JRC)"
+  - "Argonne / INL Materials & Fuels Complex (US)"
+  - "JAEA Tokai / Oarai (Japan)"
+  - "BARC Trombay (India)"
+  - "KAERI Daejeon (Korea — PRIDE pyroprocessing)"
+
+vlm_priority: P2
+mvp_in_scope: true  # Cross-cutting; literature mining for V09_E05 is high-value

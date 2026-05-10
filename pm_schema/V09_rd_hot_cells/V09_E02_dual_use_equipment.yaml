@@ -1,0 +1,36 @@
+# V09_E02 — R&D / Hot Cells / Dual-Use Equipment
+cell_id: V09_E02
+volume: 9
+volume_name: "R&D and Hot Cells"
+element: 2
+element_name: "Dual-Use Equipment"
+
+processes:
+  - id: actinide_chemistry_lab
+    materials_required:
+      - hs_code: "9027.30"
+        name: "Alpha spectrometers, gamma spectrometers (HPGe)"
+        strength: medium
+        rationale: "Standard radiochemistry; dual-use with environmental science"
+      - hs_code: "9027.50"
+        name: "Mass spectrometers (TIMS, ICP-MS, accelerator MS)"
+        strength: medium
+      - hs_code: "9024"
+        name: "Mechanical testing of irradiated materials"
+        strength: weak
+
+  - id: critical_assembly
+    materials_required:
+      - hs_code: "9030.10"
+        name: "Neutron detectors (BF3, He-3, scintillator)"
+        strength: medium
+      - hs_code: "9030.84"
+        name: "Pulsed neutron sources"
+        strength: medium
+
+trade_red_flags:
+  - "Alpha spectrometer + glovebox + master-slave manipulator + HPGe to single end-user"
+  - "End-user lacking declared civilian R&D portfolio"
+
+vlm_priority: P3
+mvp_in_scope: true

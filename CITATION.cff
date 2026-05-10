@@ -1,0 +1,50 @@
+# CITATION.cff — Citation File Format v1.2.0
+# https://citation-file-format.github.io/
+cff-version: 1.2.0
+message: "If you use OS-PM, please cite both the software and the system paper."
+title: "OS-PM: Open-Source Reconstruction of the IAEA Physical Model"
+type: software
+authors:
+  - given-names: "[Author 1 given names]"
+    family-names: "[Author 1 family name]"
+    affiliation: "[Institution 1]"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+  - given-names: "[Author 2 given names]"
+    family-names: "[Author 2 family name]"
+    affiliation: "[Institution 2]"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+repository-code: "https://github.com/[org]/os-pm"
+url: "https://github.com/[org]/os-pm"
+abstract: >-
+  OS-PM is a vision-language-model-driven, open-source academic
+  reconstruction of the IAEA Physical Model that populates 88 in-scope
+  element cells from publicly licensed sources. Volume 11 (weaponization)
+  is permanently excluded by policy. Six analysis modules, four
+  historical retrofit cases, and a reproducible test suite ship under
+  Apache-2.0.
+keywords:
+  - nuclear safeguards
+  - non-proliferation
+  - acquisition path analysis
+  - vision-language models
+  - open-source intelligence
+  - remote sensing
+  - International Atomic Energy Agency
+license: Apache-2.0
+version: "0.1.0"
+date-released: "2026-05-09"
+preferred-citation:
+  type: article
+  title: >-
+    OS-PM: A Vision-Language-Model-based, Open-Source Reconstruction of
+    the IAEA Physical Model for Academic Nuclear Safeguards Research
+  authors:
+    - given-names: "[Author 1 given names]"
+      family-names: "[Author 1 family name]"
+    - given-names: "[Author 2 given names]"
+      family-names: "[Author 2 family name]"
+  year: 2026
+  identifiers:
+    - type: other
+      value: "arXiv:[TBD]"
+      description: "arXiv preprint ID (to be inserted after submission)"

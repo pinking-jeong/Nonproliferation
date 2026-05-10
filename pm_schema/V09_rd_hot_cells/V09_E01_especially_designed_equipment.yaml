@@ -1,0 +1,54 @@
+# V09_E01 — R&D / Hot Cells / Especially Designed Equipment
+cell_id: V09_E01
+volume: 9
+volume_name: "R&D and Hot Cells"
+element: 1
+element_name: "Especially Designed Equipment"
+
+processes:
+  - id: hot_cell_facility
+    description: "Heavy-shielded radiation enclosures for remote handling."
+    visual_signatures:
+      sentinel2_observable:
+        - "Distinctive heavy concrete construction (massive walls)"
+        - "Building shape disproportionately massive for footprint"
+      planetscope_required:
+        - "Lead glass viewing windows on cell wall"
+        - "Master-slave manipulator penetrations"
+    materials_required:
+      - hs_code: "8543"
+        name: "Master-slave manipulators (heavy duty, sealed)"
+        strength: strong
+        nsg_reference: "Part 1, §3.4 (some forms); Part 2 dual-use"
+      - hs_code: "9015"
+        name: "Lead glass viewing windows (high density)"
+        strength: medium
+      - hs_code: "8479"
+        name: "Cell ventilation HEPA / charcoal filtration"
+        strength: medium
+
+  - id: actinide_chemistry_lab
+    description: "Glovebox-based research."
+    visual_signatures:
+      sentinel2_observable:
+        - "Smaller building footprint; often within research institute"
+        - "Distinctive HEPA exhaust stacks"
+    materials_required:
+      - hs_code: "8479"
+        name: "Negative-pressure gloveboxes (alpha-tight)"
+        strength: medium
+      - hs_code: "8421"
+        name: "Atmospheric purification (Ar / N2 inert)"
+        strength: weak
+
+  - id: critical_assembly
+    description: "Bench-scale subcritical / critical assemblies."
+    visual_signatures:
+      sentinel2_observable:
+        - "Small dedicated building"
+        - "Heavy shielding"
+    redacted_per_vol11_policy: false  # Civilian critical assemblies are open
+    note: "GODIVA, JEZEBEL, TCA, KUCA — many are public knowledge"
+
+vlm_priority: P2
+mvp_in_scope: true

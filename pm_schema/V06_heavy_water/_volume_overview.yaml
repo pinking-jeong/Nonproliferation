@@ -1,0 +1,68 @@
+# Physical Model — Volume 6: Heavy Water Production (Overview)
+cell_id: V06_OVERVIEW
+volume: 6
+volume_name: "Heavy Water Production"
+element: 0
+element_name: "Volume Overview"
+
+definitions:
+  - "Industrial-scale separation of deuterium oxide (D2O, heavy water) from natural water."
+  - "Critical enabler for HWR-based plutonium production routes (CANDU, IPHWR, Yongbyon-style)."
+
+acquisition_path_position: "plutonium_path/HWR_enabler"
+inputs:
+  - "Natural water (D abundance: ~150 ppm)"
+  - "Hydrogen sulfide (H2S) for GS process"
+  - "Electricity for electrolysis variants"
+outputs:
+  - "Heavy water D2O (reactor-grade ~99.75% D)"
+  - "Tritium-bearing residues (from CANDU operation byproduct, separated downstream)"
+
+processes_in_scope:
+  - id: girdler_sulfide_GS
+    description: "Bithermal H2S/H2O exchange — historical industrial workhorse"
+    proliferation_relevance: "high (large scale, distinctive)"
+    industrial_maturity: "obsolete commercial, historical major source"
+  - id: ammonia_hydrogen_exchange
+    description: "Mono- or bi-thermal NH3/H2 exchange (Mazingarbe / De Brouwer)"
+    proliferation_relevance: "high"
+    industrial_maturity: "limited current; India BHWP"
+  - id: electrolysis_distillation
+    description: "Electrolysis enrichment + cryogenic / vacuum distillation"
+    proliferation_relevance: "medium"
+    industrial_maturity: "Norway historical (Vemork/Rjukan); now niche"
+  - id: water_distillation
+    description: "Vacuum distillation of natural water (low single-stage separation factor)"
+    proliferation_relevance: "low (impractical alone)"
+    industrial_maturity: "research/finishing"
+  - id: laser_separation_research
+    description: "Photochemical separation R&D"
+    proliferation_relevance: "medium"
+    industrial_maturity: "research only"
+
+global_facilities_civilian:
+  - "AECL Bruce / Glace Bay / Port Hawkesbury (CA — historical, decommissioned)"
+  - "Heavy Water Plants Manuguru / Kota / Tuticorin / Talcher (IN — operating)"
+  - "Rosatom RIAR (RU — small scale)"
+  - "Argentina HWP Arroyito (operational)"
+
+historical_undeclared_cases:
+  - state: Israel
+    period: "1960s"
+    facility: "Rehovot — small-scale separation reportedly"
+    significance: "Early heavy water sourcing controversy"
+  - state: Iran
+    period: "1996-present"
+    facility: "Arak Heavy Water Production Plant"
+    significance: "Pre-2002 unreported; supports IR-40 reactor"
+  - state: Norway WWII
+    period: "1940-1944"
+    facility: "Vemork (Rjukan)"
+    significance: "Targeted by Allied sabotage; historical anchor for HWP detection"
+
+references:
+  - "INFCIRC/254/Rev.14/Part 1 §1.4 (heavy water itself); §3.3.B (production plants)"
+  - "Liu Z., Morsy S. (1999) Vol. 6"
+
+vlm_priority: P2
+mvp_in_scope: true

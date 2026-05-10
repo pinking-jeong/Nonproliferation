@@ -1,0 +1,53 @@
+# V08_E07 — Spent Fuel / By-products / Effluents
+cell_id: V08_E07
+volume: 8
+volume_name: "Spent Fuel Storage and Waste Management"
+element: 7
+element_name: "By-products / Effluents"
+
+byproducts:
+  - name: "Decay heat from spent fuel"
+    strength: medium
+    detection:
+      method: "TIR satellite imagery; HiVE 3.5 m TIR very useful for ISFSI monitoring"
+      sentinel3_SLSTR_observable: true
+      hive_relevance: "★★★★★ — ISFSI thermal monitoring is direct application"
+      pattern: "Persistent low-level thermal anomaly in cask field"
+
+  - name: "Pool water evaporation (wet storage)"
+    strength: weak
+    detection:
+      method: "Visible vapor plume in cold weather"
+
+  - name: "Tritium (pool inventory accumulates)"
+    strength: weak
+    detection:
+      method: "Local water sampling; not remote OSINT"
+
+  - name: "Cs-137 / Sr-90 from damaged fuel rods"
+    strength: weak
+    detection:
+      method: "EURDEP / local radiation monitors"
+    rationale: "Normally below detection thresholds at well-managed sites"
+
+  - name: "Iodine / xenon from damaged cladding (rare)"
+    strength: weak
+    detection:
+      method: "CTBTO / local"
+
+monitoring_systems_relevance:
+  hive_satvu_TIR:
+    relevance: "★★★★★ — ISFSI thermal monitoring; cask field heat signatures"
+  sentinel3_SLSTR:
+    relevance: "★★★ — daily 1 km TIR free"
+  visible_imagery:
+    relevance: "★★★★ — ISFSI grid pattern very distinctive"
+
+vlm_prompts:
+  ISFSI_thermal_hint: |
+    Dry cask storage facilities show a regular grid of low-level thermal
+    sources. Growth in the count of warm casks in a time series is direct
+    evidence of cumulative spent fuel discharge.
+
+vlm_priority: P1
+mvp_in_scope: true  # HiVE high-value application

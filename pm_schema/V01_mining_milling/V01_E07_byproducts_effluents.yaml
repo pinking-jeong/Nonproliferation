@@ -1,0 +1,45 @@
+# V01_E07 — Mining/Milling / By-products / Effluents
+cell_id: V01_E07
+volume: 1
+volume_name: "Mining and Milling"
+element: 7
+element_name: "By-products / Effluents"
+
+byproducts:
+  - name: "Mill tailings"
+    strength: strong
+    rationale: "Visible from space; long-term liability"
+    detection:
+      method: "Sentinel-2 visible/NIR — tailings ponds bright distinct color"
+      sentinel2_observable: true
+
+  - name: "Radon-222 emissions"
+    strength: weak
+    half_life: "3.8 days"
+    detection:
+      method: "Local air sampling; not amenable to remote OSINT"
+
+  - name: "Radium-226 in tailings"
+    strength: medium
+    detection:
+      method: "Soil sampling, gamma spectroscopy"
+      practical: "Slow integrative; useful for retroactive analysis"
+
+  - name: "Acid mine drainage (conventional)"
+    strength: weak
+    detection:
+      method: "Stream pH / heavy metal sampling"
+
+monitoring_systems_relevance:
+  sentinel2_visible:
+    relevance: "★★★★ — tailings pond identification, area expansion over time"
+  ground_radiation:
+    relevance: "★★ — only with on-site or aerial gamma surveys"
+
+vlm_prompts:
+  tailings_growth_hint: |
+    Tailings pond area growth over time (Sentinel-2 time series) is a direct
+    proxy for cumulative milling output. Match against declared production.
+
+vlm_priority: P3
+mvp_in_scope: false

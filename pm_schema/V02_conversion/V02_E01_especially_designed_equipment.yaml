@@ -1,0 +1,52 @@
+# V02_E01 — Conversion / Especially Designed Equipment
+cell_id: V02_E01
+volume: 2
+volume_name: "Conversion"
+element: 1
+element_name: "Especially Designed Equipment"
+
+definitions:
+  - "Equipment specifically designed for conversion of yellowcake to UF6 or other intermediate forms."
+  - "INFCIRC/254/Part 1 §7."
+
+processes:
+  - id: dry_route_to_UF6
+    description: "Hydrofluorination (UO2 + 4HF → UF4 + 2H2O) followed by fluorination (UF4 + F2 → UF6)."
+    visual_signatures:
+      sentinel2_observable:
+        - "Large industrial chemical plant footprint (~10–20 ha)"
+        - "Multiple tall stacks (HF / F2 off-gas)"
+        - "UF6 cylinder yard adjacent (30B/48Y)"
+      planetscope_required:
+        - "Fluorination reactor towers (vertical)"
+        - "HF / F2 storage tanks (large)"
+    materials_required:
+      - hs_code: "8419.40"
+        name: "Specialty fluorination reactors (Inconel / Monel)"
+        strength: strong
+        nsg_reference: "Part 1, §7.1"
+      - hs_code: "8421"
+        name: "UF6 condensation / desublimation systems"
+        strength: strong
+      - hs_code: "9032.89"
+        name: "Process control instrumentation (fluorine-resistant)"
+        strength: medium
+
+  - id: wet_route_to_UF6
+    description: "ADU precipitation → calcination → hydrofluorination → fluorination."
+    visual_signatures:
+      sentinel2_observable:
+        - "Large solvent extraction circuit"
+        - "Calciner kilns visible"
+    materials_required:
+      - hs_code: "8419.40"
+        name: "Calciner / rotary kiln"
+        strength: medium
+
+  - id: conversion_to_uranium_metal
+    description: "UF4 + Mg → U metal + MgF2 (bomb reduction)."
+    redacted_per_vol11_policy: true
+    note: "Process detail intentionally minimised — weapons-adjacent."
+
+vlm_priority: P2
+mvp_in_scope: true

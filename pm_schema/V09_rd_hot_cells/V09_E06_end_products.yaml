@@ -1,0 +1,31 @@
+# V09_E06 — R&D / Hot Cells / End Products
+cell_id: V09_E06
+volume: 9
+volume_name: "R&D and Hot Cells"
+element: 6
+element_name: "End Products"
+
+products:
+  - name: "Scientific publications"
+    strength: medium
+    rationale: "Open output of legitimate research; primary V09_E05 fuel"
+
+  - name: "Trained nuclear personnel"
+    strength: weak_to_medium
+    rationale: "Capability building; tracked via PhD theses, conference attendance"
+
+  - name: "Pilot-scale separated material"
+    strength: strong
+    note: "If declared, normal R&D; if undeclared, very high concern"
+    examples:
+      - "KAERI PRIDE: pyroprocessed metallic U (declared, R&D)"
+      - "BARC Trombay legacy: pilot Pu separation in 1960s (precursor to weapons)"
+
+  - name: "Spin-off technologies"
+    strength: weak
+    examples:
+      - "Medical isotope production (Mo-99, I-131)"
+      - "Industrial radiography Co-60 / Ir-192 sources"
+
+vlm_priority: P3
+mvp_in_scope: false

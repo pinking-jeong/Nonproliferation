@@ -1,0 +1,70 @@
+# V08_E05 — Spent Fuel / Technology, R&D, Training
+cell_id: V08_E05
+volume: 8
+volume_name: "Spent Fuel Storage and Waste Management"
+element: 5
+element_name: "Technology / R&D / Training"
+
+processes:
+  - id: dry_cask_storage
+    rd_keywords:
+      strong:
+        - "spent fuel dry cask storage"
+        - "ISFSI design"
+        - "HI-STORM CASTOR cask design"
+      medium:
+        - "spent fuel thermal management"
+        - "shielding gamma neutron cask"
+
+  - id: vitrification
+    rd_keywords:
+      strong:
+        - "HLW vitrification borosilicate"
+        - "cold crucible melter"
+        - "R7T7 vitrification process"
+      medium:
+        - "glass leaching long term"
+        - "actinide retention vitrification"
+
+  - id: encapsulation_canister
+    rd_keywords:
+      strong:
+        - "KBS-3 copper canister"
+        - "deep repository canister"
+      medium:
+        - "copper corrosion bentonite"
+        - "buffer material clay"
+
+  - id: deep_geological_repository
+    rd_keywords:
+      strong:
+        - "deep geological disposal nuclear"
+        - "long term repository performance"
+        - "Onkalo Forsmark disposal"
+      medium:
+        - "host rock crystalline clay"
+        - "repository safety case"
+
+  - id: spent_fuel_characterisation
+    rd_keywords:
+      medium:
+        - "spent fuel burnup measurement"
+        - "passive neutron coincidence assay"
+        - "post-irradiation examination"
+
+indicative_journals:
+  - "Journal of Nuclear Materials"
+  - "Nuclear Engineering and Design"
+  - "Progress in Nuclear Energy"
+  - "Annals of Nuclear Energy"
+  - "Journal of Hazardous Materials (some)"
+
+indicative_institutions_civilian:
+  - "Posiva (Finland — Onkalo)"
+  - "SKB (Sweden — Forsmark)"
+  - "Andra (France — Bure)"
+  - "NWMO (Canada)"
+  - "Sandia / SRNL / PNNL (US)"
+
+vlm_priority: P2
+mvp_in_scope: true

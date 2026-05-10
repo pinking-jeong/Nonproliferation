@@ -1,0 +1,71 @@
+# Physical Model — Volume 4: Fuel Fabrication (Overview)
+cell_id: V04_OVERVIEW
+volume: 4
+volume_name: "Fuel Fabrication"
+element: 0
+element_name: "Volume Overview"
+
+definitions:
+  - "Conversion of UO2 powder, U metal, MOX feed, or Th feed into reactor-ready fuel assemblies."
+  - "Bridge between conversion/enrichment (V02/V03) and reactor operation (V05)."
+
+acquisition_path_position: "uranium_path/intermediate; plutonium_path/MOX_branch"
+inputs:
+  - "UO2 powder (LEU, NU)"
+  - "PuO2 powder (for MOX) — heavily safeguarded"
+  - "Zirconium alloy tubing"
+  - "End plugs, springs, plenum hardware"
+outputs:
+  - "Fuel rods → assemblies (LWR, HWR, FBR, research)"
+
+processes_in_scope:
+  - id: lwr_fuel_fabrication
+    description: "UO2 pellet sintering, rod loading, assembly construction"
+    proliferation_relevance: "low (standard civilian fuel)"
+    industrial_maturity: "mature (~30 plants worldwide)"
+  - id: hwr_fuel_fabrication
+    description: "CANDU bundle fabrication (NU UO2 in Zircaloy)"
+    proliferation_relevance: "low-medium"
+    industrial_maturity: "mature (CANDU operators only)"
+  - id: mox_fuel_fabrication
+    description: "Mixed PuO2/UO2 fuel for LWR or fast reactor"
+    proliferation_relevance: "high (Pu handling)"
+    industrial_maturity: "limited (MELOX FR, JMOX JP construction, others)"
+  - id: research_reactor_fuel
+    description: "Plate-type (MTR, BR-2), TRIGA dispersion, etc."
+    proliferation_relevance: "medium (HEU legacy concern; RERTR conversion)"
+    industrial_maturity: "specialty (CERCA FR, BWXT US, RIAR RU)"
+  - id: fast_reactor_metallic_fuel
+    description: "U-Pu-Zr metal fuel (EBR-II legacy, future SFR)"
+    proliferation_relevance: "high (closer to bomb-form)"
+    industrial_maturity: "research/pilot only"
+  - id: thorium_fuel
+    description: "ThO2 + UO2 / U-233 fuel"
+    proliferation_relevance: "medium (U-233 path)"
+    industrial_maturity: "research (India AHWR)"
+
+global_facilities_civilian:
+  - "Westinghouse / Framatome / GNF (LWR major)"
+  - "KEPCO Nuclear Fuel (KR)"
+  - "TVEL Rosatom (RU)"
+  - "JNFL Rokkasho (JP, MOX)"
+  - "MELOX / Orano (FR, MOX)"
+  - "Cameco / GE-Hitachi (CANDU)"
+  - "Nuclear Fuel Complex Hyderabad (IN)"
+
+historical_undeclared_cases:
+  - state: Iraq
+    period: "1980s"
+    process: "early stage research-reactor fuel and conversion adjacent"
+    facility: "Tuwaitha / Al Atheer"
+  - state: Iran
+    period: "2000s"
+    process: "FMP (Fuel Manufacturing Plant) declared 2003"
+    facility: "Isfahan FMP"
+
+references:
+  - "INFCIRC/254/Rev.14/Part 1 §1.5, §1.7"
+  - "Liu Z., Morsy S. (1999) Vol. 4"
+
+vlm_priority: P2
+mvp_in_scope: true

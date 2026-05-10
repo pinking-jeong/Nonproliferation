@@ -1,0 +1,59 @@
+# V03_E02 — Enrichment / Dual-Use Equipment
+cell_id: V03_E02
+volume: 3
+volume_name: Enrichment
+element: 2
+element_name: "Dual-Use Equipment"
+
+definitions:
+  - "Equipment with significant non-nuclear uses but applicable to enrichment processes."
+  - "INFCIRC/254/Part 2 (Dual-Use List)."
+
+processes:
+  - id: gas_centrifuge
+    description: "Manufacturing dual-use equipment for centrifuge production."
+    visual_signatures:
+      planetscope_required:
+        - "Precision machining shops with high-bay overhead cranes"
+        - "Vacuum chamber test pads (concrete pads with bolt patterns)"
+    materials_required:
+      - hs_code: "8458"
+        name: "CNC lathes (≥3-axis, accuracy ≤6 μm)"
+        strength: medium
+        rationale: "Used for rotor tube machining; widely used in aerospace"
+      - hs_code: "8459"
+        name: "Filament winding machines"
+        strength: medium
+        rationale: "Used for carbon-fiber rotor wrapping; aerospace overlap"
+      - hs_code: "8466"
+        name: "Multi-axis balancing machines (G0.4 grade)"
+        strength: strong
+        rationale: "Required for >50,000 rpm rotors; few civilian uses at this grade"
+      - hs_code: "8421.39"
+        name: "Vacuum pumps (turbomolecular, getter, ion)"
+        strength: medium
+      - hs_code: "8504.40"
+        name: "Frequency converters (≥600 Hz, ≥40 W per stage)"
+        strength: strong
+        rationale: "Drives centrifuge motors; very specific frequency band"
+
+  - id: laser_AVLIS_MLIS_SILEX
+    materials_required:
+      - hs_code: "8456.10"
+        name: "Q-switched / mode-locked lasers"
+        strength: strong
+      - hs_code: "9032"
+        name: "Optical phase-locked loop electronics"
+        strength: medium
+
+trade_red_flags:
+  - "Multiple shipments of complementary items (e.g., maraging steel + CNC + filament winder + balancing machine) to same end-user"
+  - "End-user has no declared aerospace / aviation customer base"
+  - "Routing through known transshipment hubs (UAE, Malaysia, Turkey for legacy IR-1 cases)"
+
+vlm_prompts:
+  trade_classification_hint: |
+    Single dual-use shipment = weak signal. Bundle of ≥3 categorically-linked items to one end-user = strong.
+
+vlm_priority: P1
+mvp_in_scope: true

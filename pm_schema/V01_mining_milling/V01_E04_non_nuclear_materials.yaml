@@ -1,0 +1,39 @@
+# V01_E04 — Mining/Milling / Non-Nuclear Materials
+cell_id: V01_E04
+volume: 1
+volume_name: "Mining and Milling"
+element: 4
+element_name: "Non-Nuclear Materials"
+
+processes:
+  - id: conventional_milling
+    materials_required:
+      - hs_code: "2807"
+        name: "Sulfuric acid (bulk)"
+        strength: weak
+      - hs_code: "2836"
+        name: "Sodium carbonate / bicarbonate (alkaline leach)"
+        strength: weak
+      - hs_code: "2825.60"
+        name: "Magnesium oxide (precipitation)"
+        strength: weak
+      - hs_code: "3914"
+        name: "Anion exchange resins"
+        strength: medium
+
+  - id: in_situ_leach_ISL
+    materials_required:
+      - hs_code: "2807"
+        name: "Sulfuric acid (typical, large quantities)"
+        strength: weak
+      - hs_code: "2836"
+        name: "Carbonate / bicarbonate (alkaline ISL)"
+        strength: weak
+
+trade_pattern_indicators:
+  bundle_strength_weak:
+    - items: ["sulfuric_acid", "ion_exchange_resin"]
+      implies: "milling activity (very weak signal alone)"
+
+vlm_priority: P3
+mvp_in_scope: false

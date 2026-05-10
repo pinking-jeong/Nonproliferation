@@ -1,0 +1,68 @@
+# Physical Model — Volume 5: Reactor Operation (Overview)
+cell_id: V05_OVERVIEW
+volume: 5
+volume_name: "Reactor Operation"
+element: 0
+element_name: "Volume Overview"
+
+definitions:
+  - "Operation of nuclear reactors of any type, including power, research, and propulsion."
+  - "Most safeguarded items reside here under CSA. Plutonium production primarily occurs in this volume."
+
+acquisition_path_position: "uranium_path/intermediate; plutonium_path/source"
+inputs:
+  - "Fresh fuel (NU, LEU, MOX, Pu, Th)"
+  - "Coolant (light water, heavy water, gas, liquid metal)"
+  - "Moderator (light water, heavy water, graphite)"
+outputs:
+  - "Spent fuel containing plutonium isotopes (key proliferation concern)"
+  - "Heat / electricity"
+  - "Activation products"
+
+processes_in_scope:
+  - id: light_water_reactor_LWR
+    proliferation_relevance: "low-medium (high burnup Pu, civilian-grade)"
+    industrial_maturity: "mature (~440 worldwide)"
+  - id: heavy_water_reactor_HWR
+    proliferation_relevance: "high (online refueling, weapons-grade Pu possible)"
+    industrial_maturity: "mature (CANDU, IPHWR)"
+  - id: graphite_moderated_reactor
+    proliferation_relevance: "very high (Magnox, RBMK, plutonium production reactors)"
+    industrial_maturity: "mostly historical"
+    examples: ["UK Magnox", "Yongbyon 5 MWe", "Soviet RBMK"]
+  - id: research_reactor
+    proliferation_relevance: "medium (HEU fuel concern; small Pu output)"
+    industrial_maturity: "mature (~230 worldwide)"
+  - id: fast_breeder_reactor
+    proliferation_relevance: "high (Pu breeding)"
+    industrial_maturity: "limited (BN-600, BN-800, Monju historical)"
+  - id: small_modular_reactor_SMR
+    proliferation_relevance: "varies by design"
+    industrial_maturity: "deployment beginning"
+
+historical_cases:
+  - state: North_Korea
+    process: graphite_moderated_reactor (5 MWe gas-graphite)
+    period: "1986-present (intermittent)"
+    detection: "ongoing; Yongbyon site well-documented in OSINT"
+  - state: Syria
+    process: graphite_moderated_reactor (alleged)
+    facility: "Al-Kibar / Dair Alzour"
+    period: "2002-2007"
+    detection: "Israeli strike 2007-09; IAEA samples 2008"
+  - state: Iraq
+    process: research_reactor (Tammuz, Osirak)
+    period: "1980 strike"
+    detection: "Israeli strike 1981"
+  - state: Iran
+    process: heavy_water_reactor (Arak / IR-40)
+    period: "2002-2015 (modified per JCPOA)"
+    detection: "2002 NCRI disclosure; 2003 IAEA inspections"
+
+references:
+  - "INFCIRC/254/Rev.14/Part 1, sections 1, 4, 7"
+  - "Liu Z., Morsy S. (1999) Vol. 5"
+  - "IAEA RDS-2 — Operating Experience with Nuclear Power Stations"
+
+vlm_priority: P1
+mvp_in_scope: true

@@ -1,0 +1,47 @@
+# V10_E03 — Direct Handling / Nuclear Materials
+cell_id: V10_E03
+volume: 10
+volume_name: "Direct Handling of Plutonium / U-233 / HEU"
+element: 3
+element_name: "Nuclear Materials"
+
+inventory_categories:
+  - name: "Separated Pu (oxide / nitrate / metal)"
+    strength: strong
+    cs_a_reportable: "Cat-I (most stringent)"
+    typical_inventory_locations:
+      - "JNFL Rokkasho (JP, civilian)"
+      - "Sellafield Pu store (UK)"
+      - "La Hague (FR)"
+      - "Y-12 / Pantex (US, military)"
+      - "Mayak Pu store (RU)"
+
+  - name: "HEU (>20% U-235)"
+    strength: strong
+    cs_a_reportable: "Cat-I"
+    note: "Civilian inventories largely associated with research reactors (RERTR conversion ongoing) and naval propulsion."
+
+  - name: "U-233"
+    strength: strong
+    cs_a_reportable: "Cat-I"
+    note: "BARC Trombay (IN), small US legacy inventory."
+
+  - name: "MOX feed (mixed PuO2/UO2)"
+    strength: strong
+    cs_a_reportable: "Cat-I"
+
+declaration_consistency_checks:
+  - "All Cat-I material under near-real-time monitoring"
+  - "Inventory difference (ID) and material unaccounted for (MUF) on rolling timescale"
+
+red_flags:
+  - "Inventory growth not matching reprocessing output"
+  - "Transfers to undisclosed storage"
+  - "Operations not previously declared"
+
+intentional_minimisations:
+  - "Mass quantities, ITV (Item Threshold Values), and per-form conversion details intentionally not enumerated here."
+  - "Per `redacted_per_vol11_policy`, no minimum-quantity-for-weapon implications discussed."
+
+vlm_priority: P3
+mvp_in_scope: false

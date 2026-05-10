@@ -1,0 +1,42 @@
+{
+  "title": "OS-PM: Open-Source Reconstruction of the IAEA Physical Model",
+  "description": "Apache-2.0 academic system that populates 88 in-scope element cells of the IAEA Physical Model from open-licensed data sources, with six analysis modules, four historical retrofit cases, and a reproducible test suite. Volume 11 (weaponization) is permanently excluded by scope policy.",
+  "creators": [
+    {
+      "name": "[Author 1 family], [Author 1 given]",
+      "affiliation": "[Institution 1]",
+      "orcid": "0000-0000-0000-0000"
+    },
+    {
+      "name": "[Author 2 family], [Author 2 given]",
+      "affiliation": "[Institution 2]",
+      "orcid": "0000-0000-0000-0000"
+    }
+  ],
+  "keywords": [
+    "nuclear safeguards",
+    "non-proliferation",
+    "acquisition path analysis",
+    "vision-language models",
+    "open-source intelligence",
+    "remote sensing",
+    "International Atomic Energy Agency"
+  ],
+  "license": "Apache-2.0",
+  "access_right": "open",
+  "upload_type": "software",
+  "publication_date": "2026-05-09",
+  "version": "0.1.0",
+  "language": "eng",
+  "communities": [
+    {"identifier": "nonproliferation"}
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "arXiv:[TBD]",
+      "relation": "isSupplementTo",
+      "scheme": "arxiv"
+    }
+  ],
+  "notes": "Volume 11 (Weaponization) is permanently excluded from this distribution by OS-PM scope policy. Detection-only academic research. See `pm_schema/V11_weaponization_excluded/_volume_overview.yaml` for the exclusion-policy stub."
+}

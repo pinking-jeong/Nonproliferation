@@ -1,0 +1,39 @@
+# V06_E02 — Heavy Water / Dual-Use Equipment
+cell_id: V06_E02
+volume: 6
+volume_name: "Heavy Water Production"
+element: 2
+element_name: "Dual-Use Equipment"
+
+processes:
+  - id: girdler_sulfide_GS
+    materials_required:
+      - hs_code: "8413"
+        name: "Centrifugal pumps (H2S service)"
+        strength: medium
+      - hs_code: "8479"
+        name: "Mass exchange tray / packing media"
+        strength: medium
+
+  - id: electrolysis_distillation
+    materials_required:
+      - hs_code: "8543"
+        name: "Alkaline / PEM electrolysers"
+        strength: weak
+        rationale: "Common for industrial H2; small-scale ones not concerning"
+      - hs_code: "8419"
+        name: "Vacuum distillation columns"
+        strength: medium
+
+  - id: water_distillation
+    materials_required:
+      - hs_code: "8421"
+        name: "Cryogenic refrigeration"
+        strength: medium
+
+trade_red_flags:
+  - "Bundle: large-scale electrolyser + vacuum distillation columns + high-purity water systems → potential HWP"
+  - "Massive H2S handling infrastructure to a single end-user → very strong signal for GS process"
+
+vlm_priority: P2
+mvp_in_scope: true

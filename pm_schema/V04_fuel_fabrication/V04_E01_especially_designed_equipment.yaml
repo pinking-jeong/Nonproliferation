@@ -1,0 +1,69 @@
+# V04_E01 — Fuel Fabrication / Especially Designed Equipment
+cell_id: V04_E01
+volume: 4
+volume_name: "Fuel Fabrication"
+element: 1
+element_name: "Especially Designed Equipment"
+
+processes:
+  - id: lwr_fuel_fabrication
+    visual_signatures:
+      sentinel2_observable:
+        - "Multi-building industrial plant footprint"
+        - "Co-located UF6 receipt area (cylinder yard)"
+      planetscope_required:
+        - "Pellet sintering kilns visible through hangar doors during construction"
+        - "Rod loading lines (long thin building)"
+    materials_required:
+      - hs_code: "8417"
+        name: "Pellet sintering furnaces (high-T H2 atmosphere)"
+        strength: medium
+        nsg_reference: "Part 1, §1.5.B"
+      - hs_code: "8456"
+        name: "Cylindrical pellet grinders (centerless type)"
+        strength: medium
+      - hs_code: "8479"
+        name: "Pellet loading machines / rod fillers"
+        strength: medium
+      - hs_code: "8459"
+        name: "Tube-to-end-plug welding (TIG / EBW)"
+        strength: medium
+
+  - id: mox_fuel_fabrication
+    visual_signatures:
+      sentinel2_observable:
+        - "Heavily-shielded glovebox lines (Pu containment)"
+        - "Building shape disproportionate (heavy shielding)"
+        - "Air filtration / HEPA stack"
+    materials_required:
+      - hs_code: "8479"
+        name: "Pu-handling glovebox lines (alpha-tight)"
+        strength: strong
+      - hs_code: "8417"
+        name: "UO2/PuO2 mixed pellet sintering furnace"
+        strength: strong
+      - hs_code: "9027"
+        name: "Pu mass-balance instrumentation (NDA)"
+        strength: medium
+
+  - id: hwr_fuel_fabrication
+    visual_signatures:
+      sentinel2_observable:
+        - "Smaller footprint than LWR (CANDU bundles are simpler)"
+    materials_required:
+      - hs_code: "8456"
+        name: "CANDU bundle assembly equipment (specific geometry)"
+        strength: medium
+
+  - id: fast_reactor_metallic_fuel
+    visual_signatures:
+      sentinel2_observable:
+        - "Argon atmosphere processing — distinctive supply"
+    materials_required:
+      - hs_code: "8514"
+        name: "Induction furnaces for U-Pu-Zr alloy"
+        strength: strong
+        rationale: "Specific to metallic fast-reactor fuel; rare civilian use"
+
+vlm_priority: P2
+mvp_in_scope: true

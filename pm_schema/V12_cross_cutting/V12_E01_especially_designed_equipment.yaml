@@ -1,0 +1,42 @@
+# V12_E01 — Cross-Cutting / Especially Designed Equipment
+cell_id: V12_E01
+volume: 12
+volume_name: "Cross-Cutting Indicators"
+element: 1
+element_name: "Especially Designed Equipment (cross-cutting context)"
+
+scope_clarification: |
+  Volume 12 is largely about non-equipment indicators (personnel, doctrine,
+  funding). This cell exists for completeness in the 8-element schema and
+  captures equipment categories that span volumes (e.g., research reactors
+  that serve multiple R&D purposes, or auxiliary infrastructure).
+
+processes:
+  - id: cross_cutting_research_infrastructure
+    description: "Multi-purpose nuclear R&D facilities (research reactors, hot-cell complexes)"
+    visual_signatures:
+      sentinel2_observable:
+        - "Multi-building research institute footprint"
+        - "Co-located research reactor (V05) + hot cell (V09) + lab buildings"
+    materials_required:
+      - hs_code: "various"
+        name: "(See V05_E01 research reactor + V09_E01 hot cell)"
+        strength: medium
+        rationale: "Cross-cutting reference"
+
+  - id: cross_cutting_metrology
+    description: "National measurement / calibration infrastructure for nuclear"
+    visual_signatures:
+      sentinel2_observable:
+        - "Metrology institute building (e.g., KRISS, NIST, NPL)"
+    materials_required:
+      - hs_code: "9027"
+        name: "Reference radiation sources, calibration NDA"
+        strength: medium
+
+cross_cutting_note:
+  - "Many V12 indicators are non-equipment by nature. See V12_E02-E08 for the substantive content."
+  - "When indexing, treat V12 cells E02-E08 as the primary signals; V12_E01 is a placeholder."
+
+vlm_priority: P3
+mvp_in_scope: false

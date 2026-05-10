@@ -1,0 +1,83 @@
+# V05_E05 — Reactor / Technology, R&D, Training
+cell_id: V05_E05
+volume: 5
+volume_name: "Reactor Operation"
+element: 5
+element_name: "Technology / R&D / Training"
+
+definitions:
+  - "Knowledge, scientific publications, and training programs relevant to reactor operation."
+
+processes:
+  - id: light_water_reactor_LWR
+    rd_keywords:
+      strong:
+        - "PWR primary loop thermal hydraulics"
+        - "BWR jet pump dynamics"
+        - "reactor core neutronics LEU"
+        - "LOCA analysis"
+      medium:
+        - "Zircaloy corrosion modeling"
+        - "fuel rod performance code (FRAPCON, BISON)"
+
+  - id: heavy_water_reactor_HWR
+    rd_keywords:
+      strong:
+        - "CANDU online refueling"
+        - "calandria tube creep"
+        - "natural uranium fuel CANDU"
+        - "pressure tube hydriding"
+        - "IPHWR Indian heavy water reactor"
+      medium:
+        - "lattice physics heavy water moderator"
+
+  - id: graphite_moderated_reactor
+    rd_keywords:
+      strong:
+        - "graphite moderated reactor design"
+        - "Magnox core physics"
+        - "RBMK void coefficient"
+        - "Wigner energy graphite"
+      medium:
+        - "gas-cooled reactor heat transfer"
+
+  - id: research_reactor
+    rd_keywords:
+      strong:
+        - "TRIGA core management"
+        - "MTR plate fuel"
+        - "RERTR LEU conversion"
+      medium:
+        - "neutron beam line design"
+
+  - id: fast_breeder_reactor
+    rd_keywords:
+      strong:
+        - "sodium fast reactor neutronics"
+        - "actinide breeding ratio"
+        - "metallic fuel SFR"
+        - "BN-600 BN-800 design"
+        - "TRU transmutation in fast spectrum"
+
+indicative_journals:
+  - "Nuclear Engineering and Design"
+  - "Annals of Nuclear Energy"
+  - "Nuclear Technology"
+  - "Progress in Nuclear Energy"
+
+indicative_institutions_civilian:
+  - "EDF Research (France)"
+  - "Rosatom Kurchatov Institute (Russia)"
+  - "AECL / CNL (Canada)"
+  - "MIT, NCSU, Texas A&M (US)"
+  - "JAEA (Japan)"
+  - "KAERI (Korea)"
+  - "BARC (India)"
+
+publication_velocity_signal:
+  description: |
+    Sudden uptick in graphite-moderated or HWR-related publications
+    from a non-NWS state without declared civilian program is suspicious.
+
+vlm_priority: P1
+mvp_in_scope: true

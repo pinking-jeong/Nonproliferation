@@ -1,0 +1,75 @@
+# V03_E08 — Enrichment / Other Observables / Auxiliary Systems
+cell_id: V03_E08
+volume: 3
+volume_name: Enrichment
+element: 8
+element_name: "Other Observables / Auxiliary Systems"
+
+definitions:
+  - "Infrastructure that supports enrichment but is not itself nuclear or controlled."
+
+processes:
+  - id: gas_centrifuge
+    auxiliary_indicators:
+      power:
+        - signature: "Dedicated electrical substation (10-100 MVA) on-site"
+          strength: medium
+          visual_signature_image:
+            - "Transformer yard adjacent to main hall"
+            - "High-voltage transmission lines terminating at site"
+        - signature: "Underground cabling to centrifuge halls"
+          strength: weak
+      cooling:
+        - signature: "Industrial cooling towers (mechanical draft)"
+          strength: medium
+          visual_signature_image:
+            - "Multi-cell cooling tower bank"
+            - "Persistent visible steam plume in winter"
+      hvac_clean_air:
+        - signature: "Dedicated HVAC for cascade halls"
+          strength: weak
+      uf6_logistics:
+        - signature: "UF6 cylinder yard (30B/48Y)"
+          strength: strong
+          visual_signature_image:
+            - "Outdoor concrete pad, cylindrical containers in rows"
+            - "Loading dock with overhead crane"
+      security:
+        - signature: "Concentric fencing, hardened entry, anti-vehicle barriers"
+          strength: medium
+        - signature: "Surface-to-air defenses (rare; very strong indicator if present)"
+          strength: strong
+      deception:
+        - signature: "Earth berms, tunneling, partial subterranean construction"
+          strength: medium
+          example_facility: "Iran Fordow (deeply buried)"
+          example_facility_2: "Israel Dimona (legacy, partially buried)"
+      transportation:
+        - signature: "Heavy truck access; rail spurs sometimes"
+          strength: weak
+      personnel:
+        - signature: "Large parking lot suggesting >500 employees"
+          strength: weak
+      construction_progress:
+        - signature: "Multi-year construction signature observable in time-series imagery"
+          strength: medium
+          detection_method: "Sentinel-2 time series + NDVI / NDBI change detection"
+
+cross_modal_consistency_checks:
+  - check: "Power infrastructure capacity matches declared SWU production"
+    indicators_used: [V03_E08_power, V03_E03_nuclear_materials]
+  - check: "Construction timeline matches first declaration date"
+    indicators_used: [V03_E08_construction_progress, declaration_history]
+
+vlm_prompts:
+  facility_layout_hint: |
+    A canonical centrifuge facility has: (1) a large rectangular hall, (2) admin building,
+    (3) substation, (4) cooling towers, (5) UF6 cylinder yard, (6) security perimeter, all
+    co-located within ~500 m. Missing 1-2 elements is normal; missing 4+ suggests a different
+    facility type or very early construction.
+
+vlm_priority: P0
+mvp_in_scope: true
+
+# This cell is the WORKHORSE for image-side detection in MVP.
+# Most Sentinel-2 information about enrichment will land here (auxiliary, not EDE).

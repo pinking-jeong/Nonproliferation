@@ -1,0 +1,46 @@
+# V03_E06 — Enrichment / End Products
+cell_id: V03_E06
+volume: 3
+volume_name: Enrichment
+element: 6
+element_name: "End Products"
+
+definitions:
+  - "Output materials of enrichment processes."
+
+products:
+  - name: "LEU UF6 (3-5% U-235)"
+    strength: strong
+    rationale: "Standard reactor fuel feed; declared in CSA"
+    visual_signature_image:
+      - "30B / 48Y type cylinders in storage yard"
+    trade_signature:
+      - hs_code: "2844.20"
+        description: "Enriched UF6 trade requires safeguards-compliant transfer"
+
+  - name: "LEU+ (5-20%)"
+    strength: strong
+    rationale: "Used for some research reactors / SMR concepts; rare in trade"
+
+  - name: "HEU UF6 (>20%)"
+    strength: redacted_per_vol11_policy
+    note: "Technical details intentionally out of OS-PM scope (proliferation-sensitive)."
+
+  - name: "Depleted UF6 (tails)"
+    strength: strong
+    rationale: "Always co-produced; cylinder yard footprint indicator"
+    visual_signature_image:
+      - "Long-term outdoor cylinder yards (Paducah, Tricastin, Pierrelatte, Yongbyon)"
+
+  - name: "Uranium metal (downstream)"
+    strength: medium
+    rationale: "Conversion from UF6 to U metal (out of V03 strict scope)"
+
+product_flow_consistency_check:
+  description: |
+    Annual product output should be consistent with: feed material (V03_E03)
+    × declared SWU capacity. Mismatch → potential undeclared production.
+  formula: "P_LEU(t) ≈ feed × ∫(SWU per year) — accounting for tails assay"
+
+vlm_priority: P2
+mvp_in_scope: false  # Cylinder yard counting is a known technique but image-detail intensive

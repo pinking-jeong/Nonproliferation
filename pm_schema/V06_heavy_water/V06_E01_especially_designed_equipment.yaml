@@ -1,0 +1,70 @@
+# V06_E01 — Heavy Water / Especially Designed Equipment
+cell_id: V06_E01
+volume: 6
+volume_name: "Heavy Water Production"
+element: 1
+element_name: "Especially Designed Equipment"
+
+processes:
+  - id: girdler_sulfide_GS
+    description: "Bithermal H2S/H2O exchange in tall packed towers."
+    visual_signatures:
+      sentinel2_observable:
+        - "Very tall (60-80 m) packed columns in pairs (cold + hot)"
+        - "Distinctive industrial silhouette unmistakable from afar"
+        - "Massive H2S inventory tanks (toxic gas)"
+        - "Cooling water requirements (often river-side)"
+      planetscope_required:
+        - "Column tops with vapor lines"
+        - "Pump houses between columns"
+    materials_required:
+      - hs_code: "8419"
+        name: "Specialty packed columns (corrosion-resistant)"
+        strength: strong
+        nsg_reference: "Part 1, §3.3.B"
+      - hs_code: "8413"
+        name: "H2S-rated centrifugal compressors"
+        strength: strong
+      - hs_code: "8479"
+        name: "H2S liquefaction cryogenics"
+        strength: strong
+    proliferation_concern:
+      - "Very distinctive footprint; difficult to conceal at industrial scale"
+
+  - id: ammonia_hydrogen_exchange
+    description: "Mono- or bi-thermal NH3/H2 exchange."
+    visual_signatures:
+      sentinel2_observable:
+        - "Smaller column diameter than GS but still tall"
+        - "NH3 production / supply infrastructure adjacent"
+    materials_required:
+      - hs_code: "8419"
+        name: "NH3-tolerant packed columns"
+        strength: strong
+      - hs_code: "8421"
+        name: "Cryogenic distillation equipment"
+        strength: medium
+
+  - id: electrolysis_distillation
+    description: "Electrolysis followed by water distillation finishing."
+    visual_signatures:
+      sentinel2_observable:
+        - "Large electrolyser hall"
+        - "Very high power demand (10s to 100s MW)"
+        - "Hydroelectric co-location historical (Norway, Canada)"
+    materials_required:
+      - hs_code: "8543"
+        name: "Industrial-scale water electrolysers"
+        strength: medium
+        rationale: "Electrolysers also used for industrial H2; not unique"
+
+  - id: water_distillation
+    description: "Vacuum distillation of natural water — small separation factor."
+    materials_required:
+      - hs_code: "8419"
+        name: "High-throughput vacuum distillation columns"
+        strength: medium
+        rationale: "Few civilian scale matches"
+
+vlm_priority: P2
+mvp_in_scope: true

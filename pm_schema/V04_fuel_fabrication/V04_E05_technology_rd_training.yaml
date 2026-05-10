@@ -1,0 +1,62 @@
+# V04_E05 — Fuel Fabrication / Technology, R&D, Training
+cell_id: V04_E05
+volume: 4
+volume_name: "Fuel Fabrication"
+element: 5
+element_name: "Technology / R&D / Training"
+
+processes:
+  - id: lwr_fuel_fabrication
+    rd_keywords:
+      strong:
+        - "UO2 sintering kinetics"
+        - "uranium dioxide pellet manufacture"
+        - "fuel rod cladding zirconium"
+        - "fuel performance burnup"
+      medium:
+        - "burnable absorber gadolinium"
+        - "fuel-cladding interaction"
+        - "PCI pellet cladding interaction"
+
+  - id: mox_fuel_fabrication
+    rd_keywords:
+      strong:
+        - "MOX fuel fabrication"
+        - "PuO2 UO2 sintering"
+        - "plutonium pellet pressing"
+        - "MELOX process"
+      medium:
+        - "actinide migration MOX"
+
+  - id: research_reactor_fuel
+    rd_keywords:
+      strong:
+        - "RERTR LEU conversion"
+        - "U-Mo dispersion fuel"
+        - "research reactor plate fuel"
+      medium:
+        - "TRIGA fuel ZrH matrix"
+
+  - id: fast_reactor_metallic_fuel
+    rd_keywords:
+      strong:
+        - "U-Pu-Zr metallic fuel"
+        - "metallic fast reactor fuel"
+        - "EBR-II driver fuel"
+      medium:
+        - "FCCI fuel cladding chemical interaction"
+
+indicative_journals:
+  - "Journal of Nuclear Materials"
+  - "Nuclear Engineering and Design"
+  - "Annals of Nuclear Energy"
+
+indicative_institutions_civilian:
+  - "Westinghouse / Framatome R&D"
+  - "GE Global Research"
+  - "JAEA Tokai"
+  - "KAERI fuel division"
+  - "BARC Hyderabad"
+
+vlm_priority: P2
+mvp_in_scope: true

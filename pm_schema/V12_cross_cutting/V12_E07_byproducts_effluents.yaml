@@ -1,0 +1,37 @@
+# V12_E07 — Cross-Cutting / By-products / Effluents (State-Level Environmental)
+cell_id: V12_E07
+volume: 12
+volume_name: "Cross-Cutting Indicators"
+element: 7
+element_name: "State-Level Environmental Footprint"
+
+definitions:
+  - "Aggregated environmental signal across all reactors and fuel-cycle facilities in a state."
+
+aggregations:
+  - signal: "Total Kr-85 emissions (sum across V07 facilities)"
+    detection: "BfS / regional monitoring stations + atmospheric inversion"
+    strength: medium
+  - signal: "Total reactor thermal load visible from satellite (V05_E07 sum)"
+    detection: "Sentinel-3 SLSTR / HiVE TIR aggregated"
+    strength: medium
+  - signal: "Total tritium liquid effluent (HWR contribution)"
+    detection: "Coastal/river monitoring; limited public data"
+    strength: weak
+  - signal: "Total noble gas xenon emissions (CTBTO IMS)"
+    detection: "CTBTO data — limited public access"
+    strength: medium
+  - signal: "Total uranium tailings area (sum of V01 sites)"
+    detection: "Sentinel-2 visible imagery, multi-year"
+    strength: medium
+
+state_level_trend_analysis:
+  - "A state's total environmental footprint should track its declared programme."
+  - "Anomalies (e.g., Kr-85 above declared reprocessing) flag undeclared activity."
+
+cross_modal_consistency_at_state_level:
+  - check: "Sum of declared facility emissions vs. observed regional signal"
+  - check: "Time-series consistency of aggregate signal with declared operational schedules"
+
+vlm_priority: P2
+mvp_in_scope: true

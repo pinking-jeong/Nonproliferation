@@ -1,0 +1,90 @@
+# V07_E07 — Reprocessing / By-products / Effluents
+cell_id: V07_E07
+volume: 7
+volume_name: "Reprocessing"
+element: 7
+element_name: "By-products / Effluents (Environmental Signatures) — DIAGNOSTIC FOR REPROCESSING"
+
+definitions:
+  - "Reprocessing has the most distinctive environmental signature of any fuel-cycle stage."
+  - "Krypton-85 in particular is essentially diagnostic — released only from reactor-fuel reprocessing or weapons tests."
+
+byproducts:
+  - name: "Krypton-85 (Kr-85)"
+    strength: strong
+    rationale: |
+      Kr-85 is a noble gas fission product (10.76 yr half-life) released essentially in
+      its entirety during fuel chopping/dissolution. No effective scrubbing is industrially
+      practiced (with rare exceptions). Background atmospheric Kr-85 has been monitored
+      globally since the 1950s. Localized increases trace to reprocessing campaigns.
+    detection:
+      method: "Atmospheric sampling (gas chromatography + low-level counting)"
+      practical_networks:
+        - "BfS (Germany) — Schauinsland, Freiburg long-term station"
+        - "PTB Braunschweig (DE)"
+        - "Princeton — Schoeppner & Glaser theoretical detection studies"
+      coverage: "Public stations limited; CTBTO has Xe but not Kr-85 routinely"
+    seminal_reference: "Schoeppner M., Glaser A. (2016) J Environ Radioact"
+    historical_attribution_examples:
+      - "La Hague campaigns visible in BfS time series"
+      - "Yongbyon campaigns inferred (limited data)"
+
+  - name: "Xenon isotopes (Xe-133, Xe-135)"
+    strength: medium
+    half_life: "5.3 d (Xe-133), 9.1 hr (Xe-135)"
+    detection:
+      method: "CTBTO IMS SAUNA / SPALAX network"
+      coverage: "Global, partial public access"
+      limitation: "Short half-life means signal decays rapidly post-campaign"
+
+  - name: "Iodine-129 (I-129)"
+    strength: medium
+    half_life: "1.57e7 yr (very long-lived)"
+    detection:
+      method: "Seawater sampling (long-range tracer for La Hague, Sellafield)"
+      practical: "Slow to integrate; useful for retroactive analysis"
+
+  - name: "Tritium liquid effluent"
+    strength: medium
+    detection:
+      method: "Coastal/river water monitoring"
+      practical: "Public networks limited"
+
+  - name: "C-14 (gaseous)"
+    strength: weak
+    detection:
+      method: "Atmospheric CO2 14C ratio anomaly"
+
+  - name: "NOx emissions (from nitric acid handling)"
+    strength: weak
+    detection:
+      method: "Sentinel-5P TROPOMI NO2 imagery"
+      practical: "Distinguishable from generic industry only with high temporal pattern matching"
+
+  - name: "Thermal effluent"
+    strength: weak
+    detection:
+      method: "Sentinel-3 SLSTR"
+      practical: "Reprocessing thermal load is modest; not as diagnostic as reactors"
+
+monitoring_systems_relevance:
+  kr85_atmospheric:
+    relevance: "★★★★★ — most diagnostic single signature"
+  ctbto_xenon:
+    relevance: "★★★★ — limited public access"
+  i129_seawater:
+    relevance: "★★★ — slow integrative signal"
+  tropomi_nox:
+    relevance: "★★ — generic"
+  hive_TIR:
+    relevance: "★★ — modest reprocessing thermal load"
+
+vlm_prompts:
+  kr85_anomaly_hint: |
+    A localised increase in atmospheric Kr-85 above background near a suspected
+    reprocessing facility, even of modest magnitude, is the single strongest
+    public-domain indicator of reprocessing operation. Cross-reference Schoeppner
+    & Glaser (2016) detection methodology.
+
+vlm_priority: P0
+mvp_in_scope: true  # Highest-value reprocessing indicator

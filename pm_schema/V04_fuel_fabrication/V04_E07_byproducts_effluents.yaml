@@ -1,0 +1,35 @@
+# V04_E07 — Fuel Fabrication / By-products / Effluents
+cell_id: V04_E07
+volume: 4
+volume_name: "Fuel Fabrication"
+element: 7
+element_name: "By-products / Effluents"
+
+byproducts:
+  - name: "Process scrap (off-spec pellets, end caps)"
+    strength: medium
+    note: "Recycled or stored; tracked under MUF"
+
+  - name: "UO2 dust (cleaning, exhaust)"
+    strength: weak
+    detection:
+      method: "Local air quality; not remotely detectable"
+
+  - name: "Hydrogen / hydrogen-argon process gas"
+    strength: weak
+    detection:
+      method: "Local supply tank visibility"
+
+  - name: "Trace alpha (MOX plants)"
+    strength: weak
+    detection:
+      method: "Local air monitoring"
+
+monitoring_systems_relevance:
+  thermal_TIR:
+    relevance: "★ — modest signal"
+  remote_sensing:
+    relevance: "★ — fuel fabrication leaks little to atmosphere"
+
+vlm_priority: P3
+mvp_in_scope: false

@@ -1,0 +1,48 @@
+# V02_E03 — Conversion / Nuclear Materials
+cell_id: V02_E03
+volume: 2
+volume_name: "Conversion"
+element: 3
+element_name: "Nuclear Materials"
+
+inputs:
+  - name: "Yellowcake (U3O8) drums"
+    hs_code: "2612.10"
+    strength: strong
+  - name: "Triuranium octoxide (UTC)"
+    hs_code: "2844.10"
+
+intermediates:
+  - name: "Uranyl nitrate UO2(NO3)2 — wet route only"
+    strength: medium
+  - name: "Ammonium diuranate (ADU) — wet route"
+    strength: medium
+  - name: "UO3 (calcination intermediate)"
+    strength: medium
+  - name: "UO2 (after reduction)"
+    hs_code: "2844.20"
+    strength: strong
+  - name: "UF4 (intermediate)"
+    strength: strong
+
+outputs:
+  - name: "UF6 (natural assay)"
+    hs_code: "2844.30"
+    strength: strong
+    cs_a_reportable: true
+  - name: "UO2 fuel-grade powder"
+    hs_code: "2844.20"
+    strength: strong
+  - name: "U metal"
+    redacted_per_vol11_policy: true
+
+declaration_consistency_checks:
+  - "Yellowcake input × conversion yield ≈ UF6 output"
+  - "Trade flow of UF6 (HS 2844.30) reconciles with declared production"
+
+red_flags:
+  - "Yellowcake imports without corresponding UF6 export or domestic enrichment feed"
+  - "Conversion plant operating at higher throughput than declared"
+
+vlm_priority: P2
+mvp_in_scope: false  # Requires declaration access

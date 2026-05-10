@@ -1,0 +1,102 @@
+# V07_E08 — Reprocessing / Other Observables / Auxiliary
+cell_id: V07_E08
+volume: 7
+volume_name: "Reprocessing"
+element: 8
+element_name: "Other Observables / Auxiliary Systems"
+
+processes:
+  - id: PUREX_aqueous
+    auxiliary_indicators:
+      logistics_co_location:
+        - signature: "Reprocessing co-located with reactor or major spent-fuel pool"
+          strength: strong
+          examples:
+            - "Yongbyon (5 MWe reactor + Radiochemical Lab adjacent)"
+            - "La Hague (UP-2/UP-3 + adjacent storage)"
+            - "Mayak (multi-purpose nuclear complex)"
+        - signature: "Heavy-shielded transport infrastructure (rail or armored truck)"
+          strength: medium
+
+      heavy_shielding:
+        - signature: "Very thick concrete walls (>1.5 m)"
+          strength: strong
+          visual_indicator: "Building shape disproportionately massive for its footprint"
+        - signature: "Buried or partially buried construction"
+          strength: medium
+
+      off_gas_treatment:
+        - signature: "Tall stack with multiple filtration stages"
+          strength: strong
+          visual_signature_image:
+            - "Stack height typically 50–80 m"
+            - "Multiple inlet ductwork visible"
+
+      high_level_waste_storage:
+        - signature: "Tank farm (vertical cylinders, often within reinforced enclosure)"
+          strength: strong
+          visual_signature_image:
+            - "Distinctive cylindrical tank yard"
+            - "Vitrification plant adjacent (rare)"
+
+      ventilation_redundancy:
+        - signature: "Multiple HEPA filtration banks; redundant exhaust"
+          strength: medium
+
+      power_water_demand:
+        - signature: "Grid-scale electrical demand for evaporators / dissolvers"
+          strength: medium
+        - signature: "Cooling water for product condensers"
+          strength: medium
+
+      security:
+        - signature: "Perimeter security on par with weapons facilities (very strict)"
+          strength: strong
+        - signature: "Co-located with military / dual-use site (if state operates one)"
+          strength: medium
+
+      construction_progression:
+        - signature: "Multi-year construction (5+ years typical for industrial PUREX)"
+          strength: medium
+
+  - id: pyroprocessing_electrorefining
+    auxiliary_indicators:
+      argon_supply:
+        - signature: "Large argon storage tanks; cryogenic supply"
+          strength: medium
+      smaller_footprint:
+        - signature: "Pilot scales smaller than aqueous PUREX"
+          strength: weak
+
+cross_modal_consistency_checks:
+  - check: "Reprocessing co-located with reactor → check reactor declared spent-fuel disposition"
+    indicators_used: [V07_E08_co_location, V05_E03_spent_fuel]
+  - check: "Off-gas stack height + Kr-85 atmospheric signal correlation"
+    indicators_used: [V07_E08_stack, V07_E07_kr85]
+  - check: "HLW tank farm growth rate vs declared throughput"
+    indicators_used: [V07_E08_HLW_storage, V07_E03_throughput_declared]
+
+vlm_prompts:
+  facility_layout_hint: |
+    Canonical PUREX plant: (1) spent-fuel receiving bay, (2) heavy-walled hot-cell building,
+    (3) tall off-gas stack, (4) HLW tank farm, (5) solvent storage area, (6) extensive security
+    perimeter. Co-location with a reactor strengthens the hypothesis.
+
+historical_signatures_library:
+  - facility: "La Hague (FR)"
+    notable: "Largest commercial; UP-2 + UP-3 dual lines"
+  - facility: "Sellafield (UK)"
+    notable: "THORP + Magnox; decommissioning ongoing"
+  - facility: "Mayak (RU)"
+    notable: "Multi-product complex"
+  - facility: "Tokai (JP)"
+    notable: "JAEA pilot; under safeguards"
+  - facility: "Yongbyon Radiochemical Lab (KP)"
+    notable: "Best-known undeclared-then-declared facility; well-documented in OSINT"
+  - facility: "PREFRE Trombay (IN)"
+    notable: "First India reprocessing; seed of weapons program"
+  - facility: "Dimona (IL, alleged)"
+    notable: "Long-rumored, never declared"
+
+vlm_priority: P0
+mvp_in_scope: true

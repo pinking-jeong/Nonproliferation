@@ -1,0 +1,62 @@
+# V10_E08 — Direct Handling / Other Observables / Auxiliary
+cell_id: V10_E08
+volume: 10
+volume_name: "Direct Handling of Plutonium / U-233 / HEU"
+element: 8
+element_name: "Other Observables / Auxiliary"
+
+processes:
+  - id: civilian_pu_metal_handling
+    auxiliary_indicators:
+      facility_layout:
+        - signature: "Heavy shielded glovebox-line building (similar to V04 MOX, but more confined)"
+          strength: strong
+        - signature: "Co-location with reprocessing (V07) or MOX (V04)"
+          strength: strong
+      security:
+        - signature: "Cat-I security perimeter — heaviest in nuclear sector"
+          strength: strong
+          examples:
+            - "Multi-layer fencing, hardened gates, armed guards (where declared)"
+            - "Access control elaborate"
+      utilities:
+        - signature: "Argon supply infrastructure"
+          strength: medium
+        - signature: "HEPA / charcoal filtration banks"
+          strength: medium
+      logistics:
+        - signature: "Heavy-shielded transport (truck or rail) for Pu transfer"
+          strength: medium
+
+  - id: declared_HEU_storage
+    auxiliary_indicators:
+      facility_layout:
+        - signature: "Vault building with heavy shielding"
+          strength: strong
+        - signature: "Subterranean construction common"
+          strength: medium
+      security:
+        - signature: "Cat-I; military-grade in NWS"
+          strength: strong
+
+cross_modal_consistency_checks:
+  - check: "Cat-I security level consistent with declared inventory category"
+    indicators_used: [V10_E08_security, V10_E03_inventory]
+  - check: "Co-location with V07/V04 supports civilian use claim"
+
+scope_clarification:
+  - "V10_E08 is the primary OS-PM observation point for Pu/HEU handling: building shielding, security, co-location."
+  - "Operational interior details intentionally omitted."
+
+historical_signatures_library:
+  - facility: "JNFL Rokkasho Pu Store (JP)"
+    notable: "Civilian Pu inventory"
+  - facility: "Sellafield Pu Store (UK)"
+    notable: "Largest civilian Pu inventory globally"
+  - facility: "La Hague Pu store (FR)"
+    notable: "Co-located with reprocessing"
+  - facility: "INL Materials and Fuels Complex (US)"
+    notable: "Civilian metallic fuel R&D"
+
+vlm_priority: P3
+mvp_in_scope: false

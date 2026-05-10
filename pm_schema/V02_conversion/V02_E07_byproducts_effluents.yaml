@@ -1,0 +1,39 @@
+# V02_E07 — Conversion / By-products / Effluents
+cell_id: V02_E07
+volume: 2
+volume_name: "Conversion"
+element: 7
+element_name: "By-products / Effluents"
+
+byproducts:
+  - name: "HF / F2 trace emissions"
+    strength: medium
+    detection:
+      method: "Air sampling near plant; specific to conversion vs other industries"
+      sentinel5p_observable: false  # too specific, not in TROPOMI bands
+    rationale: "Distinguishing from semiconductor industry by location and scale"
+
+  - name: "Calcium fluoride (CaF2) waste"
+    strength: weak
+    detection:
+      method: "Solid waste streams; not remotely detectable"
+    note: "Some plants generate large CaF2 byproduct"
+
+  - name: "Thermal effluent"
+    strength: weak
+    detection:
+      method: "Sentinel-3 SLSTR; modest thermal load typical"
+
+  - name: "Process radiation (low gamma)"
+    strength: weak
+    detection:
+      method: "Local radiation monitors (e.g., EURDEP near plants)"
+
+monitoring_systems_relevance:
+  hf_air_sampling:
+    relevance: "★★★ — distinguishing from semicon by location and scale"
+  thermal_TIR:
+    relevance: "★★ — modest signal"
+
+vlm_priority: P3
+mvp_in_scope: false

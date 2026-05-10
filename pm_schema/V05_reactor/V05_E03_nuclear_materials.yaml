@@ -1,0 +1,62 @@
+# V05_E03 — Reactor / Nuclear Materials
+cell_id: V05_E03
+volume: 5
+volume_name: "Reactor Operation"
+element: 3
+element_name: "Nuclear Materials"
+
+definitions:
+  - "Fresh and spent fuel; activation products and special fissile material in reactor inventory."
+  - "Subject to Item-counting and bulk-handling under CSA."
+
+material_categories:
+  fresh_fuel:
+    - name: "LEU UO2 fuel assemblies"
+      hs_code: "2844.20"
+      strength: strong
+      rationale: "Standard LWR fuel"
+    - name: "Natural uranium UO2 (CANDU bundles)"
+      hs_code: "2612"
+      strength: strong
+    - name: "MOX fuel"
+      hs_code: "2844.40"
+      strength: strong
+      rationale: "Highly safeguarded; only a few civilian users"
+    - name: "HEU research reactor fuel (legacy)"
+      hs_code: "2844.20"
+      strength: strong
+      rationale: "RERTR conversion ongoing; remaining HEU-fueled facilities limited"
+
+  spent_fuel:
+    - name: "Spent LWR fuel (LEU origin)"
+      strength: strong
+      pu_content: "0.7-1.0% of HM, reactor-grade isotopics (>20% Pu-240)"
+    - name: "Spent CANDU fuel (NU origin)"
+      strength: strong
+      pu_content: "~0.4% of HM, weapons-usable isotopics (low Pu-240) when discharged at low burnup"
+    - name: "Spent graphite-reactor fuel"
+      strength: strong
+      pu_content: "highly variable; weapons-grade if low burnup intentional"
+
+  in-core_material:
+    - name: "Targets for isotope production"
+      strength: medium
+      note: "Lithium targets, U targets — production reactors only"
+
+declaration_consistency_checks:
+  - "Annual inventory must reconcile: (initial fuel loaded) - (discharged spent fuel) ≈ 0 over campaign"
+  - "Online-refueling reactors require near-real-time monitoring (CANDU, RBMK)"
+  - "Burnup measurements (declared vs. measured isotopics)"
+
+red_flags:
+  - "Discrepancy between declared fuel cycle length and observed reactor outage timing"
+  - "Spent fuel inventory not matching cumulative power output"
+  - "Re-routing of declared fresh fuel batch (importer mismatch in COMTRADE)"
+
+environmental_signatures:
+  - "Tritium release from HWR (heavy water leakage)"
+  - "Noble gas release during refueling (Kr, Xe)"
+  - "Activation products in cooling water (Co-58, Co-60, Cs-137)"
+
+vlm_priority: P2
+mvp_in_scope: false  # Requires declaration access

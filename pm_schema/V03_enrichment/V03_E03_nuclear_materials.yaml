@@ -1,0 +1,48 @@
+# V03_E03 — Enrichment / Nuclear Materials
+cell_id: V03_E03
+volume: 3
+volume_name: Enrichment
+element: 3
+element_name: "Nuclear Materials"
+
+definitions:
+  - "Nuclear material inputs and feeds for enrichment."
+  - "Subject to declaration under CSA Articles 60-69."
+
+processes:
+  - id: all_enrichment_methods
+    materials_required:
+      - hs_code: "2844.30"
+        name: "Natural uranium UF6"
+        strength: strong
+        rationale: "Standard enrichment feed; declared under CSA"
+      - hs_code: "2844.20"
+        name: "Enriched UF6 (any assay)"
+        strength: strong
+      - hs_code: "2844.30"
+        name: "Depleted UF6 (tails)"
+        strength: strong
+        rationale: "Indicates active enrichment when produced domestically"
+
+declared_inventory_signatures:
+  - "Annual MUF (Material Unaccounted For) statements > expected"
+  - "Inconsistencies between INFCIRC/153 declarations and observed cylinder yard inventory"
+  - "Re-cycled tails / re-enrichment campaigns (Iran 2019+)"
+
+undeclared_inventory_red_flags:
+  - "Imported NU/LEU not matching declared inventory"
+  - "UF6 cylinder traffic without corresponding declared production"
+  - "Environmental samples (swipes) showing isotopic ratios outside declared envelope"
+
+environmental_signatures:
+  - "Trace UF6 / U fluorides in air samples near facility"
+  - "Soil contamination signatures (post-leak)"
+  - "Particulate signatures detectable in IAEA wide-area environmental sampling"
+
+vlm_prompts:
+  declaration_consistency_hint: |
+    Compare declared annual UF6 throughput with: visible cylinder yard inventory (image),
+    UF6 trade flows (COMTRADE), and any swipe sample isotope profiles in OSINT reports.
+
+vlm_priority: P1
+mvp_in_scope: false  # Requires non-public IAEA declaration data

@@ -1,0 +1,35 @@
+# V10_E02 — Direct Handling / Dual-Use Equipment
+cell_id: V10_E02
+volume: 10
+volume_name: "Direct Handling of Plutonium / U-233 / HEU"
+element: 2
+element_name: "Dual-Use Equipment (detection outline)"
+
+processes:
+  - id: civilian_pu_metal_handling
+    materials_required:
+      - hs_code: "8479"
+        name: "Alpha-tight gloveboxes (also V04 MOX)"
+        strength: medium
+      - hs_code: "9027"
+        name: "Alpha spectrometers, NDA assay"
+        strength: medium
+      - hs_code: "8514"
+        name: "Induction furnaces (high-T metal)"
+        strength: weak
+        note: "Specific use for Pu metal redacted_per_vol11_policy"
+
+  - id: declared_HEU_storage
+    materials_required:
+      - hs_code: "9030"
+        name: "Criticality monitoring instruments"
+        strength: medium
+      - hs_code: "8543"
+        name: "Storage tag identifiers (RFID, seal systems)"
+        strength: weak
+
+trade_red_flags:
+  - "Heavy-duty glovebox lines + alpha spectrometers + criticality monitors to single non-NWS end-user without declared MOX or reprocessing program"
+
+vlm_priority: P3
+mvp_in_scope: false

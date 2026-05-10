@@ -1,0 +1,65 @@
+# Physical Model — Volume 3: Enrichment (Overview)
+# Cross-cutting summary used as RAG context anchor for VLM.
+cell_id: V03_OVERVIEW
+volume: 3
+volume_name: Enrichment
+element: 0
+element_name: "Volume Overview"
+
+definitions:
+  - "Processes that increase the U-235 fraction above natural abundance (0.711%)."
+  - "Includes commercial-scale and laboratory-scale techniques."
+
+acquisition_path_position: "uranium_path/intermediate"
+inputs:
+  - "UF6 (typically natural assay)"
+  - "Power (very high for diffusion / lower for centrifuge)"
+outputs:
+  - "Enriched UF6 (LEU 3-5%, HEU >20%) [HEU details out of scope per Vol. 11 redaction]"
+  - "Depleted UF6 (tails)"
+
+processes_in_scope:
+  - id: gas_centrifuge
+    proliferation_relevance: "high"
+    industrial_maturity: "mature"
+  - id: gaseous_diffusion
+    proliferation_relevance: "medium (legacy)"
+    industrial_maturity: "obsolete (US, FR, RU shut down)"
+  - id: laser_AVLIS_MLIS_SILEX
+    proliferation_relevance: "high (compact footprint)"
+    industrial_maturity: "research / pilot"
+  - id: aerodynamic_jet_nozzle_vortex
+    proliferation_relevance: "medium"
+    industrial_maturity: "obsolete (ZA, BR pilot only)"
+  - id: electromagnetic_calutron
+    proliferation_relevance: "medium-high (Iraq used)"
+    industrial_maturity: "obsolete"
+  - id: chemical_exchange_chemex_aces
+    proliferation_relevance: "low-medium"
+    industrial_maturity: "research"
+
+historical_cases:
+  - state: Iraq
+    process: electromagnetic_calutron
+    period: "1980s-1991"
+    detection: "post-1991 IAEA on-site discovery"
+  - state: Libya
+    process: gas_centrifuge
+    period: "late 1990s-2003"
+    detection: "interdicted shipment + 2003 disclosure"
+  - state: Iran
+    process: gas_centrifuge
+    period: "2002-present"
+    detection: "2002 NCRI disclosure"
+  - state: South_Africa
+    process: aerodynamic_jet_nozzle
+    period: "1970s-1989"
+    detection: "post-disarmament (1991 IAEA)"
+
+references:
+  - "Liu Z., Morsy S. (1999) Development of the Physical Model, IAEA-SM-367"
+  - "INFCIRC/254/Rev.14/Part 1 sections 5.1, 5.2"
+  - "Krass A.S. et al. (1983) Uranium Enrichment and Nuclear Weapon Proliferation, SIPRI"
+
+vlm_priority: P0
+mvp_in_scope: true

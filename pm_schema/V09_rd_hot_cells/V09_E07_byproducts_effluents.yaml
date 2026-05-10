@@ -1,0 +1,36 @@
+# V09_E07 — R&D / Hot Cells / By-products / Effluents
+cell_id: V09_E07
+volume: 9
+volume_name: "R&D and Hot Cells"
+element: 7
+element_name: "By-products / Effluents"
+
+byproducts:
+  - name: "Trace radionuclide releases"
+    strength: weak
+    detection:
+      method: "Local environmental monitoring (e.g., institute-level)"
+    rationale: "R&D scales are small; signatures usually below regional detection"
+
+  - name: "Solid radioactive waste (low / intermediate)"
+    strength: weak
+    detection:
+      method: "Public waste inventory reports (some countries)"
+
+  - name: "Tritium (some experiments)"
+    strength: weak
+    detection:
+      method: "Specialised local sampling"
+
+  - name: "Argon-41 (some experiments)"
+    strength: weak
+    half_life: "1.83 hr"
+
+monitoring_systems_relevance:
+  local_environmental:
+    relevance: "★★ — institution-level, often public"
+  remote_OSINT:
+    relevance: "★ — generally below detection thresholds"
+
+vlm_priority: P3
+mvp_in_scope: false

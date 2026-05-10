@@ -1,0 +1,83 @@
+# V05_E08 — Reactor / Other Observables / Auxiliary Systems
+cell_id: V05_E08
+volume: 5
+volume_name: "Reactor Operation"
+element: 8
+element_name: "Other Observables / Auxiliary Systems"
+
+processes:
+  - id: all_reactor_types
+    auxiliary_indicators:
+      grid_connection:
+        - signature: "High-voltage transmission lines (200+ kV) terminating at site"
+          strength: strong
+          visual_signature_image:
+            - "Switchyard with transformer banks"
+            - "Multiple transmission corridors radiating from site"
+
+      cooling_infrastructure:
+        - signature: "Once-through cooling intake/discharge structures (riverside or coastal)"
+          strength: strong
+          visual_signature_image:
+            - "Intake forebay; discharge pipe + thermal plume"
+        - signature: "Mechanical-draft cooling towers (4-8 cells typically per unit)"
+          strength: strong
+        - signature: "Natural-draft hyperbolic cooling towers (large, ~150-200 m tall)"
+          strength: strong
+          rationale: "Iconic reactor signature"
+
+      containment_distinguishing:
+        - signature: "PWR — concrete dome containment, ~40-50 m diameter"
+          strength: strong
+        - signature: "BWR — Mark-I/II/III containment, often square mass-concrete"
+          strength: strong
+        - signature: "VVER — typical Soviet/Russian rectangular building"
+          strength: medium
+        - signature: "Magnox/AGR — distinct gas-circulator plant"
+          strength: strong
+        - signature: "CANDU — squat broad reactor building + heavy-water storage"
+          strength: strong
+
+      personnel_logistics:
+        - signature: "Large staff parking (1000+ employees for power reactor)"
+          strength: medium
+        - signature: "Bus / shuttle service infrastructure"
+          strength: weak
+
+      security:
+        - signature: "Multi-layer perimeter fencing"
+          strength: medium
+        - signature: "Vehicle barriers / hardened guardposts"
+          strength: medium
+        - signature: "Surface-to-air missile site nearby (rare, very strong if present)"
+          strength: strong
+
+      construction_progression:
+        - signature: "Multi-year construction signature (5-10 years from groundbreaking)"
+          strength: medium
+          detection_method: "Sentinel-2 time series with seasonal change detection"
+
+      deception_indicators:
+        - signature: "Concealed under industrial / civilian guise"
+          strength: medium
+          examples:
+            - "Yongbyon — partially camouflaged historically"
+            - "Al-Kibar — apparent civilian building over reactor (alleged)"
+
+cross_modal_consistency_checks:
+  - check: "Grid capacity consistent with declared electrical output"
+    indicators_used: [grid_connection, declared_power]
+  - check: "Cooling tower / outfall capacity matches thermal output"
+    indicators_used: [cooling_infrastructure, declared_power]
+  - check: "Construction timeline matches first declaration"
+    indicators_used: [construction_progression, declaration_history]
+
+vlm_prompts:
+  facility_layout_hint: |
+    Canonical NPP has: (1) containment building, (2) turbine hall, (3) cooling towers
+    OR water intake, (4) switchyard with HV lines, (5) administrative complex,
+    (6) security perimeter, (7) spent fuel storage, all within ~1 km radius.
+    Smaller research reactors lack 2,3,4 typically.
+
+vlm_priority: P0
+mvp_in_scope: true

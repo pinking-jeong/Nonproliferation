@@ -1,0 +1,77 @@
+# Physical Model — Volume 11: Weaponization (POLICY EXCLUSION STUB)
+cell_id: V11_OVERVIEW
+volume: 11
+volume_name: "Weaponization (OS-PM SCOPE-EXCLUDED)"
+element: 0
+element_name: "Volume Overview — Policy Exclusion"
+
+scope_policy: EXCLUDED
+
+policy_statement: |
+  Volume 11 of the IAEA Physical Model concerns the conversion of
+  weapons-usable nuclear material into a nuclear explosive device. This
+  includes (but is not limited to): material forming and shaping for
+  pit assembly, implosion / gun-type assembly geometry, high-explosives
+  lens design, neutron initiators, hydrodynamic R&D, and integration with
+  weapon platforms.
+
+  **OS-PM intentionally and permanently excludes Volume 11 from its
+  schema.** No element cells (V11_E01 ... V11_E08) will be authored.
+  No content describing weaponization indicators in operational detail
+  will be produced under this project, regardless of the source's public
+  availability.
+
+rationale:
+  ethical:
+    - "Weaponization indicators, even when assembled from open sources, can serve as a roadmap or progress checklist for a clandestine programme."
+    - "OS-PM is a *detection-oriented* academic system; weaponization detail provides marginal detection value while creating substantial dual-use risk."
+  legal_political:
+    - "NPT Article I (NWS): no transfer of nuclear weapons or technology."
+    - "NPT Article II (NNWS): no acquisition of nuclear weapons or technology."
+    - "Korean export-control framework (KOSTI) and US BIS / EU dual-use regulations all flag weaponization-relevant content."
+  operational:
+    - "Even in NWS, V11-detail handling is restricted to cleared personnel; academic reproduction is inappropriate."
+
+how_OS_PM_handles_implicit_V11_content:
+  cells_with_redaction_flags:
+    - V03_E06.HEU_UF6  # in V03 enrichment end products
+    - V07_E03.Pu_metal  # in V07 reprocessing nuclear materials
+    - V07_E06.Pu_metal_billets  # in V07 reprocessing end products
+    - V05_E06.Tritium  # in V05 reactor end products
+    - V06_E06.Tritium_byproduct  # in V06 heavy water end products
+    - V10_E01.operational_details  # in V10 direct handling (entirely flagged)
+    - V10_E03.intentional_minimisations
+    - V10_E05.intentional_redactions
+    - V10_E06.products_redacted
+
+  flag_string: "redacted_per_vol11_policy"
+  meaning: |
+    Where this string appears in any cell, the field's content has been
+    intentionally minimised. The cell may indicate that a category exists
+    (so consumers know not to assume completeness), but does not provide
+    operational detail.
+
+what_OS_PM_DOES_track:
+  - "Detection-side indicators that *cumulatively* might suggest a weapons programme, but only at the level of: (i) facility presence (V01-V09), (ii) declared / undeclared inventories under safeguards, (iii) historical cases where the truth has already been disclosed."
+  - "We trust the academic and IAEA literature on past programmes (Iraq pre-1991, Libya pre-2003, etc.) to provide validation cases."
+
+what_OS_PM_does_NOT_track:
+  - "Critical mass calculation, scaling, or modelling."
+  - "Implosion lens / gun-type assembly geometry or detonation timing."
+  - "Tritium-boosting yield optimisation."
+  - "Neutron initiator chemistry or geometry."
+  - "Test-device-specific design parameters."
+
+oversight:
+  - "Advisory committee + IRB review confirms V11 exclusion before each release."
+  - "All cell YAMLs are spot-checked for inadvertent V11-relevant content."
+  - "External reviewers (e.g., IAEA-experienced advisors) re-verify policy compliance."
+
+references_for_policy_only:
+  - "OS-PM design document `VLM 기반 OS-PM 프로토타입 설계안.md` Section 1.3 (non-goals)."
+  - "OS-PM IRB application `IRB_application_draft.md` Section 3 (DURC self-evaluation)."
+  - "ScienceLab (Anthropic AUP) — no weaponization assistance via API."
+
+vlm_priority: NEVER
+mvp_in_scope: false
+permanent_exclusion: true

@@ -1,0 +1,65 @@
+# V10_E05 — Direct Handling / Technology, R&D, Training
+cell_id: V10_E05
+volume: 10
+volume_name: "Direct Handling of Plutonium / U-233 / HEU"
+element: 5
+element_name: "Technology / R&D / Training (detection outline)"
+
+policy_note: |
+  We list only public-domain academic R&D keywords related to civilian
+  Pu / U-233 / HEU handling that have detection value. We deliberately
+  omit weapons-relevant keywords (criticality safety in offensive
+  configurations, alloy compositions optimised for weapons performance,
+  shaping technology, etc.).
+
+processes:
+  - id: civilian_pu_metal_handling
+    rd_keywords:
+      strong:
+        - "plutonium metallurgy civilian"
+        - "actinide metal phase diagram"
+        - "U-Pu-Zr metallic fuel R&D"
+      medium:
+        - "delta-stabilised plutonium alloy (civilian context)"
+        - "plutonium oxide metal redox"
+      excluded:
+        - "weapons-pit-relevant keywords (intentionally not enumerated)"
+
+  - id: declared_HEU_storage
+    rd_keywords:
+      strong:
+        - "RERTR HEU LEU conversion"
+        - "research reactor fuel cycle HEU"
+      medium:
+        - "HEU dilution storage"
+
+  - id: U233_research_handling
+    rd_keywords:
+      strong:
+        - "uranium-233 thorium fuel cycle"
+        - "U-233 chemistry"
+      medium:
+        - "Pa-233 separation"
+
+  - id: civilian_pu_oxide_storage
+    rd_keywords:
+      strong:
+        - "PuO2 storage stability"
+        - "MOX feed long-term storage"
+
+indicative_journals:
+  - "Journal of Nuclear Materials"
+  - "Journal of Alloys and Compounds (some)"
+  - "Radiochimica Acta"
+
+indicative_institutions_civilian:
+  - "INL Materials and Fuels Complex (US, civilian R&D)"
+  - "BARC (IN, U-233)"
+  - "JAEA Tokai (JP)"
+  - "ITU Karlsruhe / JRC (EU)"
+
+intentional_redactions:
+  - "We do not list groups whose primary publication record is on weapons-relevant configurations."
+
+vlm_priority: P3
+mvp_in_scope: false

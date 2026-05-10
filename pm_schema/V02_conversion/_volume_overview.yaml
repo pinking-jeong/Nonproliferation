@@ -1,0 +1,63 @@
+# Physical Model — Volume 2: Conversion (Overview)
+cell_id: V02_OVERVIEW
+volume: 2
+volume_name: "Conversion"
+element: 0
+element_name: "Volume Overview"
+
+definitions:
+  - "Chemical conversion of yellowcake (U3O8) to uranium hexafluoride (UF6) for enrichment, or to UO2/U metal for direct fuel."
+  - "Critical bridge between mining and enrichment. Few global facilities — bottleneck-style indicator."
+
+acquisition_path_position: "uranium_path/intermediate_required"
+inputs:
+  - "Yellowcake (U3O8)"
+  - "Hydrofluoric acid (HF)"
+  - "Fluorine gas (F2) for UF6 path"
+outputs:
+  - "UF6 (for enrichment) — most common"
+  - "UO2 (for HWR fuel)"
+  - "U metal (specialty / weapons)"
+
+processes_in_scope:
+  - id: dry_route_to_UF6
+    description: "Dry hydrofluorination → fluorination process (Comurhex-style)"
+    proliferation_relevance: "high (UF6 is enrichment feed)"
+    industrial_maturity: "mature (small global supplier base)"
+  - id: wet_route_to_UF6
+    description: "Wet ammonium diuranate → solvent extraction → UF4 → UF6 (older)"
+    proliferation_relevance: "high"
+    industrial_maturity: "mature"
+  - id: conversion_to_UO2
+    description: "U3O8 → UO3 → UO2 (CANDU and reactor fuel)"
+    proliferation_relevance: "medium (HWR feed)"
+    industrial_maturity: "mature"
+  - id: conversion_to_uranium_metal
+    description: "UF4 → U metal (Mg or Ca reduction)"
+    proliferation_relevance: "very high (weapons-adjacent — V11 redaction policy applies)"
+    industrial_maturity: "varies"
+
+global_facilities_civilian:
+  - "Comurhex (Orano) Pierrelatte / Malvési (FR)"
+  - "Cameco Port Hope (CA)"
+  - "Honeywell Metropolis (US)"
+  - "Rosatom SCC (RU)"
+  - "ConverDyn (US, restart)"
+  - "CNNC Lanzhou (CN)"
+
+historical_undeclared_cases:
+  - state: Iraq
+    process: "wet route to UF6 + conversion to U metal"
+    period: "1980s"
+    detection: "post-1991 IAEA discovery"
+  - state: Iran
+    process: "Esfahan UCF (Uranium Conversion Facility)"
+    period: "2000s-present"
+    detection: "declared post-2002"
+
+references:
+  - "INFCIRC/254/Part 1 §7"
+  - "Liu Z., Morsy S. (1999) Vol. 2"
+
+vlm_priority: P2
+mvp_in_scope: true

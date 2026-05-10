@@ -1,0 +1,15 @@
+OS-PM — Open-Source Reconstruction of the IAEA Physical Model
+Copyright 2026 OS-PM Authors
+
+This product includes software developed at multiple institutions and
+released under the Apache License 2.0.
+
+Per the OS-PM scope policy, IAEA Physical Model Volume 11
+(Weaponization) is permanently excluded from this distribution. No
+operational details related to nuclear weaponization are included or
+contemplated. Detection-side indicators only; academic research use
+only.
+
+Third-party components and their licenses are listed in
+``requirements.txt`` and ``CHANGELOG.md``. Please respect their
+respective terms when redistributing this work.

@@ -1,0 +1,55 @@
+# V04_E08 — Fuel Fabrication / Other Observables / Auxiliary
+cell_id: V04_E08
+volume: 4
+volume_name: "Fuel Fabrication"
+element: 8
+element_name: "Other Observables / Auxiliary"
+
+processes:
+  - id: lwr_fuel_fabrication
+    auxiliary_indicators:
+      facility_layout:
+        - signature: "Multi-building industrial plant"
+          strength: medium
+        - signature: "Co-located UF6 receipt yard"
+          strength: medium
+        - signature: "Fuel assembly storage building (tall, vertical)"
+          strength: medium
+      utilities:
+        - signature: "H2 generation / supply"
+          strength: weak
+        - signature: "Power supply (~10-30 MW)"
+          strength: weak
+      logistics:
+        - signature: "Fuel transport cask loading dock"
+          strength: medium
+      personnel:
+        - signature: "200-500 staff parking"
+          strength: weak
+
+  - id: mox_fuel_fabrication
+    auxiliary_indicators:
+      heavy_shielding:
+        - signature: "Glovebox-line buildings disproportionately massive"
+          strength: strong
+      security:
+        - signature: "Heavy security perimeter (Pu Cat-I material)"
+          strength: strong
+
+cross_modal_consistency_checks:
+  - check: "Fuel assembly export volume vs declared throughput"
+    indicators_used: [V04_E08_logistics, V04_E03_outputs]
+  - check: "MOX plant security level matches Pu Cat-I requirements"
+
+historical_signatures_library:
+  - facility: "MELOX (Marcoule, FR)"
+    notable: "Largest civilian MOX plant"
+  - facility: "Rokkasho FMP (JP)"
+    notable: "Construction long-delayed"
+  - facility: "Cameco fuel (Port Hope CA)"
+    notable: "CANDU NU UO2 + assembly"
+  - facility: "FMP Isfahan (IR)"
+    notable: "Declared 2003; LEU fuel"
+
+vlm_priority: P2
+mvp_in_scope: true

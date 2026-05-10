@@ -1,0 +1,71 @@
+# V06_E08 — Heavy Water / Other Observables / Auxiliary
+cell_id: V06_E08
+volume: 6
+volume_name: "Heavy Water Production"
+element: 8
+element_name: "Other Observables / Auxiliary"
+
+processes:
+  - id: girdler_sulfide_GS
+    auxiliary_indicators:
+      facility_layout:
+        - signature: "Paired tall columns (cold + hot, 60-80 m each)"
+          strength: strong
+          visual_signature_image:
+            - "Distinctive industrial silhouette"
+            - "Visible from very far at sea level"
+        - signature: "Massive H2S inventory tanks within bunded area"
+          strength: strong
+        - signature: "Cooling tower bank (large)"
+          strength: medium
+      utilities:
+        - signature: "Power supply (50-200 MW typical for industrial scale)"
+          strength: medium
+        - signature: "River/coastal cooling water source"
+          strength: medium
+      logistics:
+        - signature: "Heavy industrial chemical truck/rail traffic (H2S delivery)"
+          strength: medium
+      security:
+        - signature: "H2S toxicity creates inherent security perimeter"
+          strength: medium
+      safety:
+        - signature: "Distinctive flare stack for H2S emergency burn"
+          strength: strong
+
+  - id: ammonia_hydrogen_exchange
+    auxiliary_indicators:
+      co_location:
+        - signature: "Adjacent ammonia plant or pipeline supply"
+          strength: medium
+
+  - id: electrolysis_distillation
+    auxiliary_indicators:
+      power_demand:
+        - signature: "Very high power (often hydroelectric co-location)"
+          strength: strong
+
+cross_modal_consistency_checks:
+  - check: "Plant capacity should match declared HWR fleet inventory needs"
+    indicators_used: [V06_E08_plant_capacity, V06_E03_inventory]
+
+vlm_prompts:
+  facility_layout_hint: |
+    GS HWP: paired tall packed columns + H2S tanks + cooling. Almost
+    impossible to confuse with other industrial chemical plants given the
+    column-pair geometry and H2S inventory scale.
+
+historical_signatures_library:
+  - facility: "AECL Glace Bay (CA, decommissioned)"
+    notable: "Largest historical commercial GS"
+  - facility: "BHWP Manuguru / Kota / Tuticorin / Talcher (IN)"
+    notable: "Operating; supports IPHWR fleet"
+  - facility: "Arak KHWP (IR)"
+    notable: "Built 1996-2006; supports IR-40"
+  - facility: "Vemork (NO, historical)"
+    notable: "WWII electrolysis; iconic OSINT case"
+  - facility: "Arroyito (AR)"
+    notable: "Operating; supports CNA-1/CNA-2"
+
+vlm_priority: P2
+mvp_in_scope: true

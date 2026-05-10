@@ -1,0 +1,67 @@
+# Physical Model — Volume 8: Spent Fuel and Waste Management (Overview)
+cell_id: V08_OVERVIEW
+volume: 8
+volume_name: "Spent Fuel Storage and Waste Management"
+element: 0
+element_name: "Volume Overview"
+
+definitions:
+  - "Storage and disposition of irradiated nuclear fuel and high-level waste."
+  - "Inventory of plutonium-bearing material at the back-end is the primary safeguards concern."
+
+acquisition_path_position: "plutonium_path/intermediate"
+inputs:
+  - "Spent fuel discharged from reactors (V05)"
+  - "High-level liquid waste from reprocessing (V07)"
+outputs:
+  - "Long-term storage / disposal endpoint"
+  - "Vitrified glass logs (HLW)"
+
+processes_in_scope:
+  - id: wet_storage_pool
+    description: "Spent fuel pools at reactor sites or interim sites"
+    proliferation_relevance: "high (Pu-bearing inventory)"
+    industrial_maturity: "universal"
+  - id: dry_cask_storage
+    description: "Concrete/steel casks for cooled spent fuel"
+    proliferation_relevance: "high (Pu inventory persists)"
+    industrial_maturity: "mature (CASTOR, HI-STORM, etc.)"
+  - id: vitrification
+    description: "HLW immobilization in borosilicate glass"
+    proliferation_relevance: "low-medium (Pu locked in glass)"
+    industrial_maturity: "mature (R7T7 La Hague, etc.)"
+  - id: encapsulation_canister
+    description: "Final repository canisters (KBS-3, copper-cast iron)"
+    proliferation_relevance: "low"
+    industrial_maturity: "deployment beginning (Onkalo Finland)"
+  - id: deep_geological_repository
+    description: "Permanent disposal in stable geology"
+    proliferation_relevance: "post-disposal — practically irreversible"
+    industrial_maturity: "Onkalo operational; others in licensing"
+
+global_facilities:
+  wet_storage:
+    - "Reactor-site pools (every NPP)"
+    - "Centralized: La Hague pools (FR), Sellafield (UK)"
+  dry_storage:
+    - "ISFSI (US, ~70+ sites)"
+    - "Bruce dry storage (CA)"
+    - "Castor stores (DE)"
+    - "JNFL Mutsu (JP)"
+  repository:
+    - "Onkalo (Finland) — operational 2024+"
+    - "Forsmark (SE) — licensed"
+    - "Yucca Mountain (US) — paused"
+    - "Bure (FR) — licensing"
+
+historical_significance:
+  - "Spent fuel pools are the largest accumulated Pu inventory globally (~600 tonnes Pu in spent LWR fuel)"
+  - "Reactor-grade Pu is weapons-feasible (Carson Mark 1990 demonstration)"
+
+references:
+  - "INFCIRC/254/Rev.14 — limited V08 specific items"
+  - "Liu Z., Morsy S. (1999) Vol. 8"
+  - "IAEA SSG-15: Storage of Spent Nuclear Fuel"
+
+vlm_priority: P2
+mvp_in_scope: true

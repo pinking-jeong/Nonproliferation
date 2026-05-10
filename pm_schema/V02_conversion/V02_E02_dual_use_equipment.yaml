@@ -1,0 +1,38 @@
+# V02_E02 — Conversion / Dual-Use Equipment
+cell_id: V02_E02
+volume: 2
+volume_name: "Conversion"
+element: 2
+element_name: "Dual-Use Equipment"
+
+processes:
+  - id: all_conversion
+    materials_required:
+      - hs_code: "8413"
+        name: "HF-resistant pumps (Hastelloy, fluoropolymer-lined)"
+        strength: medium
+      - hs_code: "8479"
+        name: "Specialty heat exchangers (Inconel 600, Hastelloy C-276)"
+        strength: medium
+      - hs_code: "8421"
+        name: "Compressors for F2 / UF6 service"
+        strength: medium
+        rationale: "Few civilian uses outside semiconductor and chemical industries"
+      - hs_code: "9027.50"
+        name: "Mass spectrometers for UF6 monitoring"
+        strength: medium
+
+  - id: fluorine_production
+    description: "On-site F2 generation by electrolysis of KF·HF"
+    materials_required:
+      - hs_code: "8543"
+        name: "Fluorine cells (carbon anodes, special diaphragms)"
+        strength: strong
+        rationale: "Few civilian users of large fluorine generation"
+
+trade_red_flags:
+  - "Bundle: HF-resistant pumps + Inconel reactors + F2 cells to single end-user"
+  - "Co-location: chemical plant near declared/suspected enrichment facility"
+
+vlm_priority: P2
+mvp_in_scope: true

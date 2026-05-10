@@ -1,0 +1,27 @@
+# V01_E06 — Mining/Milling / End Products
+cell_id: V01_E06
+volume: 1
+volume_name: "Mining and Milling"
+element: 6
+element_name: "End Products"
+
+products:
+  - name: "Yellowcake (U3O8) drums"
+    strength: strong
+    rationale: "Visible logistics trace (drum count, truck/rail transport)"
+    visual_signature_image:
+      - "200L drums on pallets in covered storage"
+      - "Drum loading docks at mill site"
+    trade_signature:
+      - hs_code: "2612.10"
+        description: "Uranium ore concentrates trade"
+
+  - name: "Uranium ore concentrate (UOC) cake"
+    strength: strong
+    note: "Synonymous; sometimes shipped as paste rather than drum"
+
+product_flow_consistency_check:
+  formula: "annual_drums × 200L × density × U_content_fraction = annual_yellowcake_kg"
+
+vlm_priority: P3
+mvp_in_scope: false

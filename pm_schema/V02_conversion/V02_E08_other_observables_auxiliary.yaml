@@ -1,0 +1,61 @@
+# V02_E08 — Conversion / Other Observables / Auxiliary
+cell_id: V02_E08
+volume: 2
+volume_name: "Conversion"
+element: 8
+element_name: "Other Observables / Auxiliary"
+
+processes:
+  - id: dry_route_to_UF6
+    auxiliary_indicators:
+      facility_layout:
+        - signature: "Multi-building chemical plant footprint"
+          strength: medium
+        - signature: "UF6 cylinder yard (highly distinctive)"
+          strength: strong
+          visual_signature_image:
+            - "Outdoor concrete pad with 30B/48Y cylinders in rows"
+            - "Loading dock with overhead crane"
+        - signature: "Stacks for HF / F2 venting (with scrubbers)"
+          strength: medium
+      utilities:
+        - signature: "HF storage tank farm"
+          strength: strong
+          visual_signature_image:
+            - "Large cylindrical tanks within bunded area"
+        - signature: "F2 generation building (electrochemical)"
+          strength: strong
+        - signature: "Power supply (10–50 MW typical)"
+          strength: medium
+      logistics:
+        - signature: "Yellowcake receiving area (drum unloading)"
+          strength: medium
+        - signature: "UF6 dispatch area (cylinder loading)"
+          strength: strong
+      security:
+        - signature: "Perimeter fencing, hardened gates"
+          strength: medium
+
+cross_modal_consistency_checks:
+  - check: "UF6 cylinder yard inventory + dispatch ≈ declared throughput"
+    indicators_used: [V02_E08_cylinder_yard, V02_E03_UF6_output]
+  - check: "HF tank farm capacity proportional to plant scale"
+
+vlm_prompts:
+  facility_layout_hint: |
+    Conversion plant: HF storage + fluorination buildings + UF6 cylinder yard +
+    yellowcake receiving + power/utilities. Combined footprint distinctively
+    chemical (vs reactor/enrichment).
+
+historical_signatures_library:
+  - facility: "Pierrelatte (FR)"
+    notable: "Large commercial UF6 conversion (Comurhex)"
+  - facility: "Port Hope (CA)"
+    notable: "Cameco; UO2 + UF6 lines"
+  - facility: "Esfahan UCF (IR)"
+    notable: "Iran's main conversion; declared 2003"
+  - facility: "Tuwaitha (IQ)"
+    notable: "Pre-1991 weapons program; partly destroyed"
+
+vlm_priority: P2
+mvp_in_scope: true

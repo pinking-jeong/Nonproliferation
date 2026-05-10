@@ -1,0 +1,62 @@
+# V10_E01 — Direct Handling / Especially Designed Equipment
+# Detection-side outline only — operational forming/casting details OMITTED.
+cell_id: V10_E01
+volume: 10
+volume_name: "Direct Handling of Plutonium / U-233 / HEU"
+element: 1
+element_name: "Especially Designed Equipment (detection outline)"
+
+policy_note: |
+  This cell intentionally describes only the *external observables* of
+  facilities that handle separated Pu / U-233 / HEU. Operational details
+  (forming, machining, alloy preparation specifics) are out of scope for
+  OS-PM and would be V11-territory. Where a category cannot be discussed
+  without crossing into weaponization, we mark `redacted_per_vol11_policy`.
+
+processes:
+  - id: civilian_pu_metal_handling
+    description: "Civilian / declared Pu metal handling lines."
+    visual_signatures:
+      sentinel2_observable:
+        - "Heavily-shielded glovebox lines (similar to MOX V04)"
+        - "Disproportionately massive building footprint"
+        - "Co-location with reprocessing (V07) or MOX (V04)"
+      planetscope_required:
+        - "HEPA stack array"
+    materials_required:
+      - hs_code: "8479"
+        name: "Alpha-tight glovebox lines"
+        strength: strong
+      - hs_code: "8421"
+        name: "HEPA + charcoal filtration banks"
+        strength: medium
+      - hs_code: "9027"
+        name: "Pu mass-balance NDA instrumentation"
+        strength: medium
+    operational_details: redacted_per_vol11_policy
+
+  - id: declared_HEU_storage
+    description: "HEU vault storage."
+    visual_signatures:
+      sentinel2_observable:
+        - "Heavy security perimeter (Cat-I)"
+        - "Reinforced storage building"
+      planetscope_required:
+        - "Heavy concrete and earth berms"
+    materials_required:
+      - hs_code: "8479"
+        name: "Storage racks (criticality-safe geometry)"
+        strength: strong
+        note: "Geometry detail intentionally not specified (safety-related)."
+
+  - id: civilian_pu_oxide_storage
+    description: "PuO2 in interim storage."
+    visual_signatures:
+      sentinel2_observable:
+        - "Highly secured compound; few buildings"
+      planetscope_required:
+        - "Storage cell array (vertical wells typical)"
+    note: "JNFL Rokkasho, Sellafield, La Hague are public examples."
+
+vlm_priority: P3
+mvp_in_scope: false

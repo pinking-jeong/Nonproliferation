@@ -1,0 +1,79 @@
+# V03_E05 — Enrichment / Technology, R&D, Training
+cell_id: V03_E05
+volume: 3
+volume_name: Enrichment
+element: 5
+element_name: "Technology / R&D / Training"
+
+definitions:
+  - "Knowledge, scientific publications, training programs, and human capital relevant to enrichment."
+
+processes:
+  - id: gas_centrifuge
+    rd_keywords:
+      strong:
+        - "supercritical centrifuge rotor dynamics"
+        - "Zippe centrifuge"
+        - "uranium hexafluoride flow modeling in centrifuges"
+        - "molecular pump effect at sub-Pa"
+        - "subcritical rotor design IR-2m IR-6"
+      medium:
+        - "Rayleigh equation isotope separation"
+        - "binary cascade design"
+        - "rotor balancing G0.4 ISO 21940"
+        - "frequency converter for high-speed motors"
+      weak:
+        - "rotating machinery dynamics"
+        - "high-vacuum systems"
+    indicative_journals:
+      - "Separation Science and Technology"
+      - "Annals of Nuclear Energy"
+      - "Progress in Nuclear Energy"
+      - "Journal of Mechanical Engineering Science"
+    indicative_conferences:
+      - "ESARDA Symposium on Safeguards"
+      - "IAEA Symposium on International Safeguards"
+      - "INMM Annual Meeting"
+    indicative_institutions:
+      - "URENCO (UK/DE/NL) — civilian commercial"
+      - "Rosatom TVEL (RU)"
+      - "Atomic Energy Organization of Iran (AEOI)"
+      - "Pakistan Atomic Energy Commission (PAEC)"
+      - "Khan Research Laboratories (KRL)"
+
+  - id: laser_AVLIS_MLIS_SILEX
+    rd_keywords:
+      strong:
+        - "atomic vapor laser isotope separation AVLIS"
+        - "molecular laser isotope separation MLIS"
+        - "SILEX uranium enrichment"
+        - "tunable copper-vapor laser uranium"
+        - "UF6 photodissociation"
+      medium:
+        - "isotope-selective photoionization"
+        - "high-power tunable laser"
+    indicative_institutions:
+      - "GE-Hitachi GLE (US, commercial license 2012)"
+      - "Silex Systems (AU)"
+      - "LLNL (historical AVLIS)"
+
+publication_velocity_signal:
+  description: |
+    Sudden ramp-up in centrifuge / laser-isotope publications from a country
+    with no prior nuclear industry → potential capability building.
+  detection_method: "OpenAlex query: country_code + nuclear keywords + year range, count over time"
+
+human_capital_signals:
+  - "Sustained outflow of PhD students to URENCO / Rosatom / KAERI / etc."
+  - "Returning postdoc cohort with rotor-dynamics or UF6 expertise"
+  - "Conference attendee lists (where public)"
+
+vlm_prompts:
+  paper_classification_rubric: |
+    STRONG: paper directly addresses enrichment process (centrifuge dynamics, AVLIS) with affiliations in non-NWS state.
+    MEDIUM: paper addresses adjacent technology (high-speed rotors, vacuum, UF6 chemistry) without direct enrichment claim.
+    WEAK: paper is generic mechanical/chemical engineering with only loose nuclear relevance.
+    UNRELATED: no nuclear or enrichment relevance.
+
+vlm_priority: P0
+mvp_in_scope: true

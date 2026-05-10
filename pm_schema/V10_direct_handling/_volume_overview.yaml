@@ -1,0 +1,68 @@
+# Physical Model — Volume 10: Direct Handling of Pu / U-233 / HEU (Overview)
+# RESTRICTED CONTENT — DETECTION-SIDE ONLY
+cell_id: V10_OVERVIEW
+volume: 10
+volume_name: "Direct Handling of Plutonium / U-233 / HEU"
+element: 0
+element_name: "Volume Overview"
+
+scope_policy:
+  in_scope:
+    - "Detection-side indicators that suggest a state operates a metal-handling line for Pu / U-233 / HEU."
+    - "Civilian / declared facilities (e.g., MOX feed lines, research reactor HEU storage)."
+  out_of_scope_redacted:
+    - "Operational details of metal forming, machining, or shaping that are weaponization-adjacent (these belong to V11 and are excluded by OS-PM scope policy)."
+    - "Critical mass calculation methodology or specifics."
+    - "Implosion / gun-type assembly geometry."
+
+definitions:
+  - "Handling separated, weapons-usable nuclear material in pure form (oxide, metal, alloy)."
+  - "Adjacent to but distinct from V11 (weaponization). V10 covers civilian / safeguarded handling only."
+
+acquisition_path_position: "plutonium_path/terminal_civilian; uranium_path/HEU_handling_civilian"
+inputs:
+  - "Pu nitrate / oxide from V07 reprocessing"
+  - "HEU UF6 / metal from V03 enrichment (legacy)"
+  - "U-233 from thorium cycle (rare)"
+outputs:
+  - "Civilian Pu metal billets for MOX or fast reactor R&D"
+  - "HEU storage (RERTR conversion ongoing globally)"
+  - "U-233 research samples"
+
+processes_in_scope:
+  - id: civilian_pu_metal_handling
+    description: "Pu metal forming for fast-reactor metallic fuel R&D"
+    proliferation_relevance: "high (material is weapons-usable)"
+    industrial_maturity: "research/pilot (US INL legacy, Russia)"
+    note: "Detection criteria only; weaponization details excluded."
+
+  - id: declared_HEU_storage
+    description: "HEU inventory at research reactors, naval propulsion sites (where declared)"
+    proliferation_relevance: "high"
+    industrial_maturity: "operational (US Y-12, Russia, etc.)"
+
+  - id: U233_research_handling
+    description: "Small quantity research handling"
+    proliferation_relevance: "medium-high"
+    industrial_maturity: "research only (BARC Trombay)"
+
+  - id: civilian_pu_oxide_storage
+    description: "PuO2 inventory awaiting MOX use"
+    proliferation_relevance: "high (Cat-I material)"
+    examples: "JNFL Rokkasho store; UK Sellafield Pu store"
+
+historical_significance:
+  - "Open-source detection of V10 facilities relies almost entirely on the V08/V07 outputs and OSINT, NOT on V10-specific equipment lists."
+  - "The IAEA's safeguards approach for separated Pu (Cat-I) is the most stringent; near-real-time monitoring."
+
+intentional_limitations:
+  - "Process details for Pu metal forming, casting, and machining are intentionally redacted in this schema."
+  - "Mass-balance specifics that would imply minimum-yield assumptions are excluded."
+  - "Weaponization geometry, critical mass numerics, and assembly methods are out of scope (see V11)."
+
+references:
+  - "INFCIRC/254/Part 1 §3 (Pu / U-233 / HEU items, partial)"
+  - "Liu Z., Morsy S. (1999) Vol. 10 — partial public coverage"
+
+vlm_priority: P3
+mvp_in_scope: false  # Sensitive — not in MVP demonstrator

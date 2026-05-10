@@ -1,0 +1,64 @@
+# V06_E05 — Heavy Water / Technology, R&D, Training
+cell_id: V06_E05
+volume: 6
+volume_name: "Heavy Water Production"
+element: 5
+element_name: "Technology / R&D / Training"
+
+processes:
+  - id: girdler_sulfide_GS
+    rd_keywords:
+      strong:
+        - "Girdler sulfide process"
+        - "GS heavy water"
+        - "H2S H2O isotope exchange"
+        - "bithermal exchange separation"
+      medium:
+        - "deuterium isotope effect"
+        - "isotope separation factor sulfide"
+
+  - id: ammonia_hydrogen_exchange
+    rd_keywords:
+      strong:
+        - "ammonia hydrogen exchange deuterium"
+        - "monothermal NH3/H2 exchange"
+        - "potassium amide catalyst"
+      medium:
+        - "Mazingarbe process"
+        - "tower design isotope exchange NH3"
+
+  - id: electrolysis_distillation
+    rd_keywords:
+      strong:
+        - "deuterium electrolysis enrichment"
+        - "heavy water distillation"
+        - "Vemork Rjukan electrolysis"
+      medium:
+        - "vacuum distillation deuterium"
+
+  - id: water_distillation
+    rd_keywords:
+      medium:
+        - "vacuum water distillation deuterium"
+        - "single-stage separation factor water"
+
+  - id: laser_separation_research
+    rd_keywords:
+      medium:
+        - "deuterium laser isotope separation"
+        - "photochemical D-H separation"
+
+indicative_journals:
+  - "Industrial & Engineering Chemistry Research"
+  - "Separation Science and Technology"
+  - "International Journal of Hydrogen Energy"
+  - "Journal of Nuclear Materials"
+
+indicative_institutions_civilian:
+  - "AECL R&D (CA, historical)"
+  - "BARC / NPCIL / BHWB (IN)"
+  - "INVAP (Argentina)"
+  - "AEOI (IR, Arak)"
+
+vlm_priority: P2
+mvp_in_scope: true

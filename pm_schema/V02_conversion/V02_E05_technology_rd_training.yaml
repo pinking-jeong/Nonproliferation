@@ -1,0 +1,51 @@
+# V02_E05 — Conversion / Technology, R&D, Training
+cell_id: V02_E05
+volume: 2
+volume_name: "Conversion"
+element: 5
+element_name: "Technology / R&D / Training"
+
+processes:
+  - id: dry_route_to_UF6
+    rd_keywords:
+      strong:
+        - "uranium hexafluoride synthesis"
+        - "UF6 fluorination kinetics"
+        - "Inconel HF corrosion"
+        - "uranium fluoride chemistry"
+        - "uranium tetrafluoride UF4"
+      medium:
+        - "fluorine production electrochemical"
+        - "F2 generation cell"
+        - "molten KF HF electrolysis"
+
+  - id: wet_route_to_UF6
+    rd_keywords:
+      strong:
+        - "ammonium diuranate ADU precipitation"
+        - "uranium solvent extraction conversion"
+      medium:
+        - "uranyl nitrate denitration"
+
+  - id: conversion_to_uranium_metal
+    rd_keywords:
+      medium:
+        - "uranium metal reduction Magnesium"
+        - "calciothermic reduction uranium"
+    note: "Specific bomb-reduction technology details intentionally minimised."
+
+indicative_journals:
+  - "Journal of Fluorine Chemistry"
+  - "Journal of Nuclear Materials"
+  - "Industrial & Engineering Chemistry Research"
+
+indicative_institutions_civilian:
+  - "Orano (formerly AREVA, Pierrelatte FR)"
+  - "Cameco (Port Hope CA)"
+  - "Honeywell (Metropolis US)"
+  - "JNFL (Japan)"
+  - "INET Tsinghua (China)"
+  - "AEOI (Iran, Esfahan)"
+
+vlm_priority: P2
+mvp_in_scope: true

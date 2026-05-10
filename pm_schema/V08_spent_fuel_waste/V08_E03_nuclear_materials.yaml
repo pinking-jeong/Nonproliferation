@@ -1,0 +1,43 @@
+# V08_E03 — Spent Fuel / Nuclear Materials
+cell_id: V08_E03
+volume: 8
+volume_name: "Spent Fuel Storage and Waste Management"
+element: 3
+element_name: "Nuclear Materials"
+
+inventory_categories:
+  - name: "Spent fuel (Pu-bearing)"
+    strength: strong
+    pu_content_typical:
+      LWR_spent_fuel: "~1% of HM as Pu (reactor-grade)"
+      CANDU_spent_fuel: "~0.4% of HM as Pu"
+      graphite_low_burnup: "0.4-0.8% of HM, weapons-grade if intentional"
+    cs_a_reportable: true
+
+  - name: "Vitrified HLW glass logs"
+    strength: medium
+    note: "Pu locked in glass matrix; difficult to recover"
+
+  - name: "Damaged / leaking fuel rods"
+    strength: medium
+    note: "Special handling; tracked separately"
+
+  - name: "Process residues, sludges"
+    strength: medium
+    note: "Cumulative over decades"
+
+declaration_consistency_checks:
+  - "SF inventory growth = (cumulative reactor output) - (transferred to repository) - (reprocessed)"
+  - "Cask count × per-cask loading should reconcile with declared throughput"
+
+red_flags:
+  - "SF inventory not growing despite operating reactor (covert reprocessing or transfer)"
+  - "Off-pool transfers to undisclosed location"
+  - "Pu inventory in vitrified waste mismatched with reprocessing throughput"
+
+environmental_signatures_link:
+  see_also: V08_E07
+  primary_signal: "Cs-137 leakage from damaged casks; tritium from pools"
+
+vlm_priority: P2
+mvp_in_scope: false  # Requires declaration access

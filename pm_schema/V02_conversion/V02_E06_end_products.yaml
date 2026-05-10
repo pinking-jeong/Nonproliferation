@@ -1,0 +1,31 @@
+# V02_E06 — Conversion / End Products
+cell_id: V02_E06
+volume: 2
+volume_name: "Conversion"
+element: 6
+element_name: "End Products"
+
+products:
+  - name: "UF6 (natural assay) in 48Y cylinders"
+    strength: strong
+    rationale: "Direct enrichment feed; cylinder yard count = production proxy"
+    visual_signature:
+      - "30B/48Y cylinders in outdoor yard (concrete pad, in rows)"
+    trade_signature:
+      - hs_code: "2844.30"
+
+  - name: "UO2 reactor-grade powder / pellets"
+    strength: strong
+    note: "HWR or LWR fuel feed; downstream to V04"
+
+  - name: "U metal billets"
+    strength: redacted_per_vol11_policy
+    note: "Weapons-adjacent — minimal detail per OS-PM scope policy"
+
+product_flow_consistency_check:
+  formula: |
+    yellowcake_in × 0.847 (U3O8 → UF6 mass yield) ≈ UF6_out
+  red_flag: "UF6 cylinder yard inventory growth not matching declared throughput"
+
+vlm_priority: P2
+mvp_in_scope: false  # Requires declaration access for full reconciliation

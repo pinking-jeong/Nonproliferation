@@ -1,0 +1,61 @@
+# V05_E02 — Reactor / Dual-Use Equipment
+cell_id: V05_E02
+volume: 5
+volume_name: "Reactor Operation"
+element: 2
+element_name: "Dual-Use Equipment"
+
+definitions:
+  - "Equipment widely used in non-nuclear industries but applicable to reactor construction."
+  - "INFCIRC/254/Part 2 (Dual-Use List)."
+
+processes:
+  - id: all_reactor_types
+    materials_required:
+      - hs_code: "7308"
+        name: "Heavy structural steel for containment / reactor building"
+        strength: weak
+      - hs_code: "8413"
+        name: "Centrifugal pumps (large, high-pressure)"
+        strength: medium
+        rationale: "Reactor coolant pumps; oil refinery overlap"
+      - hs_code: "8537"
+        name: "Industrial control systems (DCS, PLC) radiation-hardened"
+        strength: medium
+      - hs_code: "9030.10"
+        name: "Radiation monitors / portal monitors"
+        strength: medium
+      - hs_code: "8479.81"
+        name: "Welding robots, narrow-gap welding equipment"
+        strength: weak
+        rationale: "Required for reactor pressure vessel; common in heavy industry"
+      - hs_code: "8418.10"
+        name: "Industrial chillers / heat exchangers"
+        strength: weak
+
+  - id: research_reactor
+    materials_required:
+      - hs_code: "9022.21"
+        name: "Beam-line equipment, neutron diffractometers"
+        strength: medium
+        rationale: "Neutron-beam research applications"
+
+  - id: fast_breeder_reactor
+    materials_required:
+      - hs_code: "8540"
+        name: "Specialty high-temperature electromagnetic pumps (sodium loops)"
+        strength: strong
+        rationale: "Few civilian uses for liquid-metal pumps at this scale"
+
+trade_red_flags:
+  - "Reactor pressure vessel forgings (only ~3-5 global suppliers: JSW Japan, Doosan Korea, Sfar France, China First Heavy)"
+  - "Bundled procurement of heat exchangers + control systems + radiation monitors at single end-user"
+  - "Routing through transshipment hubs for end-user lacking declared civilian power program"
+
+vlm_prompts:
+  trade_classification_hint: |
+    Single industrial pump = weak. RPV forging from JSW/Doosan to a non-NWS state without
+    civilian reactor program = very strong (small list of buyers globally).
+
+vlm_priority: P2
+mvp_in_scope: true

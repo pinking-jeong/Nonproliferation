@@ -1,0 +1,56 @@
+# V01_E08 — Mining/Milling / Other Observables / Auxiliary
+cell_id: V01_E08
+volume: 1
+volume_name: "Mining and Milling"
+element: 8
+element_name: "Other Observables / Auxiliary"
+
+processes:
+  - id: open_pit_mining
+    auxiliary_indicators:
+      mine_geometry:
+        - signature: "Concentric terraced pit walls (haul-truck access)"
+          strength: strong
+        - signature: "Waste rock dumps (large piles adjacent)"
+          strength: strong
+      logistics:
+        - signature: "Heavy haul truck routes"
+          strength: medium
+        - signature: "Rail spur or trucking depot"
+          strength: medium
+
+  - id: underground_mining
+    auxiliary_indicators:
+      surface_signatures:
+        - signature: "Headframe / mine shaft buildings"
+          strength: strong
+        - signature: "Smaller surface footprint than open pit"
+          strength: medium
+
+  - id: in_situ_leach_ISL
+    auxiliary_indicators:
+      well_field:
+        - signature: "Distinctive 5-spot or 7-spot well pattern"
+          strength: strong
+        - signature: "Pipe collection network"
+          strength: medium
+
+  - id: all_mining
+    auxiliary_indicators:
+      utilities:
+        - signature: "Power supply (substation, lines)"
+          strength: weak
+        - signature: "Water supply (pipeline, wells)"
+          strength: weak
+
+cross_modal_consistency_checks:
+  - check: "Pit volume + ore grade × density ≈ cumulative U production"
+    indicators_used: [V01_E08_pit_geometry, V01_E03_yellowcake]
+
+vlm_prompts:
+  facility_layout_hint: |
+    Open-pit U mine: terraced pit + waste dumps + mill complex + tailings pond.
+    ISL: well field pattern + small process plant + storage drums.
+
+vlm_priority: P3
+mvp_in_scope: false

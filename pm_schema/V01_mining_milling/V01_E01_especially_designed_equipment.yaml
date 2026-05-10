@@ -1,0 +1,65 @@
+# V01_E01 — Mining/Milling / Especially Designed Equipment
+cell_id: V01_E01
+volume: 1
+volume_name: "Mining and Milling"
+element: 1
+element_name: "Especially Designed Equipment"
+
+definitions:
+  - "Items designed for the recovery of uranium from ores."
+  - "INFCIRC/254/Part 1 has limited mining-specific items; most equipment is generic."
+
+processes:
+  - id: conventional_milling
+    description: "Crushing → grinding → leaching → solvent extraction or ion exchange → precipitation."
+    visual_signatures:
+      sentinel2_observable:
+        - "Open pit mine with characteristic terraced walls"
+        - "Mill complex (crushing/grinding mill, leach circuit, tailings storage)"
+        - "Tailings impoundment (large lined pond)"
+      planetscope_required:
+        - "Solvent extraction circuit layout"
+        - "Yellowcake drying and packaging area"
+    materials_required:
+      - hs_code: "8474.20"
+        name: "Heavy ball / SAG mills"
+        strength: weak
+        rationale: "Generic mining equipment"
+      - hs_code: "2811.19"
+        name: "Sulfuric acid (acid leach circuits)"
+        strength: weak
+        rationale: "Bulk industrial; widely used"
+
+  - id: in_situ_leach_ISL
+    description: "Lixiviant injection into wells; recovery via ion exchange columns."
+    visual_signatures:
+      sentinel2_observable:
+        - "Well field pattern (5-spot or 7-spot)"
+        - "Process plant with IX columns (small footprint)"
+        - "Minimal surface disturbance — distinctive minimal-footprint ISL signature"
+      planetscope_required:
+        - "Pipe network on the well field"
+    materials_required:
+      - hs_code: "3914"
+        name: "Ion exchange resins (uranium-selective)"
+        strength: medium
+      - hs_code: "2807"
+        name: "Sulfuric acid OR carbonate-bicarbonate (alkaline lixiviant)"
+        strength: weak
+
+  - id: by_product_recovery
+    description: "Recovery from phosphate processing or copper tailings."
+    visual_signatures:
+      sentinel2_observable:
+        - "Phosphate / copper plant primary; uranium plant tucked alongside"
+    proliferation_concern:
+      - "Low-grade, distributed source — hard to detect undeclared production"
+      - "Phosphate fertilizer industry is a potential undeclared U source"
+
+end_products_yellowcake:
+  - "U3O8 (yellowcake) packaged in 200L drums"
+  - "Drum count proxy for production volume"
+  - "Trade flow visible in UN COMTRADE HS 2612.10"
+
+vlm_priority: P3
+mvp_in_scope: false

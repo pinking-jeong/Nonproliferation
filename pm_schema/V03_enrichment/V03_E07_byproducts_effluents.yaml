@@ -1,0 +1,75 @@
+# V03_E07 — Enrichment / By-products / Effluents
+cell_id: V03_E07
+volume: 3
+volume_name: Enrichment
+element: 7
+element_name: "By-products / Effluents (Environmental Signatures)"
+
+definitions:
+  - "Material and energy by-products that may be detected via environmental monitoring."
+
+byproducts:
+  - name: "HF / fluorine effluent"
+    process: gas_centrifuge
+    strength: medium
+    detection:
+      method: "Air sampling (HF analyzers); trace levels normally below limits"
+      sentinel_observable: false
+    signature_distinct_from_civilian:
+      - "Co-location with hardened facility + cylinder yard"
+
+  - name: "Krypton-85 (extremely low for centrifuge)"
+    process: gas_centrifuge
+    strength: weak
+    note: "Centrifuge enrichment produces negligible Kr-85; this is mainly a reprocessing indicator (V07)"
+
+  - name: "Heat dissipation"
+    process: gas_centrifuge
+    strength: medium
+    detection:
+      method: "Sentinel-3 SLSTR thermal infrared, Landsat-8/9 TIRS"
+      pattern: "Persistent thermal hot spot at cooling tower / chiller"
+      example_facility: "Natanz cooling tower thermal signature, 2007-present"
+      hive_relevance: "SatVu HiVE high-resolution TIR is well-suited for night-time effluent imaging"
+
+  - name: "Heat dissipation (gaseous diffusion)"
+    process: gaseous_diffusion
+    strength: strong
+    detection:
+      method: "Visible cooling plumes from massive cooling towers"
+      pattern: "Persistent steam/water vapor plume; high latent heat output"
+
+  - name: "UF6 leak particulate (rare events)"
+    strength: strong_when_present
+    detection:
+      method: "Wide-area environmental sampling (uranium isotope ratio in particulate)"
+
+monitoring_systems:
+  - name: EURDEP
+    type: gamma_dose_rate
+    coverage: EU + neighbors
+    accessibility: partial_public
+  - name: CTBTO_IMS_radionuclide
+    type: Xe / particulate
+    coverage: global
+    accessibility: state-parties
+  - name: NOAA_HYSPLIT
+    type: atmospheric_transport_inversion
+    accessibility: free
+  - name: Sentinel-3_SLSTR
+    type: thermal_IR
+    resolution: "1 km (limited but free)"
+    accessibility: free
+  - name: HiVE_satvu
+    type: thermal_IR
+    resolution: "3.5 m"
+    accessibility: commercial
+
+vlm_prompts:
+  thermal_anomaly_hint: |
+    A persistent thermal hot spot at a known/suspected enrichment facility,
+    consistent across multiple acquisitions and not explained by climate/agriculture,
+    is a medium-strength indicator. Combine with visual context.
+
+vlm_priority: P2
+mvp_in_scope: false  # Phase 2 priority once HiVE/SLSTR pipeline added

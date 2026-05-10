@@ -1,0 +1,36 @@
+# V10_E06 — Direct Handling / End Products
+cell_id: V10_E06
+volume: 10
+volume_name: "Direct Handling of Plutonium / U-233 / HEU"
+element: 6
+element_name: "End Products (detection outline)"
+
+products:
+  - name: "Civilian Pu metal billets (R&D / MOX feed forms)"
+    strength: redacted_per_vol11_policy
+    note: "Per OS-PM scope, we do not enumerate sizes, masses, or geometry of Pu metal end-products."
+    civilian_use_examples:
+      - "Metallic fuel pin (U-Pu-Zr) for fast reactor R&D"
+
+  - name: "HEU metal / oxide research stocks"
+    strength: redacted_per_vol11_policy
+    civilian_use_examples:
+      - "Research reactor fuel inventory"
+      - "Naval propulsion (declared in NWS only)"
+
+  - name: "U-233 research samples"
+    strength: medium
+    civilian_use_examples:
+      - "Thorium fuel cycle R&D"
+
+  - name: "MOX feed (PuO2/UO2 mixtures)"
+    strength: strong
+    civilian_use_examples:
+      - "Feed to V04 MOX fabrication"
+
+scope_clarification:
+  - "OS-PM treats V10 outputs as inputs to other tracked volumes (e.g., MOX → V04)."
+  - "Detection-side, V10 outputs primarily appear as Cat-I inventory in V08 (storage) and V04 (fabrication)."
+
+vlm_priority: P3
+mvp_in_scope: false

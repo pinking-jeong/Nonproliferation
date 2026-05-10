@@ -1,0 +1,62 @@
+# V06_E04 — Heavy Water / Non-Nuclear Materials
+cell_id: V06_E04
+volume: 6
+volume_name: "Heavy Water Production"
+element: 4
+element_name: "Non-Nuclear Materials"
+
+processes:
+  - id: girdler_sulfide_GS
+    materials_required:
+      - hs_code: "2811.19"
+        name: "Hydrogen sulfide (H2S) — large industrial inventory"
+        strength: strong
+        rationale: "Very large H2S inventory is highly distinctive"
+      - hs_code: "8479"
+        name: "Specialty corrosion-resistant alloys"
+        strength: medium
+      - hs_code: "2511"
+        name: "Sulfuric acid (auxiliary)"
+        strength: weak
+
+  - id: ammonia_hydrogen_exchange
+    materials_required:
+      - hs_code: "2814"
+        name: "Liquid ammonia (industrial bulk)"
+        strength: medium
+        rationale: "Industrial NH3 is common but at HWP scales/co-location is distinctive"
+      - hs_code: "2825"
+        name: "Specialty catalysts (potassium amide on KNH2)"
+        strength: medium
+
+  - id: electrolysis_distillation
+    materials_required:
+      - hs_code: "2815"
+        name: "KOH / NaOH electrolyte"
+        strength: weak
+      - hs_code: "8543"
+        name: "Special anodes / cathodes (Ni, Pt-group)"
+        strength: weak
+
+trade_pattern_indicators:
+  bundle_strength_strong:
+    - items: ["bulk_H2S", "specialty_columns", "compressors_H2S_rated"]
+      implies: "GS heavy water production"
+    - items: ["large_NH3_inventory", "potassium_amide_catalyst", "tall_columns"]
+      implies: "NH3/H2 exchange HWP"
+  bundle_strength_medium:
+    - items: ["large_electrolyser", "vacuum_distillation"]
+      implies: "electrolysis-distillation HWP"
+
+historical_procurement_cases:
+  - country: India
+    decade: "1960s-80s"
+    materials: ["H2S-handling", "NH3 exchange technology"]
+    facility: "BHWP Manuguru, Kota, Tuticorin, Talcher"
+  - country: Iran
+    decade: "1996-2010s"
+    materials: ["heavy water plant components"]
+    facility: "Arak Heavy Water Production Plant (KHWP)"
+
+vlm_priority: P2
+mvp_in_scope: true

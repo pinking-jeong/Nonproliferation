@@ -1,0 +1,65 @@
+# Physical Model — Volume 1: Mining and Milling (Overview)
+cell_id: V01_OVERVIEW
+volume: 1
+volume_name: "Mining and Milling"
+element: 0
+element_name: "Volume Overview"
+
+definitions:
+  - "Extraction of uranium-bearing ore and concentration to yellowcake (U3O8)."
+  - "Front-end of the uranium fuel cycle. Globally distributed, often dual civilian-military use historically."
+
+acquisition_path_position: "uranium_path/source"
+inputs:
+  - "Uranium-bearing ore (sandstone, vein, breccia, ISL)"
+outputs:
+  - "Yellowcake (U3O8, 70-90% U content)"
+  - "Mill tailings (long-term contamination concern)"
+  - "Trace radium / radon emissions"
+
+processes_in_scope:
+  - id: open_pit_mining
+    proliferation_relevance: "low (declared mining is normal civilian)"
+    industrial_maturity: "mature"
+  - id: underground_mining
+    proliferation_relevance: "low-medium (concealment easier)"
+    industrial_maturity: "mature"
+  - id: in_situ_leach_ISL
+    proliferation_relevance: "low"
+    industrial_maturity: "mature (KZ, US, AU)"
+    description: "Acid or alkaline lixiviant injected into ore body; minimal surface disturbance"
+  - id: heap_leach_milling
+    proliferation_relevance: "low"
+    industrial_maturity: "mature"
+  - id: by_product_recovery
+    proliferation_relevance: "medium (low-grade source, hard to detect)"
+    description: "Phosphate processing residues, copper tailings can yield U"
+
+historical_cases:
+  - state: South_Africa
+    process: "by_product_uranium_from_gold"
+    period: "1950s–1990s"
+    significance: "Major historical supplier; dual-use to weapons program"
+  - state: Iraq
+    process: "open_pit_at_Akashat"
+    period: "1980s"
+    significance: "Pre-1991 weapons program included indigenous mining"
+  - state: Niger
+    process: "open_pit / underground"
+    period: "1960s-present"
+    significance: "Major supplier; not weapons-related but illustrates trade tracking"
+
+global_top_producers_2023:
+  - "Kazakhstan (~43% global)"
+  - "Canada (~15%)"
+  - "Namibia (~11%)"
+  - "Australia (~9%)"
+  - "Uzbekistan (~7%)"
+
+references:
+  - "INFCIRC/254/Part 1 — annexes mention only specific equipment (limited control)"
+  - "OECD-NEA/IAEA Red Book (biennial uranium resources)"
+  - "World Nuclear Association U production data"
+
+vlm_priority: P3
+mvp_in_scope: false  # Front-end has limited proliferation signal alone

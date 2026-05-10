@@ -1,0 +1,53 @@
+# V08_E01 — Spent Fuel / Especially Designed Equipment
+cell_id: V08_E01
+volume: 8
+volume_name: "Spent Fuel Storage and Waste Management"
+element: 1
+element_name: "Especially Designed Equipment"
+
+processes:
+  - id: wet_storage_pool
+    description: "Reactor-site or central pools."
+    visual_signatures:
+      sentinel2_observable:
+        - "Pool building (often part of reactor auxiliary)"
+        - "Cooling water heat signature"
+      planetscope_required:
+        - "Pool surface visible through skylights occasionally"
+
+  - id: dry_cask_storage
+    visual_signatures:
+      sentinel2_observable:
+        - "ISFSI pad with concrete vertical/horizontal casks in rows"
+        - "Distinctive pattern: regular grid of cylindrical structures"
+        - "Typical pad size: 100-300 m × 50-150 m for utility-scale"
+      planetscope_required:
+        - "Individual cask outlines (HI-STORM ~5.5 m × 3.4 m diameter)"
+    materials_required:
+      - hs_code: "8401.40"
+        name: "Storage / transport casks (steel + concrete)"
+        strength: medium
+        rationale: "Specifically designed for SF; not weapons-relevant"
+
+  - id: vitrification
+    visual_signatures:
+      sentinel2_observable:
+        - "Vitrification plant (rare; ~5 globally)"
+        - "Co-located with reprocessing (V07) facility"
+      planetscope_required:
+        - "Glass-log canister storage"
+    materials_required:
+      - hs_code: "8417"
+        name: "Vitrification melters (cold crucible / induction)"
+        strength: strong
+        rationale: "Few civilian users worldwide"
+
+  - id: encapsulation_canister
+    materials_required:
+      - hs_code: "7411"
+        name: "Copper canister blanks (large diameter)"
+        strength: medium
+        rationale: "KBS-3 specific; rare elsewhere"
+
+vlm_priority: P2
+mvp_in_scope: true

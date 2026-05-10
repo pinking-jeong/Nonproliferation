@@ -1,0 +1,55 @@
+# Physical Model — Volume 12: Cross-Cutting (Overview)
+cell_id: V12_OVERVIEW
+volume: 12
+volume_name: "Cross-Cutting Indicators"
+element: 0
+element_name: "Volume Overview"
+
+definitions:
+  - "State-level indicators that span all fuel-cycle volumes — personnel, funding, doctrine, cooperation, infrastructure baseline."
+  - "These shape the *prior* in Bayesian APA: a state's overall capability and intent context."
+
+acquisition_path_position: "all (state-level prior)"
+inputs:
+  - "Public records: government budget, defense allocations, scientific manpower data"
+  - "Open-source: speeches, doctrine documents, cooperation treaties"
+  - "Trade and travel records (training-related)"
+outputs:
+  - "State-level capability index (input to APA prior)"
+  - "Doctrine / intent context"
+  - "Cooperation network (peer-state ties)"
+
+categories_in_scope:
+  - id: nuclear_workforce
+    description: "Trained scientific and engineering personnel pool"
+    proliferation_relevance: "medium-high"
+  - id: budget_funding
+    description: "State R&D + defense + nuclear-program-specific allocations"
+    proliferation_relevance: "medium"
+  - id: doctrine_intent
+    description: "Declared nuclear policy: peaceful, deterrent, ambiguous, latent"
+    proliferation_relevance: "high (intent shapes Bayesian prior)"
+  - id: international_cooperation
+    description: "NSG / treaty memberships, bilateral 123 agreements, IAEA cooperation"
+    proliferation_relevance: "medium"
+  - id: industrial_baseline
+    description: "Industrial capability outside nuclear (chemistry, metallurgy, electronics)"
+    proliferation_relevance: "medium"
+  - id: geopolitical_context
+    description: "Regional tensions, security guarantees, perceived threats"
+    proliferation_relevance: "high"
+  - id: nonproliferation_record
+    description: "Past compliance, sanctions history, AP/SQP/CSA status"
+    proliferation_relevance: "high"
+
+historical_significance:
+  - "Most weapons programmes track to a confluence of doctrine + capability + threat perception (cf. Sagan models)."
+  - "OS-PM uses V12 as the prior-setting layer for state-level evaluation."
+
+references:
+  - "Liu Z., Morsy S. (1999) Vol. 12 (cross-cutting infrastructure)"
+  - "Sagan S. (1996/97) Why Do States Build Nuclear Weapons? International Security 21(3) — for doctrine framework"
+  - "Solingen E. (2007) Nuclear Logics — for regional comparative cases"
+
+vlm_priority: P2
+mvp_in_scope: true  # Provides Bayesian prior for cell-level fusion

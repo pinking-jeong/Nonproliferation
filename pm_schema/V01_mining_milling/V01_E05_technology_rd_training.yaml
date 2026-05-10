@@ -1,0 +1,48 @@
+# V01_E05 — Mining/Milling / Technology, R&D, Training
+cell_id: V01_E05
+volume: 1
+volume_name: "Mining and Milling"
+element: 5
+element_name: "Technology / R&D / Training"
+
+processes:
+  - id: conventional_milling
+    rd_keywords:
+      strong:
+        - "uranium milling solvent extraction"
+        - "uranium leaching kinetics"
+      medium:
+        - "yellowcake precipitation"
+        - "tailings management uranium"
+      weak:
+        - "ion exchange resin uranium"
+        - "ore beneficiation"
+
+  - id: in_situ_leach_ISL
+    rd_keywords:
+      strong:
+        - "in-situ leach uranium"
+        - "ISL well field design"
+        - "uranium roll-front sandstone"
+      medium:
+        - "groundwater restoration ISL"
+
+  - id: by_product_recovery
+    rd_keywords:
+      medium:
+        - "phosphoric acid uranium recovery"
+        - "uranium from copper tailings"
+
+indicative_journals:
+  - "Hydrometallurgy"
+  - "Minerals Engineering"
+  - "Journal of Radioanalytical and Nuclear Chemistry"
+
+indicative_institutions_civilian:
+  - "Cameco Corp R&D (Canada)"
+  - "Orano (France)"
+  - "Kazatomprom R&D (Kazakhstan)"
+  - "AMEC / Wood / SRK Consulting (consulting)"
+
+vlm_priority: P3
+mvp_in_scope: false

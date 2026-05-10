@@ -1,0 +1,49 @@
+# V07_E03 — Reprocessing / Nuclear Materials
+cell_id: V07_E03
+volume: 7
+volume_name: "Reprocessing"
+element: 3
+element_name: "Nuclear Materials"
+
+inputs_to_process:
+  - name: "Spent fuel (LEU / NU origin)"
+    note: "Heavily safeguarded; transfer to reprocessing requires special procedures"
+    strength: strong
+  - name: "Spent research reactor fuel"
+    strength: medium
+  - name: "Pre-irradiated targets (Pu production reactors)"
+    strength: strong
+    note: "Distinguishing characteristic of weapons-program reprocessing"
+
+outputs_from_process:
+  - name: "Pu nitrate solution / Pu(NO3)4"
+    strength: strong
+    rationale: "Direct precursor to Pu metal"
+  - name: "Pu oxide PuO2"
+    strength: strong
+    rationale: "Stable storage form; MOX precursor"
+  - name: "Pu metal (further down line)"
+    strength: redacted_per_vol11_policy
+    note: "Pu metal handling is weaponization-adjacent — out of OS-PM scope"
+  - name: "Recovered uranium (slightly depleted/enriched)"
+    strength: medium
+  - name: "High-level liquid waste (HLW)"
+    strength: medium
+    rationale: "Inventory and waste cylinder count is an indirect indicator"
+
+declaration_consistency_checks:
+  - "Reported Pu separation should match: input spent fuel × declared Pu content × recovery yield"
+  - "Recovered U mass should reconcile (less Pu fraction)"
+  - "HLW inventory growth should track campaigns"
+
+red_flags:
+  - "Reprocessing campaigns unannounced or duration mismatched"
+  - "Spent fuel from undeclared / production reactor (low burnup)"
+  - "Pu output exceeding civilian use (MOX) absorptive capacity"
+
+environmental_signatures_link:
+  see_also: V07_E07
+  primary_signal: "Krypton-85 release (essentially diagnostic of reprocessing)"
+
+vlm_priority: P2
+mvp_in_scope: false  # Requires declaration access

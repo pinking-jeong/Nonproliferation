@@ -1,0 +1,48 @@
+# V06_E07 — Heavy Water / By-products / Effluents
+cell_id: V06_E07
+volume: 6
+volume_name: "Heavy Water Production"
+element: 7
+element_name: "By-products / Effluents"
+
+byproducts:
+  - name: "H2S leaks (GS process)"
+    strength: medium
+    detection:
+      method: "Sentinel-5P TROPOMI SO2/H2S limited; downwind hydrogen sulfide odor; local air monitors"
+      practical: "Distinctive industrial smell of H2S; visible as blowdown plume"
+
+  - name: "Thermal effluent (large cooling demand)"
+    strength: medium
+    detection:
+      method: "Sentinel-3 SLSTR; Landsat TIRS"
+      pattern: "Persistent thermal load, riverside or coastal"
+
+  - name: "Liquid effluent (saline brine)"
+    strength: weak
+    detection:
+      method: "Local water quality monitoring; not remote OSINT-scale"
+
+  - name: "Power consumption signature"
+    strength: medium
+    detection:
+      method: "Inferred from grid statistics or visible substation"
+      note: "GS plants are very large electrical loads"
+
+monitoring_systems_relevance:
+  TIR_thermal:
+    relevance: "★★★ — large industrial thermal load"
+  TROPOMI_S5P:
+    relevance: "★★ — generic SO2 column; not D2O specific"
+  visible_imagery:
+    relevance: "★★★★ — column geometry highly distinctive"
+
+vlm_prompts:
+  hwp_visual_hint: |
+    GS-process HWP: paired tall packed columns (cold + hot), H2S inventory
+    tanks, large cooling. NH3/H2 process: tall columns + ammonia plant
+    co-location. Electrolysis/distillation: large electrolyser hall +
+    distillation column array.
+
+vlm_priority: P2
+mvp_in_scope: true

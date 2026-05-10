@@ -1,0 +1,64 @@
+# V02_E04 — Conversion / Non-Nuclear Materials
+cell_id: V02_E04
+volume: 2
+volume_name: "Conversion"
+element: 4
+element_name: "Non-Nuclear Materials"
+
+processes:
+  - id: dry_route_to_UF6
+    materials_required:
+      - hs_code: "2811.11"
+        name: "Anhydrous hydrogen fluoride (HF)"
+        strength: strong
+        rationale: "Primary conversion reagent; large volumes; specialty purity"
+      - hs_code: "2812"
+        name: "Fluorine gas (F2) — usually generated on-site"
+        strength: strong
+      - hs_code: "2823"
+        name: "Titanium tetrachloride (some catalyst)"
+        strength: weak
+      - hs_code: "7228"
+        name: "Inconel / Monel / Hastelloy specialty alloys"
+        strength: medium
+
+  - id: wet_route_to_UF6
+    materials_required:
+      - hs_code: "2807"
+        name: "Sulfuric acid"
+        strength: weak
+      - hs_code: "2814"
+        name: "Ammonia (for ADU precipitation)"
+        strength: weak
+      - hs_code: "2811.11"
+        name: "Anhydrous HF (downstream stages)"
+        strength: strong
+
+  - id: conversion_to_uranium_metal
+    materials_required:
+      - hs_code: "8104"
+        name: "Magnesium metal (bomb reduction reagent)"
+        strength: medium
+      - hs_code: "2825.10"
+        name: "Calcium metal (alternative reductant)"
+        strength: medium
+
+trade_pattern_indicators:
+  bundle_strength_strong:
+    - items: ["yellowcake_import", "anhydrous_HF_bulk", "F2_generation_cells"]
+      implies: "UF6 conversion plant"
+    - items: ["UF6_output", "Inconel_reactor", "F2_storage"]
+      implies: "operating dry-route conversion"
+
+historical_procurement_cases:
+  - country: Iraq
+    decade: "1980s"
+    materials: ["HF", "specialty alloys", "yellowcake"]
+    facility: "Tuwaitha"
+  - country: Iran
+    decade: "1990s-2000s"
+    materials: ["HF", "yellowcake", "Inconel"]
+    facility: "Esfahan UCF"
+
+vlm_priority: P2
+mvp_in_scope: true

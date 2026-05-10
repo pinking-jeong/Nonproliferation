@@ -1,0 +1,33 @@
+# V06_E03 — Heavy Water / Nuclear Materials
+cell_id: V06_E03
+volume: 6
+volume_name: "Heavy Water Production"
+element: 3
+element_name: "Nuclear Materials (and reportable items)"
+
+definitions:
+  - "Heavy water itself is not a nuclear material in the safeguards sense, but is INFCIRC/254 controlled and inventory-tracked when destined for nuclear use."
+
+inventory_categories:
+  - name: "Heavy water D2O reactor-grade"
+    hs_code: "2845.10"
+    strength: strong
+    cs_a_reportable: "yes when supplied for safeguarded reactor"
+    nsg_reference: "Part 1, §1.4"
+
+  - name: "Tritium (DT byproduct from CANDU reactor operation)"
+    strength: strong
+    note: "V06 produces D2O; tritium is downstream byproduct from HWR operation. Boosting/weapons relevance — V11 redacted policy applies for downstream uses."
+    redacted_per_vol11_policy_for_weapons_use: true
+
+declaration_consistency_checks:
+  - "D2O imports + domestic production should reconcile with reactor inventory"
+  - "Inventory at HWR operators (CANDU, IPHWR, IR-40) should match supply"
+
+red_flags:
+  - "D2O production above declared HWR demand"
+  - "D2O transfer to non-declared end-user"
+  - "Imports by state without declared HWR program"
+
+vlm_priority: P3
+mvp_in_scope: false

@@ -1,0 +1,32 @@
+# V04_E06 — Fuel Fabrication / End Products
+cell_id: V04_E06
+volume: 4
+volume_name: "Fuel Fabrication"
+element: 6
+element_name: "End Products"
+
+products:
+  - name: "LWR fuel assemblies (PWR / BWR)"
+    strength: strong
+    typical_dimensions: "~4 m tall × 0.2 m × 0.2 m"
+    transport: "Specialised fuel transport casks"
+
+  - name: "CANDU 37-element bundles"
+    strength: strong
+    typical_dimensions: "0.5 m × 0.1 m diameter"
+    transport: "Bulk packaging (lighter shielding for NU)"
+
+  - name: "MOX fuel assemblies"
+    strength: strong
+    note: "Heavily safeguarded transport; rare commerce"
+
+  - name: "Research reactor fuel plates / elements"
+    strength: medium
+
+product_flow_consistency_check:
+  description: |
+    Fabricated fuel mass ≈ feed mass × (1 - scrap_fraction). Discrepancies
+    suggest unaccounted material.
+
+vlm_priority: P3
+mvp_in_scope: false

@@ -1,0 +1,107 @@
+# V05_E01 — Reactor / Especially Designed Equipment
+cell_id: V05_E01
+volume: 5
+volume_name: "Reactor Operation"
+element: 1
+element_name: "Especially Designed Equipment"
+
+definitions:
+  - "Major reactor components that are specifically designed or prepared for nuclear use."
+  - "INFCIRC/254/Rev.14/Part 1 §1 (complete reactors)."
+
+processes:
+  - id: light_water_reactor_LWR
+    description: "Pressurised or boiling water reactor (PWR, BWR)."
+    references:
+      - "INFCIRC/254/Part 1, §1.1, §1.2"
+    visual_signatures:
+      sentinel2_observable:
+        - "Cylindrical or domed containment building (40-50 m diameter, 70-100 m tall)"
+        - "Adjacent turbine hall (rectangular, 100+ m long)"
+        - "Cooling structures (towers or open-water intake)"
+      planetscope_required:
+        - "Containment hatch / fuel transfer canal"
+        - "Reactor auxiliary buildings layout"
+    auxiliary_indicators:
+      - "Large grid connection (1+ GW transmission)"
+      - "Off-site power supply structures"
+    materials_required:
+      - hs_code: "8401.10"
+        name: "Reactor pressure vessel (forging)"
+        strength: strong
+      - hs_code: "8401.20"
+        name: "Steam generators"
+        strength: strong
+    end_products:
+      - "Electricity / process heat"
+      - "Spent LEU fuel (low Pu-239, contaminated with Pu-240)"
+
+  - id: heavy_water_reactor_HWR
+    description: "CANDU, IPHWR — natural uranium fuel, online refueling."
+    visual_signatures:
+      sentinel2_observable:
+        - "Squat, broad reactor building (different from LWR dome)"
+        - "Large heavy-water plant adjacent (V06)"
+        - "Fuel handling machine bays (online refueling key indicator)"
+    materials_required:
+      - hs_code: "8401.10"
+        name: "Calandria vessel + pressure tubes (Zr-Nb alloy)"
+        strength: strong
+      - hs_code: "8108"
+        name: "Zirconium alloys (Zr-2.5Nb, Zircaloy-4) high-purity"
+        strength: strong
+        rationale: "Hf content < 50 ppm distinguishes nuclear-grade"
+    proliferation_concern:
+      - "Online refueling allows undetected fuel removal at low burnup → weapons-grade Pu"
+
+  - id: graphite_moderated_reactor
+    description: "Plutonium production reactors; Magnox, RBMK, Yongbyon."
+    visual_signatures:
+      sentinel2_observable:
+        - "Distinctive square/rectangular reactor building"
+        - "Often co-located with reprocessing (V07)"
+        - "Cooling arrangements vary (gas → CO2 plant nearby; water → river)"
+      planetscope_required:
+        - "Fuel charging / discharging machine"
+    materials_required:
+      - hs_code: "3801"
+        name: "Nuclear-grade graphite (very low boron content)"
+        strength: strong
+        nsg_reference: "Part 1, §1.4"
+      - hs_code: "8108"
+        name: "Magnox (magnesium alloy) cladding or AGR cladding"
+        strength: medium
+    historical_significance:
+      - "All early plutonium-producing reactors used graphite moderation (US Hanford, UK Windscale, Soviet Mayak)"
+      - "Yongbyon 5 MWe is the principal extant graphite reactor"
+
+  - id: research_reactor
+    description: "Smaller power; varies widely (TRIGA, MTR, pool-type, tank, fast)."
+    visual_signatures:
+      sentinel2_observable:
+        - "Small building footprint (often <50 m × 50 m)"
+        - "Often within university campus or research institute"
+        - "May lack dedicated cooling tower (open pool cooling)"
+    materials_required:
+      - hs_code: "2844.20"
+        name: "HEU fuel (legacy designs) or LEU fuel (post-RERTR)"
+        strength: strong
+    proliferation_concern:
+      - "HEU fuel inventory; small Pu output via prolonged irradiation"
+
+  - id: fast_breeder_reactor
+    description: "Liquid metal cooled (sodium typical); breeds Pu-239 from U-238."
+    visual_signatures:
+      sentinel2_observable:
+        - "Distinct from LWR — no cooling towers if seawater cooled"
+        - "Argon handling towers (sodium fire suppression)"
+        - "Rare: only operating BN-600, BN-800; CFR-600 under construction"
+    materials_required:
+      - hs_code: "2805.19"
+        name: "Sodium metal (large quantities, technical grade)"
+        strength: strong
+    proliferation_concern:
+      - "Designed to breed Pu; tight inventory accounting essential"
+
+vlm_priority: P1
+mvp_in_scope: true

@@ -1,0 +1,32 @@
+# V08_E06 — Spent Fuel / End Products
+cell_id: V08_E06
+volume: 8
+volume_name: "Spent Fuel Storage and Waste Management"
+element: 6
+element_name: "End Products"
+
+products:
+  - name: "Loaded dry casks (long-term storage)"
+    strength: strong
+    typical_dimensions: "~6 m × 3.4 m diameter, 100-150 t loaded"
+    capacity_per_cask: "10-37 LWR assemblies typical"
+
+  - name: "Vitrified HLW glass logs"
+    strength: medium
+    typical_dimensions: "1.3 m × 0.5 m diameter, ~500 kg"
+
+  - name: "Encapsulation canisters (repository)"
+    strength: medium
+    note: "Final disposal form; very few exist (Onkalo deployment)"
+
+  - name: "Decommissioned reactor components (radiologically conditioned)"
+    strength: weak
+
+product_flow_consistency_check:
+  formula: |
+    Total cask count × per-cask SF mass ≈ cumulative reactor SF discharge
+    minus reprocessed mass.
+  red_flag: "Cask count not growing at expected rate"
+
+vlm_priority: P3
+mvp_in_scope: false

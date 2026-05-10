@@ -1,0 +1,88 @@
+# V05_E04 — Reactor / Non-Nuclear Materials
+cell_id: V05_E04
+volume: 5
+volume_name: "Reactor Operation"
+element: 4
+element_name: "Non-Nuclear Materials"
+
+definitions:
+  - "Specialised non-nuclear materials supporting reactor construction or operation."
+
+processes:
+  - id: heavy_water_reactor_HWR
+    materials_required:
+      - hs_code: "2845.10"
+        name: "Heavy water (D2O) industrial quantities"
+        strength: strong
+        rationale: "INFCIRC/254/Part 1 §1.4 controls; primary HWR moderator/coolant"
+      - hs_code: "8108"
+        name: "Zirconium alloys (Zircaloy-2/4, Zr-2.5Nb), Hf-content < 50 ppm"
+        strength: strong
+        rationale: "Distinguishing 'nuclear-grade' Zr is the canonical CANDU indicator"
+        nsg_reference: "Part 1, §1.5; Part 2, §1.C.4"
+
+  - id: graphite_moderated_reactor
+    materials_required:
+      - hs_code: "3801"
+        name: "Nuclear-grade graphite (boron < 5 ppm, density > 1.50 g/cm³)"
+        strength: strong
+        rationale: "Distinguishing from civilian graphite; low boron is the key"
+        nsg_reference: "Part 1, §1.4"
+
+  - id: light_water_reactor_LWR
+    materials_required:
+      - hs_code: "8108"
+        name: "Zircaloy-2/4 fuel cladding"
+        strength: medium
+      - hs_code: "7228"
+        name: "Reactor pressure vessel forgings (SA-508 grade)"
+        strength: strong
+        rationale: "Specialty steel; very limited global supply"
+      - hs_code: "2825"
+        name: "Boric acid (industrial purity for LWR coolant chemistry)"
+        strength: weak
+
+  - id: fast_breeder_reactor
+    materials_required:
+      - hs_code: "2805.19"
+        name: "Sodium metal (>99.95% purity, large quantities)"
+        strength: strong
+      - hs_code: "8108"
+        name: "HT-9 / D-9 stainless steel (fast-reactor cladding)"
+        strength: medium
+
+  - id: research_reactor
+    materials_required:
+      - hs_code: "2818"
+        name: "Beryllium (reflector) industrial quantities"
+        strength: strong
+        nsg_reference: "Part 1, §1.6"
+      - hs_code: "3801"
+        name: "Graphite (for some research reactors)"
+        strength: medium
+
+trade_pattern_indicators:
+  bundle_strength_strong:
+    - items: ["heavy_water_D2O", "nuclear_grade_zirconium"]
+      implies: "HWR program"
+    - items: ["nuclear_grade_graphite", "magnox_cladding"]
+      implies: "graphite reactor"
+    - items: ["RPV_forging", "steam_generator", "containment_steel"]
+      implies: "LWR construction"
+  bundle_strength_medium:
+    - items: ["sodium_metal", "specialty_stainless"]
+      implies: "fast reactor"
+
+historical_procurement_cases:
+  - country: India
+    decade: "1960s"
+    materials: ["heavy_water"]
+    routing: "imported from US (Atoms for Peace) and USSR; basis for CIRUS reactor"
+    significance: "CIRUS produced Pu for 1974 PNE"
+  - country: Iran
+    decade: "2000s"
+    materials: ["heavy_water_plant_construction", "Arak_components"]
+    routing: "IR-40 reactor; modified per JCPOA"
+
+vlm_priority: P1
+mvp_in_scope: true

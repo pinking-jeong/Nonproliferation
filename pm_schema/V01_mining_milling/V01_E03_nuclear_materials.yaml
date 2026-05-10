@@ -1,0 +1,42 @@
+# V01_E03 — Mining/Milling / Nuclear Materials
+cell_id: V01_E03
+volume: 1
+volume_name: "Mining and Milling"
+element: 3
+element_name: "Nuclear Materials"
+
+definitions:
+  - "Source material — natural uranium ore and yellowcake."
+  - "Reportable under CSA only above certain quantity thresholds."
+
+inputs:
+  - name: "Uranium-bearing ore"
+    typical_grade: "0.05–20% U for conventional; 0.01–0.05% for ISL"
+    not_yet_reportable: true
+    note: "Ore in ground is not safeguarded; only post-conversion to uranium oxide"
+
+outputs:
+  - name: "Yellowcake (U3O8)"
+    hs_code: "2612.10"
+    strength: medium
+    cs_a_reportable: true
+    standard_packaging: "200L steel drums"
+  - name: "Triuranium octoxide (UTC)"
+    hs_code: "2844.10"
+    strength: medium
+
+declaration_consistency_checks:
+  - "Reported annual yellowcake output × ore grade × throughput should reconcile"
+  - "Trade exports + domestic conversion feeds = production"
+
+red_flags:
+  - "Production reported without trade outflow (where is it going?)"
+  - "Trade outflow exceeds declared production (covert source?)"
+  - "Phosphate / copper plants in country with no declared U recovery"
+
+environmental_signatures:
+  see_also: V01_E07
+  primary_signal: "Radium / radon emissions from tailings"
+
+vlm_priority: P3
+mvp_in_scope: false

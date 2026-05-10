@@ -1,0 +1,60 @@
+# V12_E05 — Cross-Cutting / Technology, R&D, Training (State-Level Workforce)
+cell_id: V12_E05
+volume: 12
+volume_name: "Cross-Cutting Indicators"
+element: 5
+element_name: "Nuclear Workforce / R&D Capacity (state-level)"
+
+definitions:
+  - "Cross-cutting human-capital and R&D-capacity indicator at the state level."
+
+workforce_indicators:
+  size_indicators:
+    - signal: "Number of nuclear engineers / physicists per capita"
+      data_source: "OECD STI, country statistics, IAEA TC reports"
+      strength: medium
+    - signal: "Number of nuclear-relevant PhD graduates per year"
+      data_source: "ProQuest dissertations, OpenAlex affiliations"
+      strength: medium
+    - signal: "Active nuclear engineering departments (universities)"
+      data_source: "Public university websites"
+      strength: medium
+
+  trajectory_indicators:
+    - signal: "Returning postdoc / sabbatical scholars from major nuclear states"
+      strength: medium
+    - signal: "Sustained outflow / inflow to URENCO, Rosatom, KAERI, etc."
+      strength: medium
+    - signal: "Conference attendance patterns (ESARDA, INMM, ICAPP)"
+      strength: weak
+
+publication_aggregation:
+  data_source: "OpenAlex country aggregation"
+  metrics:
+    - "Total nuclear publications per year"
+    - "Citations to country's nuclear papers"
+    - "Distribution across volumes (V03 enrichment vs V05 reactor vs V07 reprocessing)"
+
+  red_flags:
+    - "Sudden ramp-up in V03 (enrichment) or V07 (reprocessing) publications without declared programme"
+    - "Topic mismatch: publications on reprocessing in a state with only LWR fleet and no announced reprocessing"
+    - "Heavy specialisation (ratio of fundamental to applied papers shifts toward applied) in a non-NWS state"
+
+cooperation_indicators:
+  international_collaborations:
+    - signal: "IAEA TC-project participation (declared, public)"
+      strength: weak
+    - signal: "Bilateral nuclear cooperation agreements (US 123, France 1982 Convention, etc.)"
+      strength: weak
+    - signal: "Co-authorship patterns with NWS / non-NWS partners"
+      strength: medium
+
+vlm_prompts:
+  state_level_assessment_hint: |
+    For the V12_E05 prior, assess the state's nuclear workforce as small/
+    medium/large, the publication trajectory as flat/growing/concentrating,
+    and the topic distribution. A growing concentration on V03/V07 topics
+    is a strong contributor to the state-level prior.
+
+vlm_priority: P0  # Most informative single cross-cutting cell
+mvp_in_scope: true

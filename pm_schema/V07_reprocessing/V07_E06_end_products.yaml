@@ -1,0 +1,46 @@
+# V07_E06 — Reprocessing / End Products
+cell_id: V07_E06
+volume: 7
+volume_name: "Reprocessing"
+element: 6
+element_name: "End Products"
+
+products:
+  - name: "Plutonium nitrate / oxide (PuO2)"
+    strength: strong
+    rationale: "Direct end-product; safeguards Item Cat-I (separated Pu)"
+    civilian_use:
+      - "MOX fuel fabrication"
+      - "Fast reactor fuel"
+    proliferation_concern: "very high — single significant quantity is 8 kg Pu"
+
+  - name: "Recovered uranium (RepU)"
+    strength: medium
+    civilian_use:
+      - "Re-enrichment for fuel re-use (rare)"
+      - "MOX matrix"
+
+  - name: "High-level liquid waste (HLW)"
+    strength: medium
+    note: "Vitrification → glass logs in interim storage"
+    visual_signature:
+      - "Vitrification plant (rare; only ~5 globally — La Hague, Sellafield, Mayak, Tokai, others)"
+      - "Glass-log storage halls"
+
+  - name: "Pu metal (further downstream)"
+    strength: redacted_per_vol11_policy
+    note: "Pu metal conversion is V10/V11-adjacent — out of OS-PM scope"
+
+product_flow_consistency_check:
+  formula: |
+    M_Pu(out) ≈ M_SF(in) × Pu_fraction × η_recovery
+  where:
+    Pu_fraction:
+      LWR: 0.009
+      CANDU_low_burnup: 0.004
+    η_recovery: 0.99 (industrial PUREX)
+  red_flag: |
+    Pu output exceeding civilian MOX absorptive capacity → potential weapons-grade stockpile
+
+vlm_priority: P2
+mvp_in_scope: false  # Requires inventory access

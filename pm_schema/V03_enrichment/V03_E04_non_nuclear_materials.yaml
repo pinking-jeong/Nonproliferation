@@ -1,0 +1,79 @@
+# V03_E04 — Enrichment / Non-Nuclear Materials
+cell_id: V03_E04
+volume: 3
+volume_name: Enrichment
+element: 4
+element_name: "Non-Nuclear Materials"
+
+definitions:
+  - "Specialized non-nuclear materials required for construction or operation of enrichment equipment."
+
+processes:
+  - id: gas_centrifuge
+    materials_required:
+      - hs_code: "7228.50"
+        name: "Maraging steel grades 250/300/350 (UTS ≥ 1.95 GPa)"
+        strength: strong
+        rationale: "Bullet-stop indicator. INFCIRC/254/Part 2 controlled."
+        nsg_reference: "Part 2, item 1.C.2"
+      - hs_code: "6815.10"
+        name: "High-strength carbon fiber (T700, T800, M40+)"
+        strength: medium
+        rationale: "Aerospace/sports overlap; specific tensile + modulus combos rare"
+        nsg_reference: "Part 2, item 1.C.10"
+      - hs_code: "8108.30"
+        name: "Titanium alloys (Ti-6Al-4V) for some rotors"
+        strength: weak
+      - hs_code: "2811.11"
+        name: "Hydrogen fluoride (HF, anhydrous, very high purity)"
+        strength: strong
+        rationale: "UF6 system corrosion environment; semi-conductor industry overlap"
+      - hs_code: "8112.21"
+        name: "Aluminum alloy 7075-T6 / 2024 (high-grade)"
+        strength: medium
+
+  - id: gaseous_diffusion
+    materials_required:
+      - hs_code: "7505"
+        name: "Sintered nickel barrier media"
+        strength: strong
+      - hs_code: "2811.11"
+        name: "F2 / HF for barrier passivation"
+        strength: medium
+
+  - id: laser_AVLIS_MLIS_SILEX
+    materials_required:
+      - hs_code: "9001.90"
+        name: "ZnSe / CaF2 / fused silica optical windows"
+        strength: medium
+      - hs_code: "2812"
+        name: "Specialty UF6 photolysis precursors"
+        strength: weak
+
+trade_pattern_indicators:
+  bundle_strength_strong:
+    - ["maraging_steel", "carbon_fiber_T700", "balancing_machines"]
+    - ["maraging_steel", "frequency_converters", "vacuum_pumps"]
+  bundle_strength_medium:
+    - ["carbon_fiber", "filament_winders"]
+    - ["HF_anhydrous", "Inconel_specialty_steel"]
+
+historical_procurement_cases:
+  - country: Iran
+    decade: "2000s"
+    materials: ["maraging_steel", "carbon_fiber", "vacuum_pumps"]
+    routing: "via UAE, Malaysia"
+    sources: "ISIS reports, US BIS Entity List actions"
+  - country: Pakistan_AQ_Khan_network
+    decade: "1980s-90s"
+    materials: ["maraging_steel", "centrifuge_components"]
+    routing: "Europe → Dubai → Pakistan/Libya"
+
+vlm_prompts:
+  trade_anomaly_hint: |
+    A single shipment of one item is weak. A bundle of ≥3 complementary items
+    to a single end-user (or shell-company-cluster) within 24 months is strong.
+    Cross-check end-user against declared aerospace/civilian portfolio.
+
+vlm_priority: P1
+mvp_in_scope: true

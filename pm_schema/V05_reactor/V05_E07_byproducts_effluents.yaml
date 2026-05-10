@@ -1,0 +1,76 @@
+# V05_E07 — Reactor / By-products / Effluents
+cell_id: V05_E07
+volume: 5
+volume_name: "Reactor Operation"
+element: 7
+element_name: "By-products / Effluents (Environmental Signatures)"
+
+definitions:
+  - "Material and energy emissions detectable via remote / environmental monitoring."
+
+byproducts:
+  - name: "Thermal effluent (cooling)"
+    strength: strong
+    detection:
+      method: "Sentinel-3 SLSTR thermal IR; Landsat-8/9 TIRS; HiVE high-res TIR"
+      pattern: "Persistent thermal hot-spot at outfall (river/coastal) or cooling tower"
+      ground_truth_examples:
+        - "Yongbyon 5 MWe — TIR signal correlates with operational state"
+        - "Bushehr — coastal thermal plume into Persian Gulf visible"
+        - "Saint-Alban (FR) — Rhône river plume"
+    hive_relevance: "★★★★★ — direct application area; HiVE 3.5 m TIR enables operational state inference"
+
+  - name: "Cooling tower visible plume"
+    strength: medium
+    detection:
+      method: "Sentinel-2 visible/NIR; observable in temperate climates winter"
+      pattern: "Rising water vapor plume, persistent"
+
+  - name: "Tritium (gaseous and liquid)"
+    strength: medium
+    process: "heavy_water_reactor_HWR primarily"
+    detection:
+      method: "Air sampling; precipitation collection (long downwind)"
+      practical: "Limited public network coverage; CTBTO does not measure tritium routinely"
+
+  - name: "Krypton-85 + Xenon isotopes"
+    strength: medium
+    process: "fuel-rod failure; refueling"
+    detection:
+      method: "CTBTO IMS radioactive xenon stations; SAUNA, SPALAX detector networks"
+      practical: "Public fraction of CTBTO data limited; some published case studies (2017 Ru-106 release)"
+
+  - name: "Cs-137 / Co-60 in environment"
+    strength: weak
+    detection:
+      method: "Soil sampling, EURDEP gamma stations"
+      practical: "Slow integration over years; useful for retroactive analysis"
+
+  - name: "Argon-37 (low-energy emitter)"
+    strength: medium
+    process: "graphite_moderated_reactor activation of Ca in shielding"
+    detection:
+      method: "Specialised low-background counting"
+      research_status: "Princeton + LANL Ar-37 detection R&D"
+
+monitoring_systems_relevance:
+  hive_satvu_TIR:
+    relevance: "★★★★★ — operational state, refueling outage detection"
+  sentinel3_SLSTR:
+    relevance: "★★★★ — free 1 km TIR for global daily monitoring"
+  landsat_TIRS:
+    relevance: "★★★ — 100 m TIR resampled to 30 m"
+  ctbto_ims_xenon:
+    relevance: "★★★ — limited public access"
+  eurdep:
+    relevance: "★★ — accidents only; routine ops below thresholds"
+
+vlm_prompts:
+  thermal_anomaly_hint: |
+    A persistent thermal hot-spot at known/suspected reactor coordinates,
+    especially showing intermittency consistent with refueling outages,
+    is a STRONG indicator of operation. Cross-reference with declared power
+    output and refueling schedule.
+
+vlm_priority: P1
+mvp_in_scope: true  # Top use case for HiVE TIR

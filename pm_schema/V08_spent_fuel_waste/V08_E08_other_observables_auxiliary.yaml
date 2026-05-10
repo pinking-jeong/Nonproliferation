@@ -1,0 +1,77 @@
+# V08_E08 — Spent Fuel / Other Observables / Auxiliary
+cell_id: V08_E08
+volume: 8
+volume_name: "Spent Fuel Storage and Waste Management"
+element: 8
+element_name: "Other Observables / Auxiliary"
+
+processes:
+  - id: dry_cask_storage
+    auxiliary_indicators:
+      facility_layout:
+        - signature: "Concrete pad with regular grid of cylindrical casks"
+          strength: strong
+          visual_signature_image:
+            - "Rectangular pad, vertical casks in rows (HI-STORM type)"
+            - "Or horizontal casks side-by-side (NUHOMS type)"
+        - signature: "Adjacent transfer cask handling building"
+          strength: medium
+        - signature: "Heavy security perimeter (anti-intrusion)"
+          strength: medium
+      growth_pattern:
+        - signature: "Pad expansion over years; cask count time-series"
+          strength: strong
+          detection_method: "Sentinel-2 time series + cask counting"
+
+  - id: wet_storage_pool
+    auxiliary_indicators:
+      facility_layout:
+        - signature: "Pool building part of reactor auxiliary"
+          strength: medium
+        - signature: "Independent away-from-reactor pool (centralised)"
+          strength: medium
+
+  - id: vitrification
+    auxiliary_indicators:
+      facility_layout:
+        - signature: "Co-located with reprocessing (La Hague, Sellafield, Mayak, Tokai)"
+          strength: strong
+        - signature: "Glass-log storage hall (specific geometry)"
+          strength: medium
+
+  - id: deep_geological_repository
+    auxiliary_indicators:
+      facility_layout:
+        - signature: "Surface support buildings + shaft heads"
+          strength: medium
+        - signature: "Underground laboratory access"
+          strength: medium
+      site_signatures:
+        - signature: "Remote, geologically stable location"
+          strength: weak
+
+cross_modal_consistency_checks:
+  - check: "ISFSI cask count growth matches declared SF discharge from reactors"
+    indicators_used: [V08_E08_cask_count, V05_E03_spent_fuel]
+  - check: "Vitrified log storage consistent with reprocessing throughput"
+    indicators_used: [V08_E06_glass_logs, V07_E03_throughput]
+
+historical_signatures_library:
+  - facility: "La Hague pools + R7T7 vitrification (FR)"
+    notable: "Largest commercial back-end complex"
+  - facility: "Sellafield (UK)"
+    notable: "Decommissioning + legacy ponds"
+  - facility: "Onkalo (FI)"
+    notable: "First operational deep geological repository (2024+)"
+  - facility: "Mutsu interim storage (JP)"
+    notable: "Centralised dry storage"
+  - facility: "Bruce dry storage (CA)"
+    notable: "CANDU dry storage benchmark"
+
+vlm_prompts:
+  facility_layout_hint: |
+    ISFSI is highly distinctive: regular grid of cylindrical casks on concrete pad.
+    Time-series imagery reveals growth rate which proxies reactor operation.
+
+vlm_priority: P2
+mvp_in_scope: true

@@ -1,0 +1,80 @@
+# Physical Model — Volume 7: Reprocessing (Overview)
+cell_id: V07_OVERVIEW
+volume: 7
+volume_name: "Reprocessing"
+element: 0
+element_name: "Volume Overview"
+
+definitions:
+  - "Chemical separation of plutonium and uranium from spent nuclear fuel."
+  - "One of the two routes to weapons-usable plutonium (the other being breeding + reprocessing)."
+
+acquisition_path_position: "plutonium_path/critical"
+inputs:
+  - "Spent fuel (any reactor type)"
+  - "Nitric acid (large bulk)"
+  - "Tributyl phosphate (TBP) + diluent (kerosene / dodecane)"
+outputs:
+  - "Separated plutonium nitrate / oxide / metal (proliferation-critical)"
+  - "Recovered uranium (depleted to slightly enriched)"
+  - "High-level liquid waste (HLW) — vitrification target"
+
+processes_in_scope:
+  - id: PUREX_aqueous
+    proliferation_relevance: "very high"
+    industrial_maturity: "mature (US, UK, FR, RU, IN, JP, CN — varying scales)"
+    description: "Plutonium-Uranium Reduction Extraction; standard since 1950s"
+
+  - id: bismuth_phosphate_BiPO4
+    proliferation_relevance: "high (historical)"
+    industrial_maturity: "obsolete"
+    description: "Manhattan Project method; Hanford T-Plant"
+
+  - id: REDOX
+    proliferation_relevance: "medium (historical)"
+    industrial_maturity: "obsolete"
+    description: "Hanford 1950s; superseded by PUREX"
+
+  - id: pyroprocessing_electrorefining
+    proliferation_relevance: "medium-high (debated)"
+    industrial_maturity: "pilot (KAERI, INL, Russia)"
+    description: "Molten salt electrorefining of metallic spent fuel"
+    note: "Korean PRIDE/PEACER programs are leading civilian R&D"
+
+  - id: thorium_THOREX
+    proliferation_relevance: "medium (U-233 path)"
+    industrial_maturity: "pilot (India BARC)"
+    description: "Variant for thorium / U-233 fuel cycles"
+
+historical_cases:
+  - state: India
+    process: PUREX
+    facility: "BARC Trombay (PREFRE), Tarapur (PREFRE-II), Kalpakkam (KARP)"
+    period: "1964-present"
+    significance: "Pu for 1974 and 1998 tests; civilian-military integrated"
+  - state: North_Korea
+    process: PUREX
+    facility: "Yongbyon Radiochemical Laboratory"
+    period: "1992-present (intermittent)"
+    detection: "ongoing OSINT; well-documented externally"
+  - state: Pakistan
+    process: PUREX
+    facility: "New Labs at Nilore; CHASNUPP plans"
+    period: "1980s-present"
+  - state: Israel
+    process: PUREX (alleged, undeclared)
+    facility: "Dimona (Negev Nuclear Research Center)"
+    period: "1960s-present (reported)"
+  - state: South_Korea
+    process: pyroprocessing_electrorefining (R&D only, no declared sep)
+    facility: "KAERI PRIDE"
+    period: "2000s-present"
+    note: "Strictly R&D under safeguards; no declared Pu separation"
+
+references:
+  - "INFCIRC/254/Part 1 §3"
+  - "Liu Z., Morsy S. (1999) Vol. 7"
+  - "Long J.T. (1967) Engineering for Nuclear Fuel Reprocessing — classic reference"
+
+vlm_priority: P1
+mvp_in_scope: true

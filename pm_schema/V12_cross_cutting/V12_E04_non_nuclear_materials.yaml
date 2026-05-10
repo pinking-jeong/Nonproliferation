@@ -1,0 +1,30 @@
+# V12_E04 — Cross-Cutting / Non-Nuclear Materials (State-Level Trade Patterns)
+cell_id: V12_E04
+volume: 12
+volume_name: "Cross-Cutting Indicators"
+element: 4
+element_name: "State-Level Trade Pattern (cross-cutting)"
+
+definitions:
+  - "Aggregate trade analysis: state-level imports / exports of nuclear-relevant non-nuclear materials, with bundle and timing analysis."
+
+aggregation_signals:
+  bundle_strong_state_level:
+    - "Multiple V03/V04/V05/V07 strong-bundle items procured by single state within rolling 5-year window"
+    - "Mirror-reporting analysis: exporter and importer reports diverge"
+    - "Use of known transshipment routing (UAE, Malaysia, Turkey for legacy IR-1; etc.)"
+
+  data_sources:
+    - "UN COMTRADE (state-level aggregates)"
+    - "Eurostat (EU side)"
+    - "US Census Trade Data (US side)"
+    - "JRC Industrial Capability Map (state-level)"
+
+  analytical_techniques:
+    - "Mirror-reporting comparison (importer vs. exporter)"
+    - "Time-series cluster detection (sudden ramp-up)"
+    - "Network analysis (shell companies, transshipment hubs)"
+    - "Bundle co-occurrence via FP-growth or Apriori on annual trade tuples"
+
+vlm_priority: P1
+mvp_in_scope: true  # Aggregate trade prior for state-level scoring

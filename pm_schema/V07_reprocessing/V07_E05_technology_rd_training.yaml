@@ -1,0 +1,69 @@
+# V07_E05 — Reprocessing / Technology, R&D, Training
+cell_id: V07_E05
+volume: 7
+volume_name: "Reprocessing"
+element: 5
+element_name: "Technology / R&D / Training"
+
+processes:
+  - id: PUREX_aqueous
+    rd_keywords:
+      strong:
+        - "PUREX solvent extraction"
+        - "tributyl phosphate plutonium"
+        - "pulse column hydrodynamics nuclear"
+        - "centrifugal contactor reprocessing"
+        - "nitric acid uranium dissolution"
+        - "spent fuel chopping shearing"
+      medium:
+        - "actinide separation aqueous"
+        - "TBP degradation radiolysis"
+        - "Pu valence adjustment"
+
+  - id: pyroprocessing_electrorefining
+    rd_keywords:
+      strong:
+        - "pyroprocessing electrorefining"
+        - "molten salt LiCl KCl spent fuel"
+        - "uranium electrorefining cathode"
+        - "metallic fuel head-end"
+        - "electroreduction oxide spent fuel"
+      medium:
+        - "actinide separation pyrometallurgy"
+        - "ceramic-metal cermet anode"
+    notable_pi_or_groups:
+      - "KAERI PRIDE program (Korea)"
+      - "Argonne National Lab / INL (USA)"
+      - "Russian RIAR Dimitrovgrad"
+
+  - id: thorium_THOREX
+    rd_keywords:
+      strong:
+        - "THOREX uranium-233 thorium"
+        - "thorium fuel cycle reprocessing"
+      medium:
+        - "Pa-233 chemistry"
+
+indicative_journals:
+  - "Solvent Extraction and Ion Exchange"
+  - "Journal of Nuclear Materials"
+  - "Radiochimica Acta"
+  - "Procedia Chemistry (ATALANTE proceedings)"
+  - "Annals of Nuclear Energy"
+
+indicative_institutions_civilian:
+  - "CEA Marcoule (France)"
+  - "Sellafield Ltd (UK, decommissioning)"
+  - "JAEA Tokai (Japan)"
+  - "BARC (India)"
+  - "KAERI (Korea, R&D pilot)"
+  - "INL (US, pyroprocessing R&D)"
+
+publication_velocity_signal:
+  description: |
+    Sudden uptick in PUREX-related publications from a non-NWS state without
+    declared reprocessing program is suspicious. Pyroprocessing R&D from KR/JP/US
+    is well-documented and academic.
+
+vlm_priority: P0
+mvp_in_scope: true

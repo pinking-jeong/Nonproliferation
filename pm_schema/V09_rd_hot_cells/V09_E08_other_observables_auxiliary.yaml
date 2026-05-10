@@ -1,0 +1,63 @@
+# V09_E08 — R&D / Hot Cells / Other Observables / Auxiliary
+cell_id: V09_E08
+volume: 9
+volume_name: "R&D and Hot Cells"
+element: 8
+element_name: "Other Observables / Auxiliary"
+
+processes:
+  - id: hot_cell_facility
+    auxiliary_indicators:
+      facility_layout:
+        - signature: "Heavy-walled (>1 m) cells visible in building cross-section"
+          strength: strong
+        - signature: "HEPA filtration plant adjacent"
+          strength: medium
+        - signature: "Heavy ventilation stack"
+          strength: medium
+      scale:
+        - signature: "Smaller than industrial reprocessing (V07) — research scale"
+          strength: medium
+      co_location:
+        - signature: "Within research institute / university campus"
+          strength: medium
+        - signature: "Adjacent to research reactor (frequent pairing)"
+          strength: strong
+
+  - id: actinide_chemistry_lab
+    auxiliary_indicators:
+      lab_signatures:
+        - signature: "Multi-storey lab building (typical institutional)"
+          strength: weak
+        - signature: "Specific HVAC for alpha-tight gloveboxes"
+          strength: medium
+
+  - id: critical_assembly
+    auxiliary_indicators:
+      facility_signatures:
+        - signature: "Small, dedicated building, often in remote part of campus"
+          strength: medium
+
+cross_modal_consistency_checks:
+  - check: "Hot cell construction + research reactor co-location → likely fuel/separation R&D"
+    indicators_used: [V09_E08_co_location, V05_E01_research_reactor]
+  - check: "Publication output (V09_E05) consistent with declared institutional capacity"
+
+vlm_prompts:
+  facility_layout_hint: |
+    Hot cell research facility: heavily-shielded but small footprint (research scale,
+    not industrial). Often co-located with research reactor or within larger nuclear
+    research institute.
+
+historical_signatures_library:
+  - facility: "BARC Trombay (IN)"
+    notable: "Research labs adjacent to CIRUS reactor; precursor to weapons program"
+  - facility: "ITU Karlsruhe (DE/EU)"
+    notable: "JRC actinide research; civilian"
+  - facility: "INL MFC (US)"
+    notable: "Materials and Fuels Complex; ZPPR critical facility historical"
+  - facility: "KAERI Daejeon (KR)"
+    notable: "PRIDE pyroprocessing; declared R&D"
+
+vlm_priority: P2
+mvp_in_scope: true

@@ -1,0 +1,41 @@
+# V04_E02 — Fuel Fabrication / Dual-Use Equipment
+cell_id: V04_E02
+volume: 4
+volume_name: "Fuel Fabrication"
+element: 2
+element_name: "Dual-Use Equipment"
+
+processes:
+  - id: all_fuel_fabrication
+    materials_required:
+      - hs_code: "8456"
+        name: "Centerless grinders (precision, ceramic)"
+        strength: weak
+      - hs_code: "8459"
+        name: "Tube extrusion / drawing (Zr alloys)"
+        strength: medium
+      - hs_code: "8417"
+        name: "Hydrogen-atmosphere furnaces"
+        strength: medium
+      - hs_code: "9024"
+        name: "Mechanical testing of cladding (Hot cell)"
+        strength: weak
+      - hs_code: "9027"
+        name: "Gamma-spectroscopy NDA for fuel rod assay"
+        strength: medium
+
+  - id: mox_fuel_fabrication
+    materials_required:
+      - hs_code: "8479"
+        name: "Negative-pressure glovebox arrays (Pu handling)"
+        strength: strong
+      - hs_code: "8421"
+        name: "HEPA/charcoal filtration banks"
+        strength: medium
+
+trade_red_flags:
+  - "Pu-handling glovebox lines + UO2/PuO2 mixing equipment + HEPA banks → MOX construction"
+  - "Zircaloy tubing extrusion + Zr alloy supply (V05_E04) → reactor fuel program"
+
+vlm_priority: P3
+mvp_in_scope: true

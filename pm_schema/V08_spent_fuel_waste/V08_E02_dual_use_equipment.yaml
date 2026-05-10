@@ -1,0 +1,37 @@
+# V08_E02 — Spent Fuel / Dual-Use Equipment
+cell_id: V08_E02
+volume: 8
+volume_name: "Spent Fuel Storage and Waste Management"
+element: 2
+element_name: "Dual-Use Equipment"
+
+processes:
+  - id: all_storage_waste
+    materials_required:
+      - hs_code: "8543"
+        name: "Heavy-duty cranes (overhead, polar)"
+        strength: weak
+      - hs_code: "9027.30"
+        name: "Gamma scanners / NDA detectors for SF assay"
+        strength: medium
+      - hs_code: "9030.10"
+        name: "Burnup measurement systems"
+        strength: medium
+      - hs_code: "8421"
+        name: "Filtration banks (decontamination facility)"
+        strength: weak
+
+  - id: vitrification
+    materials_required:
+      - hs_code: "8479"
+        name: "Specialty melters (industrial glass)"
+        strength: medium
+      - hs_code: "9030"
+        name: "High-temperature monitoring"
+        strength: weak
+
+trade_red_flags:
+  - "Burnup measurement equipment + NDA scanners + heavy cask handling at site without declared SF program"
+
+vlm_priority: P3
+mvp_in_scope: false

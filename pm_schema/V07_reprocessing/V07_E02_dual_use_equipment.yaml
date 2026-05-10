@@ -1,0 +1,48 @@
+# V07_E02 — Reprocessing / Dual-Use Equipment
+cell_id: V07_E02
+volume: 7
+volume_name: "Reprocessing"
+element: 2
+element_name: "Dual-Use Equipment"
+
+processes:
+  - id: PUREX_aqueous
+    materials_required:
+      - hs_code: "8419.89"
+        name: "Specialty heat exchangers (titanium / Hastelloy resistant to nitric acid)"
+        strength: medium
+        rationale: "Hot, oxidising, radioactive nitric acid environment is unusual"
+      - hs_code: "8413"
+        name: "Pulsation-resistant pumps for nitric acid duty"
+        strength: medium
+      - hs_code: "8543"
+        name: "Master-slave manipulators (heavy-duty, sealed)"
+        strength: strong
+        rationale: "Few civilian uses outside nuclear / very-high-radiation industries"
+        nsg_reference: "Part 1, §3.4"
+      - hs_code: "8479.89"
+        name: "Remote handling cranes (overhead, in-cell)"
+        strength: medium
+      - hs_code: "9015.40"
+        name: "Tank level / mass measurement (load cells with seismic isolation)"
+        strength: medium
+      - hs_code: "9027.80"
+        name: "Alpha and gamma analytical equipment (large-area detectors)"
+        strength: medium
+
+  - id: pyroprocessing_electrorefining
+    materials_required:
+      - hs_code: "8419"
+        name: "Inert-atmosphere glove boxes / argon recirculation"
+        strength: medium
+      - hs_code: "9027"
+        name: "Electrochemistry monitoring (cyclic voltammetry)"
+        strength: weak
+
+trade_red_flags:
+  - "Bundled procurement of master-slave manipulators + specialty corrosion-resistant heat exchangers + remote cranes to non-NWS state"
+  - "Unusual quantities of TBP solvent + dodecane diluent procurement"
+  - "Concrete with very-high density aggregates (heavy concrete for shielding)"
+
+vlm_priority: P2
+mvp_in_scope: true

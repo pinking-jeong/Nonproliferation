@@ -1,0 +1,26 @@
+# V01_E02 — Mining/Milling / Dual-Use Equipment
+cell_id: V01_E02
+volume: 1
+volume_name: "Mining and Milling"
+element: 2
+element_name: "Dual-Use Equipment"
+
+processes:
+  - id: all_mining_milling
+    materials_required:
+      - hs_code: "8474"
+        name: "Mining drag-line, jaw crushers, ball mills"
+        strength: weak
+        rationale: "Standard mining; low specificity"
+      - hs_code: "8413"
+        name: "Slurry pumps (acid-resistant)"
+        strength: weak
+      - hs_code: "8419"
+        name: "Drying drums and rotary kilns"
+        strength: weak
+
+trade_red_flags:
+  - "Mining equipment shipments to a state without declared mining program (rare given uranium is a non-rare element)"
+
+vlm_priority: P3
+mvp_in_scope: false

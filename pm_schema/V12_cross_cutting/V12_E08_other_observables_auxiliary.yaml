@@ -1,0 +1,96 @@
+# V12_E08 — Cross-Cutting / Other Observables / Auxiliary (Geopolitics, Doctrine, Funding)
+cell_id: V12_E08
+volume: 12
+volume_name: "Cross-Cutting Indicators"
+element: 8
+element_name: "Geopolitical, Doctrinal, Funding Auxiliary"
+
+categories:
+  geopolitical_context:
+    - signal: "Regional security tensions (latent / acute)"
+      strength: medium
+      data_source: "Public foreign policy commentary, doctrine documents"
+      examples:
+        - "Northeast Asia: NK-SK-JP-CN dynamics"
+        - "Middle East: IL-IR-Saudi-EG dynamics"
+        - "South Asia: IN-PK-CN dynamics"
+    - signal: "Withdrawal of security guarantees from a major patron"
+      strength: high
+      historical_examples:
+        - "South Korea 1970s after US drawdown rhetoric → KAERI early efforts"
+        - "Sweden Cold War — hedging programme"
+
+  doctrine_and_intent:
+    - signal: "Declared nuclear posture documents"
+      strength: high
+      data_source: "Defense white papers, nuclear policy reviews"
+    - signal: "Statements by senior officials on nuclear option"
+      strength: high
+      caution: "Subject to political theater; corroboration needed"
+    - signal: "Hedging / latency posture (technical capability without declaration)"
+      strength: medium
+      historical_examples: "Sweden, Switzerland, Brazil pre-NPT, etc."
+
+  funding_indicators:
+    - signal: "State R&D budget for nuclear programme"
+      strength: medium
+      data_source: "Budget documents, parliamentary records"
+    - signal: "Defense budget anomalies (concealed allocation)"
+      strength: weak
+      data_source: "SIPRI, IISS Military Balance"
+    - signal: "Construction-cost expenditure inconsistencies"
+      strength: medium
+
+  treaty_status:
+    - signal: "NPT membership and AP status"
+      strength: high
+      data_source: "Public IAEA records"
+    - signal: "NSG / Wassenaar / MTCR / Australia Group memberships"
+      strength: medium
+    - signal: "Bilateral 123 Agreements, Euratom membership, etc."
+      strength: medium
+
+  nonproliferation_record:
+    - signal: "Past compliance findings (state-specific)"
+      strength: high
+      data_source: "IAEA Annual Safeguards Implementation Report"
+    - signal: "Sanctions history"
+      strength: medium
+      data_source: "UN, EU, US sanctions databases"
+
+state_level_assessment_framework:
+  description: |
+    The Bayesian prior used in fusion (Eq.~\eqref{eq:fusion} in the system
+    paper) is set per state using V12_E08 inputs:
+
+      prior_state = base_NPT_prior × geopolitical_factor × doctrine_factor × historical_factor
+
+    The base_NPT_prior is from V12_E06 (e.g., 0.001 for AP+BC state, 0.20
+    for non-NPT). Multipliers are bounded to keep the result in [0.0001, 0.95].
+
+  default_factors:
+    geopolitical_low_tension: 0.5
+    geopolitical_high_tension: 2.0
+    doctrine_peaceful_declared: 0.3
+    doctrine_hedging: 1.5
+    doctrine_undeclared_NWS: 5.0
+    historical_clean: 0.5
+    historical_violation: 3.0
+
+  caveat: |
+    These factors are illustrative, FOR ACADEMIC PURPOSES ONLY. The actual
+    IAEA assessment uses non-public criteria; OS-PM does not claim parity.
+
+cross_modal_consistency_at_state_level:
+  - check: "Doctrine statement consistent with funding allocation"
+  - check: "Treaty membership consistent with declared inventory category"
+  - check: "Historical record consistent with current programme description"
+
+vlm_prompts:
+  state_prior_hint: |
+    To set the Bayesian prior for fusion, look up: NPT/AP/BC status (V12_E06),
+    regional tension level (V12_E08), past safeguards record (V12_E08),
+    declared doctrine. Output a single numerical prior in [0.0001, 0.95].
+
+vlm_priority: P0  # Most important state-level prior-setting cell
+mvp_in_scope: true

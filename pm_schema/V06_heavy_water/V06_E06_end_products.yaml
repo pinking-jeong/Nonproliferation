@@ -1,0 +1,31 @@
+# V06_E06 — Heavy Water / End Products
+cell_id: V06_E06
+volume: 6
+volume_name: "Heavy Water Production"
+element: 6
+element_name: "End Products"
+
+products:
+  - name: "Reactor-grade D2O (~99.75% D)"
+    strength: strong
+    typical_packaging: "Stainless drums or specialised IBCs"
+    trade_signature:
+      - hs_code: "2845.10"
+        description: "Heavy water trade is highly tracked"
+
+  - name: "Industrial-grade D2O (lower purity, research)"
+    strength: medium
+    note: "Used for NMR solvents, neutron experiments, etc."
+
+  - name: "Tritium (downstream byproduct from CANDU operation)"
+    strength: redacted_per_vol11_policy_for_weapons_use
+    note: "Tritium production for weapons application is out of OS-PM scope. Civilian tritium for fusion R&D is tracked separately."
+
+product_flow_consistency_check:
+  formula: |
+    Annual D2O output = electricity consumed (electrolysis) × yield, OR
+                       ≈ ore-equivalent throughput × isotope effect × stages
+  red_flag: "D2O production capacity not matching declared HWR demand"
+
+vlm_priority: P3
+mvp_in_scope: false

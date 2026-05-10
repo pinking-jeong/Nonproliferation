@@ -1,0 +1,74 @@
+# V07_E04 — Reprocessing / Non-Nuclear Materials
+cell_id: V07_E04
+volume: 7
+volume_name: "Reprocessing"
+element: 4
+element_name: "Non-Nuclear Materials"
+
+processes:
+  - id: PUREX_aqueous
+    materials_required:
+      - hs_code: "2808"
+        name: "Nitric acid (HNO3) very high purity, large quantities"
+        strength: strong
+        rationale: "PUREX consumes vast quantities; supply pattern revealing"
+      - hs_code: "2919"
+        name: "Tributyl phosphate (TBP) industrial quantities"
+        strength: strong
+        rationale: "Specific to PUREX; few alternative uses"
+        nsg_reference: "Part 2, §3.A.1"
+      - hs_code: "2710"
+        name: "Dodecane / kerosene high-purity diluent"
+        strength: medium
+      - hs_code: "7228"
+        name: "Stainless steel (316L) high-corrosion resistance"
+        strength: medium
+      - hs_code: "8108"
+        name: "Titanium alloys (Grade 2, Grade 7) for high-acid duty"
+        strength: medium
+      - hs_code: "2825.60"
+        name: "Specialty zirconium oxide / niobium liners"
+        strength: weak
+      - hs_code: "2811.19"
+        name: "Hydroxylamine nitrate (reducing agent for Pu)"
+        strength: strong
+        rationale: "Specific to Pu valence control in PUREX"
+
+  - id: pyroprocessing_electrorefining
+    materials_required:
+      - hs_code: "2827"
+        name: "Lithium chloride / potassium chloride (LiCl-KCl molten salt eutectic)"
+        strength: strong
+      - hs_code: "2804"
+        name: "Argon (very-high-purity, large quantities)"
+        strength: medium
+      - hs_code: "8104"
+        name: "Cadmium metal (for Cd cathode in some flowsheets)"
+        strength: medium
+
+trade_pattern_indicators:
+  bundle_strength_strong:
+    - items: ["TBP", "dodecane", "stainless_316L_pipe"]
+      implies: "PUREX construction"
+    - items: ["nitric_acid_98%", "TBP", "hydroxylamine_nitrate"]
+      implies: "operating PUREX"
+  bundle_strength_medium:
+    - items: ["LiCl-KCl_eutectic", "high_purity_argon"]
+      implies: "pyroprocessing pilot"
+
+historical_procurement_cases:
+  - country: India
+    decade: "1960s"
+    materials: ["TBP", "nitric_acid", "stainless"]
+    routing: "PREFRE construction"
+  - country: North_Korea
+    decade: "1980s-90s"
+    materials: ["TBP", "nitric_acid"]
+    routing: "Yongbyon Radiochemical Lab construction"
+  - country: Israel
+    decade: "1960s"
+    materials: ["French technical assistance for Dimona"]
+    routing: "alleged covert"
+
+vlm_priority: P1
+mvp_in_scope: true

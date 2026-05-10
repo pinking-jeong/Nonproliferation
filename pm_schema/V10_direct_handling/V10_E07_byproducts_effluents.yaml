@@ -1,0 +1,37 @@
+# V10_E07 — Direct Handling / By-products / Effluents
+cell_id: V10_E07
+volume: 10
+volume_name: "Direct Handling of Plutonium / U-233 / HEU"
+element: 7
+element_name: "By-products / Effluents"
+
+byproducts:
+  - name: "Trace alpha emissions (Pu)"
+    strength: weak
+    detection:
+      method: "Local air monitoring (alpha sensitive); not remote"
+    rationale: "Well-managed civilian facilities keep emissions far below detection thresholds"
+
+  - name: "HEPA filter waste (low-level)"
+    strength: weak
+    detection:
+      method: "Solid waste reporting (some countries)"
+
+  - name: "Radon-220 (Th-232 daughter, U-233 chains)"
+    strength: weak
+    detection:
+      method: "Local air; very specialised"
+
+  - name: "Alpha contamination cleanup waste"
+    strength: weak
+    detection:
+      method: "Local waste reporting"
+
+monitoring_systems_relevance:
+  remote_OSINT:
+    relevance: "★ — V10 facilities are deliberately well-confined; remote signals are minimal"
+  local_environmental:
+    relevance: "★★ — institution-level, often public reports"
+
+vlm_priority: P3
+mvp_in_scope: false
