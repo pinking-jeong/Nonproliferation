@@ -1,0 +1,25 @@
+Attachments to attach when sending the email
+============================================
+
+1. ../_shared/OS-PM-preprint-v0.1.0.pdf
+   - 11 pages, 108 KB
+   - Phase 1 system paper (PI placeholders still in §1; see MANUAL_ACTIONS §1)
+
+2. ../_shared/OS-PM-demo-deck.md
+   - 7-slide markdown deck (Marp/Slidev compatible)
+   - Render to PDF with: `marp OS-PM-demo-deck.md -o OS-PM-demo-deck.pdf`
+   - Or send as plain Markdown — it reads cleanly
+
+3. (Optional) ../_shared/cover-letter.md
+   - Long-form formal letter
+   - Use when introducing the project to a senior researcher who may
+     forward it within their institution
+
+Subject line (English):
+  OS-PM — open-source IAEA Physical Model reconstruction; methodological review request
+
+Subject line (한국어):
+  OS-PM 프로젝트 — 공개정보 기반 IAEA Physical Model 재구성 / 자문 의뢰
+
+GitHub: https://github.com/pinking-jeong/Nonproliferation
+arXiv:  pending (post-PI review)

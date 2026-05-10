@@ -1,0 +1,26 @@
+Attachments to attach when sending the email
+============================================
+
+1. ../_shared/OS-PM-preprint-v0.1.0.pdf
+   - 11 pages, 108 KB
+   - System paper; cites Renda/Kim/Cojazzi 2014 and Renda/Kim/Cojazzi 2015 as foundational
+
+2. ../_shared/OS-PM-demo-deck.md
+   - 7-slide markdown deck
+
+3. (Recommended for Lance Kim) — write a 1-page mapping note on the spot:
+   "OS-PM YAML schema vs JRC Big Table: preliminary correspondence table"
+   (a draft is included in email.md Appendix C; copy into a separate
+   PDF or include inline)
+
+Subject line (English):
+  OS-PM — open-source PM reconstruction; would value your JRC perspective
+
+Channel preference (try in this order):
+  1. KAERI 학술협력실 introduction
+  2. LinkedIn direct message (if profile is active)
+  3. JRC Cojazzi-group referral
+  4. INMM Korea Chapter event (if scheduled within 4-6 weeks)
+
+GitHub: https://github.com/pinking-jeong/Nonproliferation
+arXiv:  pending (post-PI review)
