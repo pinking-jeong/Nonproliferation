@@ -79,6 +79,68 @@ HISTORICAL_CASES: dict[str, HistoricalCase] = {
         minimum_lead_time_years=(3, 6),
         notes="Yongbyon-type graphite reactor under construction; pre-operational.",
     ),
+    # ----- Phase 2 expansion: voluntarily-disclosed historical programmes ----- #
+    "south_africa_pre_1991": HistoricalCase(
+        name="south_africa_pre_1991",
+        state="ZA",
+        cut_off=date(1991, 7, 10),
+        public_disclosure_event="South Africa NPT accession; subsequent IAEA disclosure of dismantled programme",
+        expected_top_process="aerodynamic_jet_nozzle",
+        expected_pm_cells=("V03_E01", "V03_E04", "V03_E05"),
+        minimum_lead_time_years=(8, 15),
+        notes=(
+            "Pelindaba aerodynamic-vortex (Helikon) enrichment plant; "
+            "weapons programme 1979-1989, voluntarily dismantled under "
+            "de Klerk; only state to give up an indigenous weapons "
+            "stockpile. Public IAEA disclosure 1993-1995."
+        ),
+    ),
+    "argentina_pre_1991": HistoricalCase(
+        name="argentina_pre_1991",
+        state="AR",
+        cut_off=date(1991, 7, 18),
+        public_disclosure_event="Argentina-Brazil ABACC bilateral agreement (Guadalajara Declaration 1990; ABACC 1991)",
+        expected_top_process="gaseous_diffusion",
+        expected_pm_cells=("V03_E01", "V03_E04", "V03_E05"),
+        minimum_lead_time_years=(5, 10),
+        notes=(
+            "Pilcaniyeu gaseous diffusion plant (CNEA); covert military "
+            "programme 1978-1983, declared 1983 under Alfonsin; ABACC "
+            "(Brazilian-Argentine Agency) safeguards from 1991. "
+            "Publicly documented post-1991."
+        ),
+    ),
+    "brazil_pre_1991": HistoricalCase(
+        name="brazil_pre_1991",
+        state="BR",
+        cut_off=date(1991, 7, 18),
+        public_disclosure_event="ABACC bilateral agreement; Brazil parallel-programme disclosure",
+        expected_top_process="gas_centrifuge",
+        expected_pm_cells=("V03_E01", "V03_E04", "V03_E05"),
+        minimum_lead_time_years=(5, 10),
+        notes=(
+            "Aramar (CTMSP) ultracentrifuge programme — naval-propulsion "
+            "cover for parallel military programme during military regime. "
+            "Civilian re-direction post-1985; ABACC safeguards from 1991. "
+            "Iperó facility publicly known."
+        ),
+    ),
+    "taiwan_pre_1988": HistoricalCase(
+        name="taiwan_pre_1988",
+        state="TW",
+        cut_off=date(1988, 1, 9),
+        public_disclosure_event="Chang Hsien-yi defection to USA (1988-01); INER programme exposure",
+        expected_top_process="research_reactor",
+        expected_pm_cells=("V05_E01", "V05_E05", "V09_E01"),
+        minimum_lead_time_years=(4, 8),
+        notes=(
+            "INER (Institute of Nuclear Energy Research) covert "
+            "plutonium-route programme using TRR (Taiwan Research "
+            "Reactor) heavy-water-moderated reactor + hot-cell research. "
+            "Programme dismantled 1988 under US pressure following "
+            "Chang Hsien-yi disclosure to CIA."
+        ),
+    ),
 }
 
 

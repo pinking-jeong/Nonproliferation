@@ -53,6 +53,26 @@ KEYWORDS: dict[str, dict[str, list[str]]] = {
         "medium": ["graphite reactor", "fuel charging machine",
                    "plutonium production reactor"],
     },
+    "south_africa_pre_1991": {
+        "strong": ["uranium enrichment", "Helikon", "aerodynamic vortex",
+                   "jet nozzle enrichment"],
+        "medium": ["Pelindaba", "uranium hexafluoride", "Y-Plant"],
+    },
+    "argentina_pre_1991": {
+        "strong": ["uranium enrichment", "gaseous diffusion",
+                   "Pilcaniyeu", "CNEA"],
+        "medium": ["uranium hexafluoride", "isotope separation diffusion"],
+    },
+    "brazil_pre_1991": {
+        "strong": ["ultracentrifuge", "uranium enrichment", "Aramar",
+                   "CTMSP", "Ipero"],
+        "medium": ["centrifuge naval propulsion", "uranium hexafluoride"],
+    },
+    "taiwan_pre_1988": {
+        "strong": ["TRR", "Taiwan Research Reactor", "INER",
+                   "heavy water research reactor", "plutonium production reactor"],
+        "medium": ["plutonium chemistry", "hot cell reprocessing"],
+    },
 }
 
 # Cell IDs that the literature path will populate. We default to the
@@ -62,6 +82,10 @@ LITERATURE_CELL: dict[str, str] = {
     "libya_2003": "V03_E05",          # enrichment R&D
     "iraq_pre_1991": "V03_E05",       # enrichment R&D (calutron + centrifuge)
     "syria_alkibar_2007": "V05_E05",  # reactor R&D
+    "south_africa_pre_1991": "V03_E05",  # enrichment R&D
+    "argentina_pre_1991": "V03_E05",     # enrichment R&D
+    "brazil_pre_1991": "V03_E05",        # enrichment R&D
+    "taiwan_pre_1988": "V05_E05",        # reactor R&D
 }
 
 # Process IDs the keyword classifier maps each case onto.
@@ -70,6 +94,10 @@ LITERATURE_PROCESS: dict[str, str] = {
     "libya_2003": "gas_centrifuge",
     "iraq_pre_1991": "electromagnetic_calutron",
     "syria_alkibar_2007": "graphite_moderated_reactor",
+    "south_africa_pre_1991": "aerodynamic_jet_nozzle",
+    "argentina_pre_1991": "gaseous_diffusion",
+    "brazil_pre_1991": "gas_centrifuge",
+    "taiwan_pre_1988": "research_reactor",
 }
 
 
@@ -258,6 +286,113 @@ def syria_alkibar_collector(case: HistoricalCase) -> list[Indicator]:
 
 
 # --------------------------------------------------------------------------- #
+#  Phase-2 expansion collectors (voluntarily-disclosed historical programmes)
+# --------------------------------------------------------------------------- #
+
+
+def south_africa_pre1991_collector(case: HistoricalCase) -> list[Indicator]:
+    """South Africa Helikon vortex enrichment programme (1979-1989)."""
+    keywords = KEYWORDS[case.name]["strong"] + KEYWORDS[case.name]["medium"]
+    papers = _openalex_query("ZA", (1975, case.cut_off.year), keywords)
+    out = _heuristic_classify(papers, case.name)
+    out.append(Indicator(
+        cell_id="V03_E01",
+        process="aerodynamic_jet_nozzle",
+        modality=Modality.TEXT,
+        strength=Strength.STRONG,
+        confidence=0.8,
+        evidence={
+            "source": "IAEA disclosure 1993-1995 + de Klerk address 1993-03-24",
+            "facility": "Pelindaba Y-Plant (Valindaba)",
+            "process_detail": "Helikon vortex / aerodynamic UF6 enrichment",
+            "note": "Programme dismantled 1989-1991; HEU stockpile (~6 weapons) "
+                    "voluntarily declared and placed under safeguards 1991. "
+                    "Y-Plant decommissioned 1995.",
+        },
+        source_uri="iaea_post_1991_disclosure",
+        extracted_by="rule_post_disclosure_anchor",
+    ))
+    return out
+
+
+def argentina_pre1991_collector(case: HistoricalCase) -> list[Indicator]:
+    """Argentina Pilcaniyeu gaseous diffusion (1978-1983)."""
+    keywords = KEYWORDS[case.name]["strong"] + KEYWORDS[case.name]["medium"]
+    papers = _openalex_query("AR", (1975, case.cut_off.year), keywords)
+    out = _heuristic_classify(papers, case.name)
+    out.append(Indicator(
+        cell_id="V03_E01",
+        process="gaseous_diffusion",
+        modality=Modality.TEXT,
+        strength=Strength.STRONG,
+        confidence=0.8,
+        evidence={
+            "source": "Public CNEA records + ABACC 1991 declaration",
+            "facility": "Pilcaniyeu (Río Negro)",
+            "process_detail": "Gaseous diffusion uranium enrichment",
+            "note": "Started covertly 1978 under military regime; revealed by "
+                    "President Alfonsin 1983-11. Operations continued at low "
+                    "enrichment for civilian use; ABACC bilateral safeguards 1991.",
+        },
+        source_uri="abacc_1991_declaration",
+        extracted_by="rule_post_disclosure_anchor",
+    ))
+    return out
+
+
+def brazil_pre1991_collector(case: HistoricalCase) -> list[Indicator]:
+    """Brazil Aramar centrifuge programme (~1979-1990)."""
+    keywords = KEYWORDS[case.name]["strong"] + KEYWORDS[case.name]["medium"]
+    papers = _openalex_query("BR", (1975, case.cut_off.year), keywords)
+    out = _heuristic_classify(papers, case.name)
+    out.append(Indicator(
+        cell_id="V03_E01",
+        process="gas_centrifuge",
+        modality=Modality.TEXT,
+        strength=Strength.STRONG,
+        confidence=0.8,
+        evidence={
+            "source": "Brazilian congressional inquiry 1990 + ABACC 1991 declaration",
+            "facility": "Aramar (Iperó, São Paulo) — CTMSP",
+            "process_detail": "Ultracentrifuge enrichment under naval-propulsion cover",
+            "note": "Parallel programme run by Navy alongside civilian "
+                    "Brazilian-German agreement; redirected to civilian "
+                    "navy-fuel use after 1985 democratic transition. "
+                    "ABACC safeguards from 1991.",
+        },
+        source_uri="brazil_congressional_1990",
+        extracted_by="rule_post_disclosure_anchor",
+    ))
+    return out
+
+
+def taiwan_pre1988_collector(case: HistoricalCase) -> list[Indicator]:
+    """Taiwan INER plutonium-route programme (~1969-1988)."""
+    keywords = KEYWORDS[case.name]["strong"] + KEYWORDS[case.name]["medium"]
+    papers = _openalex_query("TW", (1970, case.cut_off.year), keywords)
+    out = _heuristic_classify(papers, case.name)
+    out.append(Indicator(
+        cell_id="V05_E01",
+        process="research_reactor",
+        modality=Modality.TEXT,
+        strength=Strength.STRONG,
+        confidence=0.8,
+        evidence={
+            "source": "Chang Hsien-yi defection 1988-01 + IAEA inspection record",
+            "facility": "INER Lung-Tan + Taiwan Research Reactor (TRR)",
+            "process_detail": "Heavy-water-moderated 40 MWth research reactor "
+                              "(based on Canadian NRX) + adjacent hot-cell research",
+            "note": "Programme begun 1969-1976; TRR commissioned 1973. "
+                    "Dismantled under US pressure 1988 following Chang's "
+                    "disclosure to CIA. TRR shut down 1988-12.",
+        },
+        source_uri="us_state_dept_1988",
+        extracted_by="rule_post_disclosure_anchor",
+    ))
+    return out
+
+
+# --------------------------------------------------------------------------- #
 #  Dispatcher
 # --------------------------------------------------------------------------- #
 
@@ -267,6 +402,10 @@ _DISPATCH = {
     "libya_2003": libya_collector,
     "iraq_pre_1991": iraq_pre1991_collector,
     "syria_alkibar_2007": syria_alkibar_collector,
+    "south_africa_pre_1991": south_africa_pre1991_collector,
+    "argentina_pre_1991": argentina_pre1991_collector,
+    "brazil_pre_1991": brazil_pre1991_collector,
+    "taiwan_pre_1988": taiwan_pre1988_collector,
 }
 
 

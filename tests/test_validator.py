@@ -22,7 +22,13 @@ def _ind(cell, process, strength=Strength.STRONG, conf=0.85):
 
 
 def test_canonical_cases_are_defined():
-    expected = {"iran_natanz_2002", "libya_2003", "iraq_pre_1991", "syria_alkibar_2007"}
+    """Phase 1 + Phase 2 disclosed-historical cases."""
+    expected = {
+        "iran_natanz_2002", "libya_2003", "iraq_pre_1991", "syria_alkibar_2007",
+        # Phase 2 expansion (voluntarily-disclosed programmes)
+        "south_africa_pre_1991", "argentina_pre_1991", "brazil_pre_1991",
+        "taiwan_pre_1988",
+    }
     assert set(HISTORICAL_CASES.keys()) == expected
     for c in HISTORICAL_CASES.values():
         assert isinstance(c.cut_off, date)
@@ -55,6 +61,7 @@ def test_run_case_with_irrelevant_indicators_fails():
 
 
 def test_run_all_aggregates_metrics():
+    """Phase 1 4-case sub-aggregate (explicit cases= argument)."""
     inds = {
         "iran_natanz_2002": [_ind("V03_E01", "gas_centrifuge"),
                              _ind("V03_E08", "gas_centrifuge")],
@@ -65,7 +72,8 @@ def test_run_all_aggregates_metrics():
         "syria_alkibar_2007": [_ind("V05_E01", "graphite_moderated_reactor"),
                                 _ind("V05_E08", "graphite_moderated_reactor")],
     }
-    results, metrics = run_all(synthetic_collector(inds))
+    phase1_cases = [HISTORICAL_CASES[name] for name in inds]
+    results, metrics = run_all(synthetic_collector(inds), cases=phase1_cases)
     assert metrics.n_cases == 4
     assert metrics.top1_accuracy == 1.0
     assert metrics.mean_cells_recall > 0
