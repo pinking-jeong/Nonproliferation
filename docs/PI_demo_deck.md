@@ -17,7 +17,7 @@
 **[Author 2]** · [Institution]
 **Advisory committee:** TBD
 
-📁 GitHub: `[org]/os-pm` (Apache-2.0)
+📁 GitHub: `pinking-jeong/Nonproliferation` (Apache-2.0)
 📄 Preprint: `arXiv:[TBD]`
 📅 Phase 1 complete (2026-05-09); Phase 2 starting
 
@@ -155,7 +155,7 @@
 ## Appendix A — Repo and reproducibility
 
 ```bash
-git clone https://github.com/[org]/os-pm
+git clone https://github.com/pinking-jeong/Nonproliferation
 cd os-pm
 pip install -r requirements.txt
 

@@ -34,7 +34,7 @@ nuclear safeguards system, Phase 2 (vision-language imagery analysis).
 ## 3. Public artefacts (cite at top of application)
 
 - arXiv preprint: `arXiv:[ID after submission]`
-- Code repository: `github.com/[org]/os-pm` (Apache-2.0)
+- Code repository: `github.com/pinking-jeong/Nonproliferation` (Apache-2.0)
 - Project description: `OS-PM 프로젝트 종합 현황.md` and `paper/main.pdf` (attach 8-page PDF)
 - Scope policy: `pm_schema/V11_weaponization_excluded/_volume_overview.yaml`
 

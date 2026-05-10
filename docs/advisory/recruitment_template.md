@@ -14,7 +14,7 @@ Dear [Title] [Name],
 I am [your name, position, affiliation], writing to invite you to
 serve on the Advisory Committee of OS-PM, an open-source academic
 reconstruction of the IAEA Physical Model. The project — released as
-an arXiv preprint at [arXiv:TBD] and as code at github.com/[org]/os-pm
+an arXiv preprint at [arXiv:TBD] and as code at github.com/pinking-jeong/Nonproliferation
 — provides a vision-language-model-driven, reproducible system for
 academic safeguards research, with permanent exclusion of Volume 11
 (weaponization) by schema-level policy.
@@ -50,7 +50,7 @@ Sincerely,
 저는 [본인 성명, 직위, 소속] 입니다. IAEA Physical Model 의 공개정보
 기반 학술 재구성 프로젝트인 *OS-PM* 의 자문위원회 위원으로 초청드리고자
 연락드립니다. 본 프로젝트는 arXiv preprint ([arXiv:TBD]) 와
-github.com/[org]/os-pm 으로 공개되며, V11 weaponization 은 정책상
+github.com/pinking-jeong/Nonproliferation 으로 공개되며, V11 weaponization 은 정책상
 영구 제외, 100% 공개 라이센스 데이터를 사용하는 detection-only 학술
 시스템입니다.
 

@@ -76,7 +76,7 @@ Best regards,
 [Name]
 [Title, Affiliation]
 [Email] · ORCID: [orcid]
-GitHub: github.com/[org]/os-pm    (release imminent)
+GitHub: github.com/pinking-jeong/Nonproliferation    (release imminent)
 arXiv: arXiv:[TBD]
 ```
 

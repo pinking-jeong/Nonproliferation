@@ -72,7 +72,7 @@ class VLMClient:
                 base_url=self.OPENROUTER_BASE_URL,
                 api_key=s.openrouter_api_key,
                 default_headers={
-                    "HTTP-Referer": "https://github.com/[org]/os-pm",
+                    "HTTP-Referer": "https://github.com/pinking-jeong/Nonproliferation",
                     "X-Title": "OS-PM Phase 1",
                 },
             )

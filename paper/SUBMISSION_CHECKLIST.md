@@ -44,7 +44,7 @@
 - ☐ 저자 자리 placeholder 확정 (`[Author 1]` → 실명)
 - ☐ 기관 자리 placeholder 확정 (`[Institution 1]` → 실 기관)
 - ☐ 이메일 자리 확정
-- ☐ GitHub URL 확정 (`[org]/os-pm` → 실 GitHub)
+- ☐ GitHub URL 확정 (`pinking-jeong/Nonproliferation` → 실 GitHub)
 - ☐ Zenodo DOI 확정 (`[zenodo-doi]` → 실 DOI; 미발급 시 `(reservation pending)`)
 
 ### B2. 빌드

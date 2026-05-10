@@ -13,8 +13,8 @@ authors:
     family-names: "[Author 2 family name]"
     affiliation: "[Institution 2]"
     orcid: "https://orcid.org/0000-0000-0000-0000"
-repository-code: "https://github.com/[org]/os-pm"
-url: "https://github.com/[org]/os-pm"
+repository-code: "https://github.com/pinking-jeong/Nonproliferation"
+url: "https://github.com/pinking-jeong/Nonproliferation"
 abstract: >-
   OS-PM is a vision-language-model-driven, open-source academic
   reconstruction of the IAEA Physical Model that populates 88 in-scope

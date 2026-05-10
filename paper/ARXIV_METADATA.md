@@ -70,7 +70,7 @@ Apache-2.0 with an explicit Volume-11-out-of-scope policy.
 
 ```
 Phase 1 system paper. 8 pages, 4 tables, 1 figure. Code and PM-schema
-released under Apache-2.0 at github.com/[org]/os-pm.
+released under Apache-2.0 at github.com/pinking-jeong/Nonproliferation.
 ```
 
 ## Subject classes (arXiv categories)
@@ -157,7 +157,7 @@ later journal submission.
 - [ ] Volume 11 exclusion policy referenced in §6.2
 - [ ] Acknowledgments updated (funder, advisory committee)
 - [ ] License explicitly mentioned in `LICENSE` and on first PDF page
-- [ ] Code repo URL works (currently placeholder `[org]/os-pm`)
+- [ ] Code repo URL works (currently placeholder `pinking-jeong/Nonproliferation`)
 - [ ] Anthropic AUP compliance review (no V11 content via API)
 - [ ] Internal review by advisory committee chair (sign-off email)
 - [ ] Institutional IRB / DURC sign-off (or note that this is a
